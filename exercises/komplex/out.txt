@@ -1,0 +1,8 @@
+testing komplex_add...
+a= (1,2)
+b= (3,4)
+a+b should   =  (4,6)
+a+b actually =  (4,6)
+now testing komplex_sub...
+b-a should   =  (2,2)
+b-a actually =  (2,2)

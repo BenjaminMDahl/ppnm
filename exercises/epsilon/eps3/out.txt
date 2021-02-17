@@ -1,3 +1,0 @@
-from tau 1.5
-from eps0.2
-answer is 1
