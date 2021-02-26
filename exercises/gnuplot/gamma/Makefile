@@ -17,7 +17,7 @@ gamma.pyxplot.png: out.data.txt Makefile factor.data.txt
 	set title "Gamma function";\
 	plot \
 	 "$<" using 1:2 with line title "gamma from math.h"\
-	,"$<" using 1:3 with line title "gsl-sf-gamma"\
+	,"$<" using 1:3 with points pointtype 1 title "gsl-sf-gamma"\
 	,"$<" using 1:4 with points pointtype 2 title "mygamma"\
 	,"factor.data.txt" using 1:2 with points pointtype 3 title "tabulated data"\
 	' | tee tmp.gpi | pyxplot
