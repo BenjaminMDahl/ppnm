@@ -1,0 +1,11 @@
+\
+set terminal png;\
+set output "erf.pyxplot.png";\
+set key top left;\
+set tics out;\
+set xlabel "x";\
+set ylabel "y";\
+set title "DATA";\
+plot \
+ "wikidata.txt" using 1:2 with points pointtype 2 title "tabulated data"\
+
