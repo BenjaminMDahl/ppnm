@@ -6,7 +6,7 @@ LDLIBS = $(shell gsl-config --libs)
 default: gamma.pyxplot.png
 
 
-gamma.pyxplot.png: out.data.txt Makefile
+gamma.pyxplot.png: out.data.txt Makefile factor.data.txt
 	echo '\
 	set terminal png;\
 	set output "$@";\
@@ -19,6 +19,7 @@ gamma.pyxplot.png: out.data.txt Makefile
 	 "$<" using 1:2 with line title "erf from math.h"\
 	,"$<" using 1:3 with line title "gsl-sf-erf"\
 	,"$<" using 1:4 with line title "myerf"\
+	,"factor.data.txt" using 1:2 with points pointtype 3 title "tabulated data"\
 	' | tee tmp.gpi | pyxplot
 
 out.data.txt: main
