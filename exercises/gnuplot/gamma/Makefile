@@ -12,13 +12,13 @@ gamma.pyxplot.png: out.data.txt Makefile factor.data.txt
 	set output "$@";\
 	set key top left;\
 	set tics out;\
-	set xlabel "x";\
+	set xlabel "n";\
 	set ylabel "y";\
-	set title "Error function";\
+	set title "Gamma function";\
 	plot \
-	 "$<" using 1:2 with line title "erf from math.h"\
-	,"$<" using 1:3 with line title "gsl-sf-erf"\
-	,"$<" using 1:4 with line title "myerf"\
+	 "$<" using 1:2 with line title "gamma from math.h"\
+	,"$<" using 1:3 with line title "gsl-sf-gamma"\
+	,"$<" using 1:4 with points pointype 2 title "mygamma"\
 	,"factor.data.txt" using 1:2 with points pointtype 3 title "tabulated data"\
 	' | tee tmp.gpi | pyxplot
 
