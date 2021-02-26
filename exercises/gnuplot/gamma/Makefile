@@ -3,9 +3,10 @@ CFLAGS += $(shell gsl-config --cflags)
 LDLIBS = $(shell gsl-config --libs)
 
 .PHONEY:default
-default: erf.pyxplot.png
+default: gamma.pyxplot.png
 
-erf.pyxplot.png: out.data.txt Makefile wikidata.txt
+
+gamma.pyxplot.png: out.data.txt Makefile
 	echo '\
 	set terminal png;\
 	set output "$@";\
@@ -18,18 +19,13 @@ erf.pyxplot.png: out.data.txt Makefile wikidata.txt
 	 "$<" using 1:2 with line title "erf from math.h"\
 	,"$<" using 1:3 with line title "gsl-sf-erf"\
 	,"$<" using 1:4 with line title "myerf"\
-	,"wikidata.txt" using 1:2 with points pointtype 2 title "tabulated data"\
 	' | tee tmp.gpi | pyxplot
-
-tmp.gpi:erf.pyxplot.png
-	touch $@
 
 out.data.txt: main
 	./$< > $@
 
-main: main.o myerf.o
-main.o myerf.o: myerf.h
-
+main: main.o mygamma.o
+main.o mygamma.o: mygamma.h
 
 .PHONEY:clean
 clean:
