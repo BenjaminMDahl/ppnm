@@ -1,0 +1,11 @@
+\
+set terminal png;\
+set output "myintegration.png";\
+set key top left;\
+set tics out;\
+set xlabel "Upper integration limit";\
+set ylabel "integration value";\
+set title "int log(x)/sqrt(x)";\
+plot \
+ "out.main.txt" using 1:2 with line title "int log(x)/sqrt(x)"\
+
