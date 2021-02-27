@@ -26,4 +26,5 @@ myintegration.png: out.main.txt Makefile
 
 .PHONEY:clean
 clean:
-	$(RM) out* main
+	$(RM) out* main myintegration.png
+
