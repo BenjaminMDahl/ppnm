@@ -30,7 +30,7 @@ gsl_integration_workspace * w
 }
 
 int main(){
-	for(double x=0.1;x<=1;x+=1.0/8)
+	for(double x=0.1;x<=1;x+=1.0/20)
 		printf("%10g %10g\n",x,myfun(x));
 
 return 0;
