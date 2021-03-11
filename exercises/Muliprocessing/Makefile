@@ -23,3 +23,9 @@ points.txt: numbers
 	./$< > $@
 
 numbers: numbers.o
+
+
+.PHONEY:clean
+clean:
+	$(RM) *.o *.png *.txt numbers tmp.gpi
+
