@@ -21,9 +21,20 @@ int main(){
 		cirkely[i]=sin(3.14*2*i/n);
 	}
 
+	int N_in=0;
+
+	for(int i=0; i<n; i++){
+		if(sqrt(x[i]*x[i]+y[i]*y[i])<=1){
+			 N_in=N_in+1;
+			}
+				}
+	double pi=4*N_in/n;
+
+
 	for(int i=0; i<n; i++){
 		printf("%g %g %g %g\n",x[i],y[i],cirkelx[i],cirkely[i]);
 		}
 
+	fprintf(,"PI=%g\n",pi);
 return 0;
 }
