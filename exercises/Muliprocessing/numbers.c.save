@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<math.h>
+#include<pthread.h>
+
+void* bar(void* arg){
+	double* x = (double*)arg;
+	for(int i=0;i<1e7;i++) *x=cos(*x);
+return NULL;
+}
+
+int main(){
+	int n=1e1;
+	int c=100;
+	double cirkely[n];
+	double cirkelx[n];
+	double xrand[n];
+	double yrand[n];
+	for (int i=0; i <n; i++){
+	xrand[i]=fabs(cos(rand));
+	}
+	for (int i=0; i <n; i++){
+	yrand[i]=fabs(sin(rand));
+	}
+	for (int i=0; i <n; i++){
+	cirkelx[i]=fabs(cos(PI/2*i/c));
+	cirkely[i]=fabs(sin(PI/2*i/c));
+	}
+
+
+
+return 0;
+}
