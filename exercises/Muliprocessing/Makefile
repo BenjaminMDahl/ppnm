@@ -1,10 +1,11 @@
+
 CFLAGS = -Wall -O1 -std=gnu11
-CFLAGS += -pthread
+CFLAGS += -fopenmp
 LDLIBS = -lm -lgomp
 
 
 
-figure.png: points.txt Makefile
+figure.png: points.txt Makefile cir.data
 	echo '\
 	set terminal png;\
 	set output "$@";\
@@ -14,8 +15,8 @@ figure.png: points.txt Makefile
 	set ylabel "y";\
 	set title "Monte Carlo";\
 	plot \
-	"$<" using 3:4 with line title "random numbers"\
-	,"$<" using 1:2 with points pointtype 2 title "qudrant"\
+	"$<" using 1:2 with points pointtype 2\
+	,"cir.data" using 1:2 with line\
 	' | tee tmp.gpi | pyxplot
 
 
