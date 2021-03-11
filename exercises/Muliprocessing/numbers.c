@@ -5,7 +5,7 @@
 
 
 int main(){
-	int n=10000;
+	int n=1000;
 
 	double x[n], y[n];
 #pragma omp parallel sections
