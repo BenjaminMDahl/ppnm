@@ -18,7 +18,7 @@ figure.png: points.txt Makefile cir.data
 	"$<" using 1:2 with points pointtype 2\
 	,"cir.data" using 1:2 with line\
 	' | tee tmp.gpi | pyxplot
-
+	cat file.txt
 
 points.txt: numbers
 	./$< > $@
