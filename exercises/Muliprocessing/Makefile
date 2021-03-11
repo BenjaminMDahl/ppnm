@@ -14,8 +14,8 @@ figure.png: points.txt Makefile
 	set ylabel "y";\
 	set title "Monte Carlo";\
 	plot \
-	"$<" using 1:2 with line title "quadrant"\
-	,"$<" using 3:4 with points pointtype 1 title "random numbers"\
+	"$<" using 3:4 with line title "random numbers"\
+	,"$<" using 1:2 with points pointtype 1 title "qudrant"\
 	' | tee tmp.gpi | pyxplot
 
 
