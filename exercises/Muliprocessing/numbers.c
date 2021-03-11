@@ -11,14 +11,14 @@ int main(){
 	double y[n];
 
 	for (int i=0; i <n; i++){
-		x[i]=fabs(cos(rand()));
+		x[i]=cos(rand());
 	}
 	for (int i=0; i <n; i++){
-		y[i]=fabs(cos(rand()));
+		y[i]=cos(rand());
 	}
 	for (int i=0; i <n; i++){
-		cirkelx[i]=cos(3.14/2*i/n);
-		cirkely[i]=sin(3.14/2*i/n);
+		cirkelx[i]=cos(3.14*2*i/n);
+		cirkely[i]=sin(3.14*2*i/n);
 	}
 
 	for(int i=0; i<n; i++){
