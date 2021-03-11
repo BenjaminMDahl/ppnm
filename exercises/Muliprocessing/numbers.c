@@ -4,7 +4,7 @@
 #include<pthread.h>
 
 int main(){
-	int n=100;
+	int n=10000;
 	double cirkelx[n];
 	double cirkely[n];
 	double x[n];
