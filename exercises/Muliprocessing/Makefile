@@ -14,7 +14,7 @@ figure.png: points.txt Makefile cir.data
 	set ylabel "y";\
 	set title "Monte Carlo";\
 	plot \
-	"$<" using 1:2 with points pointtype 31 pointsize 0.1\
+	"$<" using 1:2 with points pointtype 1 pointsize 0.1\
 	,"cir.data" using 1:2 with line\
 	' | tee tmp.gpi | pyxplot
 	cat file.txt

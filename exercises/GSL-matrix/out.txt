@@ -1,0 +1,8 @@
+Our b vector:
+      6.23 
+      5.37 
+      2.29 
+Check: A*x should be equal b, where x comes from HH_solve:
+      6.23 
+      5.37 
+      2.29 
