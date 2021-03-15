@@ -32,14 +32,18 @@ if(x$>$1./8)return pow(ex(x/2),2);\\
 return 1+x*(1+x/2*(1+x/3*(1+x/4*(1+x/5*(1+x/6*(1+x/7*(1+x/8*(1+x/9*(1+x/10)))))))));\\
 }\\
 
+
 I have been given the above C-code function which can calculate the exponential function, and will explain how it works.\\
 
 The code first checks if its argument is negative, because if it is, it will call itself again with a new argument, so it will end up returning a value on the form $\frac{1}{ex(-x)}$, which is mathematicaly identical to what we want.
 Than it checks if the argumnet is of a certain size, since this approach works best for small arguments, if it is above 1/8 we half the argumenten through another mathematical idendity.
-When all this is checked and dealt with it finally tries to calculate $e^x$ based on the first 10 values of the seqeunce \ref{eq:sequence}.
+When all this is checked and dealt with it finally tries to calculate $e^x$ based on the first 10 values of the seqeunce described by equation.
 
 
 \section{Test of code}
 
-
-\end{document}
+	\begin{figure}
+\includegraphics{exp-pyxplot.pdf}
+\caption{Excercise function vs math.h exp.}
+\label{fig:exp}
+	\end{figure}
