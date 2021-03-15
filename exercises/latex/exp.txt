@@ -13,9 +13,8 @@ We will explain some basics about the exponential function, and discuss a simple
 \end{abstract}
 
 \section{The exponential function}
-The exponential function is an import function for both math and physics, since it can describe ekspotential growh which is an important concept forexample for radioactive decay. It can be defined in many ways
-one is thorugh its powerseries as follows by equation 
-
+The exponential function is an important function for both math and physics, since it describes exponential growth, which is important for example for radioactive decay. It can be defined in many ways; one is through its power series as the following equation:
+	
 	\begin{equation}\label{eq:power}
 e^x=\sum_{n=0}^\infty \frac{x^n}{n!}
 	\end{equation}
@@ -33,15 +32,12 @@ if(x$>$1./8)return pow(ex(x/2),2);\\
 return 1+x*(1+x/2*(1+x/3*(1+x/4*(1+x/5*(1+x/6*(1+x/7*(1+x/8*(1+x/9*(1+x/10)))))))));\\
 }\\
 
-
-I have been given the above C-code function which can calculate the exponential function, and will explain how it works.\\
-
-The code first checks if its argument is negative, because if it is, it will call itself again with a new argument, so it will end up returning a value on the form $\frac{1}{ex(-x)}$, which is mathematicaly identical to what we want.
-Than it checks if the argumnet is of a certain size, since this approach works best for small arguments, if it is above 1/8 we half the argumenten through another mathematical idendity.
-When all this is checked and dealt with it finally tries to calculate $e^x$ based on the first 10 values of the seqeunce described by equation.
+The code first checks if its argument is negative, because if it is, it will call itself again with a new argument, so it will end up returning a value on the form $\frac{1}{ex(-x)}$, which is mathematically identical. Then it checks if the argument is of a certain size, since this approach works best for small arguments, if it is above 1/8 we half the argument through another mathematical identity.
+When all this is checked and dealt with it finally tries to calculate $e^x$ based on the first 10 values of the sequence described by equation.
 
 
 \section{Test of code}
+To test the method we have plotted it on figure \ref{fig:exp} together with the exp function from math.h, and the results are very neat.
 
 	\begin{figure}
 \includegraphics{exp-pyxplot.pdf}
