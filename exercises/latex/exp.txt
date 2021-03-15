@@ -48,3 +48,5 @@ When all this is checked and dealt with it finally tries to calculate $e^x$ base
 \caption{Excercise function vs math.h exp.}
 \label{fig:exp}
 	\end{figure}
+
+\end{document}
