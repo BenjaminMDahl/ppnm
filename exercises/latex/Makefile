@@ -11,6 +11,7 @@ out.txt: main
 exp-pyxplot.pdf: out.txt Makefile
 	echo '\
 	set term pdf;\
+	set width 6;\
 	set output "$@";\
 	set key top left;\
 	set tics out;\

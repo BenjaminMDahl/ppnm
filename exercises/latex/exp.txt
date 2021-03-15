@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{graphicx}
+\pdfminorversion=7
 \usepackage{fullpage}
 \title{A brief introduction to \LaTeX document preparation system}
 \author{Benjamin Dahl}
