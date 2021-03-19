@@ -92,10 +92,17 @@ double qua_integral(qspline *s, double z){
 		S+=dx*(s->y[i]+dx*(s->b[i]/2+dx*s->c[i]/3));
 	}
 
-	double dx=s->x[I+1]-s->x[I]; assert(dx>0);
+	double dx=z-s->x[I]; assert(dx>0);
 	double F_z=dx*(s->y[I]+dx*(s->b[I]/2+dx*s->c[I]/3));
 	S+=F_z;
 return S;
+}
+
+double qua_diff(qspline *s, double z){
+	int i=binsearch(s->n,s->x,z);
+	double dx=z-s->x[i];
+	double df_dz=s->b[i]+2*dx*s->c[i];
+return df_dz;
 }
 
 
@@ -154,41 +161,76 @@ double cub_integral(cspline *s, double z){
 		S+=dx*(s->y[i]+dx*(s->b[i]/2+dx*(s->c[i]/3+dx*s->d[i]/4)));
 	}
 
-	double dx=s->x[I+1]-s->x[I]; assert(dx>0);
+	double dx=z-s->x[I]; assert(dx>0);
 	double F_z=dx*(s->y[I]+dx*(s->b[I]/2+dx*(s->c[I]/3+dx*s->d[I]/4)));
 	S+=F_z;
 return S;
 }
 
+double cub_diff(cspline *s, double z){
+	int i=binsearch(s->n,s->x,z);
+	double dx=z-s->x[i];
+	double df_dz=s->b[i]+dx*(2*s->c[i]+3*dx*s->d[i]);
+return df_dz;
+}
 
 
 
 int main(){
 
-// My data. x dataen skal være sorteret for at dette virker optimalt
-	double x[]={0.06,0.36,0.50,1.08,1.22,1.90,2.16,2.8,3.32,3.66,4.00,4.56,4.74,5.1,5.18,5.56};
-	double y[]={0.78,0.92,2.72,3.72,4.96,5.56,6.34,5.86,5.30,4.60,4.00,3.14,2.26,1.00,0.32,0.00};
-	int n=sizeof(x)/sizeof(x[0]);
-	int N=sizeof(y)/sizeof(y[0]); assert(n==N);
-	double z=4.7;
+	// Laver data
+	int n=33;
+	int i;
+	double x[n-1], y[n-1];
+	printf("#index 0: data from sin(x)(x, sin(x),cos(x),-cos(x)\n");
+	for(i=0;i<n;i++){
+		x[i]= (double)i/10;
+		y[i]=sin(x[i]);
+		printf("%g %g %g %g\n",x[i],y[i],cos(x[i]),-cos(x[i]));
+	}
+	printf("\n \n");
 
-	double f_z=linterp(n,x,y,z);
-	double F_z=linterp_integral(n,x,y,z);
 
+	//Linspace
+	int N=98; double z[N-1];
+	for(i=1;i<N+1;i++){
+	z[i-1]=(double)i/33;
+	}
+
+	// lin data
+	double f_z[N-1], F_z[N-1];
+	printf("#index 1: linear spline data(x f(x) F(x))\n");
+	for(i=0;i<N;i++){
+		f_z[i]=linterp(n,x,y,z[i]);
+		F_z[i]=linterp_integral(n,x,y,z[i]);
+		printf("%g %g %g \n",z[i],f_z[i],F_z[i]);
+	}
+	printf("\n \n");
+
+	// qua data
+	double f_z_qua[N-1], F_z_qua[N-1], df_dz_qua[N-1];
 	qspline* q_spline=qspline_alloc(n,x,y);
-	double f_z_qua=qspline_eval(q_spline,z);
-	double F_z_qua=qua_integral(q_spline,z);
+	printf("#index 2: quadratic spline data(x f(x) df_dx F(x))\n");
+	for(i=0;i<N;i++){
+		f_z_qua[i]=qspline_eval(q_spline,z[i]);
+		F_z_qua[i]=qua_integral(q_spline,z[i]);
+		df_dz_qua[i]=qua_diff(q_spline,z[i]);
+		printf("%g %g %g %g \n",z[i],f_z_qua[i],df_dz_qua[i],F_z_qua[i]);
+	}
+	printf("\n \n");
 
+
+
+	// cub data
+	double f_z_cub[N-1], F_z_cub[N-1], df_dz_cub[N-1];
 	cspline* c_spline=cspline_alloc(n,x,y);
-	double f_z_cub=cspline_eval(c_spline,z);
-	double F_z_cub=cub_integral(c_spline,z);
-// FJERN MIG NÅR DU ER FÆRDIG
-printf("z=%g and f(z)=%g\n",z,f_z);
-printf("z=%g and F(z)=%g\n",z,F_z);
-printf("z=%g and f_qua(z)=%g\n",z,f_z_qua);
-printf("z=%g and F_qua(z)=%g\n",z,F_z_qua);
-printf("z=%g and f_cub(z)=%g\n",z,f_z_cub);
-printf("z=%g and F_cub(z)=%g\n",z,F_z_cub);
+	printf("#index 3: cubic spline data(x f(x) df_dx F(x))\n");
+	for(i=0;i<N;i++){
+		f_z_cub[i]=cspline_eval(c_spline,z[i]);
+		F_z_cub[i]=cub_integral(c_spline,z[i]);
+		df_dz_cub[i]=cub_diff(c_spline,z[i]);
+		printf("%g %g %g %g \n",z[i],f_z_cub[i],df_dz_cub[i],F_z_cub[i]);
+	}
 
 return 0;
 }
