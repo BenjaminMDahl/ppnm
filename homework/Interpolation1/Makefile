@@ -3,7 +3,7 @@ CFLAGS += $(shell gsl-config --cflags)
 LDLIBS = -lm
 LDLIBS += $(shell gsl-config --libs)
 
-default:out.txt gsl.txt
+default:out.txt gsl.txt LinearSpline.png
 
 
 out.txt: main
@@ -13,22 +13,20 @@ gsl.txt: gsl
 	./$< > $@
 
 
-LinearSpline.png: out.txt
+LinearSpline.png: out.txt Makefile
 	echo '\
 	set terminal png;\
 	set output "$@";\
-	set key top left;\
+	set key top right;\
 	set tics out;\
 	set xlabel "x";\
 	set ylabel "y";\
-	set title "Error function";\
+	set title "Linear Spline";\
 	plot \
-	 "$<" using 1:2 with line title "erf from math.h"\
-	,"$<" using 1:3 with line title "gsl-sf-erf"\
-	,"$<" using 1:4 with line title "myerf"\
-	,"wikidata.txt" using 1:2 with points pointtype 2 title "tabulated data"\
-	' | | pyxplot
-
+	"$<" index 0 using 1:2 with points pointtype 4 title "data" \
+	,"$<" index 1 using 1:2 with lines color red title "linear-spline"\
+	,"$<" index 1 using 1:3 with lines color red title "linear-spline-integral"\
+	' | pyxplot
 QudraticSpline.png: out.txt gsl.txt
 
 CubicSpline.png: out.txt gsl.txt
