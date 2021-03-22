@@ -211,7 +211,7 @@ int main(){
 	for(i=0;i<N-5;i++){
 		f_z[i]=linterp(n,x,y,z[i]);
 		F_z[i]=linterp_integral(n,x,y,z[i]);
-		printf("%g %g %g \n",z[i],f_z[i],F_z[i]);
+		printf("%8g %8g %8g \n",z[i],f_z[i],F_z[i]);
 	}
 	printf("\n \n");
 
