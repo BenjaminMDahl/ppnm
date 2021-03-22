@@ -1,4 +1,4 @@
-#index 0: data from sin(x)(x, sin(x),cos(x),-cos(x)
+#index 0: data from sin(x)(x, sin(x),cos(x),-cos(x))
 0 0 1 -1
 0.1 0.0998334 0.995004 -0.995004
 0.2 0.198669 0.980067 -0.980067

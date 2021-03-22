@@ -3,7 +3,7 @@ CFLAGS += $(shell gsl-config --cflags)
 LDLIBS = -lm
 LDLIBS += $(shell gsl-config --libs)
 
-default:out.main.txt out.quadratic.txt gsl.txt LinearSpline.png CubicSpline.png
+default:out.main.txt out.quadratic.txt gsl.txt LinearSpline.png CubicSpline.png QuadraticSpline.png
 
 
 out.main.txt: main
@@ -33,7 +33,25 @@ LinearSpline.png: out.main.txt Makefile gsl.txt
 	,"gsl.txt" index 2 using 1:2 with lines linetype 7 color blue title "linear-GSL-integral"\
 	' | pyxplot
 
-QudraticSpline.png: out.txt gsl.txt
+QuadraticSpline.png: out.main.txt gsl.txt
+	echo '\
+	set term png;\
+	set output "$@";\
+	set fontsize 0.5;\
+	set key top left;\
+	set keycolumns 2;\
+	set xlabel "x";\
+	set ylabel "y";\
+	set title "Quadratic Spline";\
+	plot \
+	"$<" index 0 using 1:2 with points pointtype 3 title "data" \
+	,"$<" index 2 using 1:2 with lines color red title "quadtr-spline"\
+	,"$<" index 2 using 1:3 with lines color red title "linear-spline-diff"\
+	,"$<" index 2 using 1:4 with lines color red title "linear-spline-int"\
+	,"$<" index 0 using 1:3 with lines linetype 7 color blue title "analytic diff"\
+	,"$<" index 0 using 1:4 with lines linetype 7 color blue title "analytic-int"\
+	' | pyxplot
+
 
 CubicSpline.png:  out.main.txt Makefile gsl.txt
 	echo '\
@@ -47,11 +65,11 @@ CubicSpline.png:  out.main.txt Makefile gsl.txt
 	set title "Cubic Spline";\
 	plot \
 	"$<" index 0 using 1:2 with points pointtype 3 title "data" \
-	,"$<" index 3 using 1:2 with lines color red title "linear-spline"\
-	,"$<" index 3 using 1:3 with lines color red title "linear-spline-deriv"\
-	,"$<" index 3 using 1:4 with lines color red title "linear-spline-int"\
-	,"gsl.txt" index 1 using 1:3 with lines linetype 7 color blue title "linear-GSL"\
-	,"gsl.txt" index 3 using 1:2 with lines linetype 7 color blue title "linear-GSL-deriv"\
+	,"$<" index 3 using 1:2 with lines color red title "cubic-spline"\
+	,"$<" index 3 using 1:3 with lines color red title "cubic-spline-diff"\
+	,"$<" index 3 using 1:4 with lines color red title "cubic-spline-int"\
+	,"gsl.txt" index 1 using 1:3 with lines linetype 7 color blue title "cubic-GSL"\
+	,"gsl.txt" index 3 using 1:2 with lines linetype 7 color blue title "cubic-GSL-diff"\
 	,"gsl.txt" index 2 using 1:3 with lines linetype 7 color blue title "linear-GSL-int"\
 	' | pyxplot
 

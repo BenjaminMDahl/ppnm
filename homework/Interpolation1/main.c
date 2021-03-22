@@ -190,7 +190,7 @@ int main(){
 	int n=33;
 	int i;
 	double x[n-1], y[n-1];
-	printf("#index 0: data from sin(x)(x, sin(x),cos(x),-cos(x)\n");
+	printf("#index 0: data from sin(x)(x, sin(x),cos(x),-cos(x))\n");
 	for(i=0;i<n;i++){
 		x[i]= (double)(i)/10;
 		y[i]=sin(x[i]);
