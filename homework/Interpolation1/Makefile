@@ -16,7 +16,7 @@ gsl.txt: gsl
 	./$< > $@
 
 
-LinearSpline.png: out.main.txt Makefile
+LinearSpline.png: out.main.txt Makefile gsl.txt
 	echo '\
 	set terminal png;\
 	set output "$@";\
@@ -29,6 +29,8 @@ LinearSpline.png: out.main.txt Makefile
 	"$<" index 0 using 1:2 with points pointtype 4 title "data" \
 	,"$<" index 1 using 1:2 with lines color red title "linear-spline"\
 	,"$<" index 1 using 1:3 with lines color red title "linear-spline-integral"\
+	,"gsl.txt" index 1 using 1:2 with lines color blue title "linear-GSL"\
+	,"gsl.txt" index 2 using 1:2 with lines color blue title "linear-GSL-integral"\
 	' | pyxplot
 QudraticSpline.png: out.txt gsl.txt
 
