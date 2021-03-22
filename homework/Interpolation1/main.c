@@ -200,7 +200,7 @@ int main(){
 
 
 	//Linspace
-	int N=128; double z[N];
+	int N=135; double z[N];
 	for(i=0;i<N;i++){
 	z[i]=(double)(10+i)/33;
 	}
