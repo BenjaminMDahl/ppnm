@@ -26,7 +26,7 @@ LinearSpline.png: out.main.txt Makefile gsl.txt
 	set ylabel "y";\
 	set title "Linear Spline";\
 	plot \
-	"$<" index 0 using 1:2 with points pointtype 4 title "data" \
+	"$<" index 0 using 1:2 with points pointtype 3 title "data" \
 	,"$<" index 1 using 1:2 with lines color red title "linear-spline"\
 	,"$<" index 1 using 1:3 with lines color red title "linear-spline-integral"\
 	,"gsl.txt" index 1 using 1:2 with lines linetype 7 color blue title "linear-GSL"\
@@ -39,8 +39,8 @@ CubicSpline.png:  out.main.txt Makefile gsl.txt
 	echo '\
 	set term png;\
 	set output "$@";\
-	set key outside;\
 	set fontsize 1;\
+	set key top left;\
 	set xlabel "x";\
 	set ylabel "y";\
 	set title "Cubic Spline";\
