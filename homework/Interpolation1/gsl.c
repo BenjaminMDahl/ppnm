@@ -41,9 +41,19 @@ int main (void) {
 		double integ_p=gsl_interp_eval_integ(polynomial,x,y,x[0],z,NULL);
 		printf("%g %g %g %g\n",z,integ_l,integ_c,integ_p);
 		}
+	printf("\n\n");
+
+	printf("# index 3: derivative\n");
+	for(double z=x[0];z<=x[n-1];z+=1./16){
+	double dev_c=gsl_interp_eval_deriv(cspline   ,x,y,z,NULL);
+	printf("%g %g\n",z,dev_c);
+	}
+
+
 
 gsl_interp_free(linear);
 gsl_interp_free(cspline);
 gsl_interp_free(polynomial);
+
 return 0;
 }
