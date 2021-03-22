@@ -187,7 +187,7 @@ return df_dz;
 int main(){
 
 	// Laver data
-	int n=33;
+	int n=66;
 	int i;
 	double x[n-1], y[n-1];
 	printf("#index 0: data from sin(x)(x, sin(x),cos(x),-cos(x))\n");
@@ -200,15 +200,15 @@ int main(){
 
 
 	//Linspace
-	int N=93; double z[N];
+	int N=193; double z[N];
 	for(i=0;i<N+1;i++){
 	z[i-1]=(double)(10+i)/33;
 	}
 
 	// lin data
-	double f_z[N-5], F_z[N-5];
+	double f_z[N], F_z[N];
 	printf("#index 1: linear spline data(x f(x) F(x))\n");
-	for(i=0;i<N-5;i++){
+	for(i=0;i<N;i++){
 		f_z[i]=linterp(n,x,y,z[i]);
 		F_z[i]=linterp_integral(n,x,y,z[i]);
 		printf("%8g %8g %8g \n",z[i],f_z[i],F_z[i]);

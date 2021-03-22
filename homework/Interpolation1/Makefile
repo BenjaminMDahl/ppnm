@@ -45,9 +45,9 @@ QuadraticSpline.png: out.main.txt gsl.txt
 	set title "Quadratic Spline";\
 	plot \
 	"$<" index 0 using 1:2 with points pointtype 3 title "data" \
-	,"$<" index 2 using 1:2 with lines color red title "quadtr-spline"\
-	,"$<" index 2 using 1:3 with lines color red title "linear-spline-diff"\
-	,"$<" index 2 using 1:4 with lines color red title "linear-spline-int"\
+	,"$<" index 2 using 1:2 with lines color red title "quadratic-spline"\
+	,"$<" index 2 using 1:3 with lines color red title "quadratic-spline-diff"\
+	,"$<" index 2 using 1:4 with lines color red title "quadratic-spline-int"\
 	,"$<" index 0 using 1:3 with lines linetype 7 color blue title "analytic diff"\
 	,"$<" index 0 using 1:4 with lines linetype 7 color blue title "analytic-int"\
 	' | pyxplot
