@@ -40,6 +40,7 @@ CubicSpline.png:  out.main.txt Makefile gsl.txt
 	set term png;\
 	set output "$@";\
 	set key top left;\
+	set fontsize 1;\
 	set xlabel "x";\
 	set ylabel "y";\
 	set title "Cubic Spline";\
