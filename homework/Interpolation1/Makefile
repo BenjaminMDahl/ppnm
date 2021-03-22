@@ -39,4 +39,4 @@ CubicSpline.png: out.txt gsl.txt
 
 .PHONEY:clean
 clean:
-	$(RM) *txt main gsl *png
+	$(RM) *txt main gsl *png quadratic

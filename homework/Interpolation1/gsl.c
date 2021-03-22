@@ -7,13 +7,16 @@
 
 int main (void) {
 // Min data men ellers blot koden fra eksemplet
-	double x[]={0.06,0.36,0.50,1.08,1.22,1.90,2.16,2.8,3.32,3.66,4.00,4.56,4.74,5.1,5.18,5.56};
-	double y[]={0.78,0.92,2.72,3.72,4.96,5.56,6.34,5.86,5.30,4.60,4.00,3.14,2.26,1.00,0.32,0.00};
-	int n=sizeof(x)/sizeof(x[0]);
-	int N=sizeof(y)/sizeof(y[0]); assert(n==N);
-	printf("# index 0: data\n");
-	for(int i=0;i<n;i++) printf("%g %g\n",x[i],y[i]);
-	printf("\n\n");
+	int n=33;
+	int i;
+	double x[n-1], y[n-1];
+	printf("#index 0: data from sin(x)(x, sin(x))\n");
+	for(i=0;i<n;i++){
+		x[i]= (double)i/10;
+		y[i]=sin(x[i]);
+		printf("%g %g \n",x[i],y[i]);
+	}
+	printf("\n \n");
 
 	gsl_interp* linear     = gsl_interp_alloc(gsl_interp_linear    ,n);
 	gsl_interp* cspline    = gsl_interp_alloc(gsl_interp_cspline   ,n);
