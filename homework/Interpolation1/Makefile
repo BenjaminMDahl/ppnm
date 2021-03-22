@@ -26,7 +26,7 @@ LinearSpline.png: out.main.txt Makefile gsl.txt
 	set ylabel "y";\
 	set title "Linear Spline";\
 	plot \
-	"$<" index 0 using 1:2 with points pointtype 4 title "data(sin(x))" \
+	"$<" index 0 using 1:2 with points pointtype 3 title "data(sin(x))" \
 	,"$<" index 1 using 1:2 with lines color black title "linear-spline"\
 	,"$<" index 1 using 1:3 with lines color green title "linear-spline-integral"\
 	,"gsl.txt" index 1 using 1:2 with lines linetype 7 color blue title "linear-GSL"\
@@ -48,7 +48,7 @@ QuadraticSpline.png: out.main.txt gsl.txt
 	,"$<" index 2 using 1:3 with lines color red title "quadratic-spline-diff"\
 	,"$<" index 2 using 1:4 with lines color green title "quadratic-spline-int"\
 	,"$<" index 0 using 1:3 with lines linetype 7 color blue title "analytic diff(cos(x))"\
-	,"$<" index 0 using 1:4 with lines linetype 7 color blue title "analytic-int(-cos(x)+k=1)"\
+	,"$<" index 0 using 1:4 with lines linetype 7 color blue title "analytic-int(-cos(x)+(k=1))"\
 	' | pyxplot
 
 
