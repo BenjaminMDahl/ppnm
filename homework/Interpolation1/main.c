@@ -187,7 +187,7 @@ return df_dz;
 int main(){
 
 	// Laver data
-	int n=134;
+	int n=64;
 	int i;
 	double x[n], y[n];
 	printf("#index 0: data from sin(x)(x, sin(x),cos(x),-cos(x)+k=1)\n");
@@ -200,7 +200,7 @@ int main(){
 
 
 	//Linspace
-	int N=193; double z[N];
+	int N=128; double z[N];
 	for(i=0;i<N;i++){
 	z[i]=(double)(10+i)/33;
 	}

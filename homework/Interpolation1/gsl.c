@@ -7,7 +7,7 @@
 
 int main (void) {
 // Min data men ellers blot koden fra eksemplet
-	int n=132;
+	int n=66;
 	int i;
 	double x[n], y[n];
 	printf("#index 0: data from sin(x)(x, sin(x))\n");
