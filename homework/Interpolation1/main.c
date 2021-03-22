@@ -175,6 +175,14 @@ return df_dz;
 }
 
 
+	// CLEAN UP //
+	void qspline_free(qspline *s){
+	free(s->x);free(s->y);free(s->b);free(s->c);free(s);
+	}
+	void cspline_free(cspline *s){
+	free(s->x);free(s->y);free(s->b);free(s->c);free(s->d);free(s);
+	}
+
 
 int main(){
 
@@ -200,7 +208,7 @@ int main(){
 	// lin data
 	double f_z[N-1], F_z[N-1];
 	printf("#index 1: linear spline data(x f(x) F(x))\n");
-	for(i=0;i<N;i++){
+	for(i=0;i<N-1;i++){
 		f_z[i]=linterp(n,x,y,z[i]);
 		F_z[i]=linterp_integral(n,x,y,z[i]);
 		printf("%g %g %g \n",z[i],f_z[i],F_z[i]);
@@ -211,26 +219,27 @@ int main(){
 	double f_z_qua[N-1], F_z_qua[N-1], df_dz_qua[N-1];
 	qspline* q_spline=qspline_alloc(n,x,y);
 	printf("#index 2: quadratic spline data(x f(x) df_dx F(x))\n");
-	for(i=0;i<N;i++){
+	for(i=0;i<N-1;i++){
 		f_z_qua[i]=qspline_eval(q_spline,z[i]);
 		F_z_qua[i]=qua_integral(q_spline,z[i]);
 		df_dz_qua[i]=qua_diff(q_spline,z[i]);
 		printf("%g %g %g %g \n",z[i],f_z_qua[i],df_dz_qua[i],F_z_qua[i]);
 	}
 	printf("\n \n");
-
+	qspline_free(q_spline);
 
 
 	// cub data
 	double f_z_cub[N-1], F_z_cub[N-1], df_dz_cub[N-1];
 	cspline* c_spline=cspline_alloc(n,x,y);
 	printf("#index 3: cubic spline data(x f(x) df_dx F(x))\n");
-	for(i=0;i<N;i++){
+	for(i=0;i<N-1;i++){
 		f_z_cub[i]=cspline_eval(c_spline,z[i]);
 		F_z_cub[i]=cub_integral(c_spline,z[i]);
 		df_dz_cub[i]=cub_diff(c_spline,z[i]);
 		printf("%g %g %g %g \n",z[i],f_z_cub[i],df_dz_cub[i],F_z_cub[i]);
 	}
+	cspline_free(c_spline);
 
 return 0;
 }

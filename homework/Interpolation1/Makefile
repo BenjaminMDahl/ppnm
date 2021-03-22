@@ -3,17 +3,20 @@ CFLAGS += $(shell gsl-config --cflags)
 LDLIBS = -lm
 LDLIBS += $(shell gsl-config --libs)
 
-default:out.txt gsl.txt LinearSpline.png
+default:out.main.txt out.quadratic.txt gsl.txt LinearSpline.png
 
 
-out.txt: main
+out.main.txt: main
+	./$< > $@
+
+out.quadratic.txt: quadratic
 	./$< > $@
 
 gsl.txt: gsl
 	./$< > $@
 
 
-LinearSpline.png: out.txt Makefile
+LinearSpline.png: out.main.txt Makefile
 	echo '\
 	set terminal png;\
 	set output "$@";\
