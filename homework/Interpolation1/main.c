@@ -202,7 +202,7 @@ int main(){
 	//Linspace
 	int N=99; double z[N];
 	for(i=0;i<N+1;i++){
-	z[i-1]=(double)(4+i)/33;
+	z[i-1]=(double)(6+i)/33;
 	}
 
 	// lin data
