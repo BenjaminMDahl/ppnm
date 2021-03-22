@@ -7,12 +7,12 @@
 
 int main (void) {
 // Min data men ellers blot koden fra eksemplet
-	int n=66;
+	int n=32;
 	int i;
 	double x[n], y[n];
 	printf("#index 0: data from sin(x)(x, sin(x))\n");
 	for(i=0;i<n;i++){
-		x[i]= (double)(i+1)/10;
+		x[i]= (double)(i+1)/5;
 		y[i]=sin(x[i]);
 		printf("%g %g \n",x[i],y[i]);
 	}

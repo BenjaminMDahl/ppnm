@@ -187,12 +187,12 @@ return df_dz;
 int main(){
 
 	// Laver data
-	int n=64;
+	int n=32;
 	int i;
 	double x[n], y[n];
 	printf("#index 0: data from sin(x)(x, sin(x),cos(x),-cos(x)+k=1)\n");
 	for(i=0;i<n;i++){
-		x[i]= (double)i/10;
+		x[i]= (double)i/5;
 		y[i]=sin(x[i]);
 		printf("%g %g %g %g\n",x[i],y[i],cos(x[i]),-cos(x[i])+1);
 	}
