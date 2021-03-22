@@ -21,12 +21,12 @@ LinearSpline.png: out.main.txt Makefile gsl.txt
 	set term png;\
 	set output "$@";\
 	set key top left;\
-	set fontsize 0.7;\
+	set fontsize 0.5;\
 	set xlabel "x";\
 	set ylabel "y";\
 	set title "Linear Spline";\
 	plot \
-	"$<" index 0 using 1:2 with points pointtype 4 title "data" \
+	"$<" index 0 using 1:2 with points pointtype 3 title "data(sin(x))" \
 	,"$<" index 1 using 1:2 with lines color red title "linear-spline"\
 	,"$<" index 1 using 1:3 with lines color red title "linear-spline-integral"\
 	,"gsl.txt" index 1 using 1:2 with lines linetype 7 color blue title "linear-GSL"\
@@ -44,12 +44,12 @@ QuadraticSpline.png: out.main.txt gsl.txt
 	set ylabel "y";\
 	set title "Quadratic Spline";\
 	plot \
-	"$<" index 0 using 1:2 with points pointtype 3 title "data" \
+	"$<" index 0 using 1:2 with points pointtype 3 title "data(sin(x))" \
 	,"$<" index 2 using 1:2 with lines color red title "quadratic-spline"\
 	,"$<" index 2 using 1:3 with lines color red title "quadratic-spline-diff"\
 	,"$<" index 2 using 1:4 with lines color red title "quadratic-spline-int"\
-	,"$<" index 0 using 1:3 with lines linetype 7 color blue title "analytic diff"\
-	,"$<" index 0 using 1:4 with lines linetype 7 color blue title "analytic-int"\
+	,"$<" index 0 using 1:3 with lines linetype 7 color blue title "analytic diff(cos(x))"\
+	,"$<" index 0 using 1:4 with lines linetype 7 color blue title "analytic-int(-cos(x)+k=1)"\
 	' | pyxplot
 
 
@@ -58,13 +58,13 @@ CubicSpline.png:  out.main.txt Makefile gsl.txt
 	set term png;\
 	set output "$@";\
 	set fontsize 0.5;\
-	set key top left;\
+	set key outside;\
 	set keycolumns 2;\
 	set xlabel "x";\
 	set ylabel "y";\
 	set title "Cubic Spline";\
 	plot \
-	"$<" index 0 using 1:2 with points pointtype 3 title "data" \
+	"$<" index 0 using 1:2 with points pointtype 3 title "data(sin(x))" \
 	,"$<" index 3 using 1:2 with lines color red title "cubic-spline"\
 	,"$<" index 3 using 1:3 with lines color red title "cubic-spline-diff"\
 	,"$<" index 3 using 1:4 with lines color red title "cubic-spline-int"\

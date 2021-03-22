@@ -187,22 +187,22 @@ return df_dz;
 int main(){
 
 	// Laver data
-	int n=132;
+	int n=134;
 	int i;
-	double x[n-1], y[n-1];
-	printf("#index 0: data from sin(x)(x, sin(x),cos(x),-cos(x))\n");
+	double x[n], y[n];
+	printf("#index 0: data from sin(x)(x, sin(x),cos(x),-cos(x)+k=1)\n");
 	for(i=0;i<n;i++){
-		x[i]= (double)(i)/10;
+		x[i]= (double)i/10;
 		y[i]=sin(x[i]);
-		printf("%g %g %g %g\n",x[i],y[i],cos(x[i]),-cos(x[i]));
+		printf("%g %g %g %g\n",x[i],y[i],cos(x[i]),-cos(x[i])+1);
 	}
 	printf("\n \n");
 
 
 	//Linspace
-	int N=393; double z[N];
-	for(i=0;i<N+1;i++){
-	z[i-1]=(double)(10+i)/33;
+	int N=193; double z[N];
+	for(i=0;i<N;i++){
+	z[i]=(double)(10+i)/33;
 	}
 
 	// lin data
