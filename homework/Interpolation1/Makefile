@@ -20,7 +20,7 @@ LinearSpline.png: out.main.txt Makefile gsl.txt
 	echo '\
 	set term png;\
 	set output "$@";\
-	set key top right;\
+	set key top left;\
 	set tics out;\
 	set xlabel "x";\
 	set ylabel "y";\
