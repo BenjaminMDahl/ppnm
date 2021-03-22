@@ -192,7 +192,7 @@ int main(){
 	double x[n-1], y[n-1];
 	printf("#index 0: data from sin(x)(x, sin(x),cos(x),-cos(x)\n");
 	for(i=0;i<n;i++){
-		x[i]= (double)(i+1)/10;
+		x[i]= (double)(i)/10;
 		y[i]=sin(x[i]);
 		printf("%g %g %g %g\n",x[i],y[i],cos(x[i]),-cos(x[i]));
 	}
@@ -202,7 +202,7 @@ int main(){
 	//Linspace
 	int N=99; double z[N];
 	for(i=0;i<N+1;i++){
-	z[i-1]=(double)(6+i)/33;
+	z[i-1]=(double)(1+i)/33;
 	}
 
 	// lin data
@@ -223,7 +223,7 @@ int main(){
 		f_z_qua[i]=qspline_eval(q_spline,z[i]);
 		F_z_qua[i]=qua_integral(q_spline,z[i]);
 		df_dz_qua[i]=qua_diff(q_spline,z[i]);
-		printf("%g %g %g %g \n",z[i],f_z_qua[i],df_dz_qua[i],F_z_qua[i]);
+		printf("%8g %8g %8g %8g \n",z[i],f_z_qua[i],df_dz_qua[i],F_z_qua[i]);
 	}
 	printf("\n \n");
 	qspline_free(q_spline);
@@ -237,7 +237,7 @@ int main(){
 		f_z_cub[i]=cspline_eval(c_spline,z[i]);
 		F_z_cub[i]=cub_integral(c_spline,z[i]);
 		df_dz_cub[i]=cub_diff(c_spline,z[i]);
-		printf("%g %g %g %g \n",z[i],f_z_cub[i],df_dz_cub[i],F_z_cub[i]);
+		printf("%8g %8g %8g %8g \n",z[i],f_z_cub[i],df_dz_cub[i],F_z_cub[i]);
 	}
 	cspline_free(c_spline);
 
