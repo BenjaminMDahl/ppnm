@@ -21,7 +21,7 @@ LinearSpline.png: out.main.txt Makefile gsl.txt
 	set term png;\
 	set output "$@";\
 	set key top left;\
-	set fontsize 0.1;\
+	set fontsize 0.7;\
 	set xlabel "x";\
 	set ylabel "y";\
 	set title "Linear Spline";\
@@ -39,7 +39,7 @@ CubicSpline.png:  out.main.txt Makefile gsl.txt
 	echo '\
 	set term png;\
 	set output "$@";\
-	set fontsize 1;\
+	set fontsize 0.65;\
 	set key top left;\
 	set keycolumns 2;\
 	set xlabel "x";\
