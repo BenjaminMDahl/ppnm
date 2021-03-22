@@ -26,7 +26,7 @@ LinearSpline.png: out.main.txt Makefile gsl.txt
 	set ylabel "y";\
 	set title "Linear Spline";\
 	plot \
-	"$<" index 0 using 1:2 with points pointtype 3 title "data(sin(x))" \
+	"$<" index 0 using 1:2 with points pointtype 4 title "data(sin(x))" \
 	,"$<" index 1 using 1:2 with lines color black title "linear-spline"\
 	,"$<" index 1 using 1:3 with lines color green title "linear-spline-integral"\
 	,"gsl.txt" index 1 using 1:2 with lines linetype 7 color blue title "linear-GSL"\
