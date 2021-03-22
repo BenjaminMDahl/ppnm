@@ -39,7 +39,7 @@ CubicSpline.png:  out.main.txt Makefile gsl.txt
 	echo '\
 	set term png;\
 	set output "$@";\
-	set fontsize 0.65;\
+	set fontsize 0.5;\
 	set key top left;\
 	set keycolumns 2;\
 	set xlabel "x";\
@@ -48,11 +48,11 @@ CubicSpline.png:  out.main.txt Makefile gsl.txt
 	plot \
 	"$<" index 0 using 1:2 with points pointtype 3 title "data" \
 	,"$<" index 3 using 1:2 with lines color red title "linear-spline"\
-	,"$<" index 3 using 1:3 with lines color red title "linear-spline-derivative"\
-	,"$<" index 3 using 1:4 with lines color red title "linear-spline-integral"\
+	,"$<" index 3 using 1:3 with lines color red title "linear-spline-deriv"\
+	,"$<" index 3 using 1:4 with lines color red title "linear-spline-int"\
 	,"gsl.txt" index 1 using 1:3 with lines linetype 7 color blue title "linear-GSL"\
-	,"gsl.txt" index 3 using 1:2 with lines linetype 7 color blue title "linear-GSL-derivative"\
-	,"gsl.txt" index 2 using 1:3 with lines linetype 7 color blue title "linear-GSL-integral"\
+	,"gsl.txt" index 3 using 1:2 with lines linetype 7 color blue title "linear-GSL-deriv"\
+	,"gsl.txt" index 2 using 1:3 with lines linetype 7 color blue title "linear-GSL-int"\
 	' | pyxplot
 
 
