@@ -20,6 +20,7 @@ void matrix_print(char s[], gsl_matrix* A){
 		printf("\n");}
 }
 
+
 void GS_decomp(gsl_matrix* A, gsl_matrix* R){
 	int i,j,k;
 	//Vi laver A om til Q og Danner R //
@@ -49,20 +50,35 @@ void GS_decomp(gsl_matrix* A, gsl_matrix* R){
 }
 
 
+void backsub(gsl_matrix* R, gsl_vector* c){
+	for(int i=c->size-1; i>=0; i--){
+		double s=gsl_vector_get(c,i);
+		for(int k=i+1; k< R->size1; k++)s-=gsl_matrix_get(R,i,k)*gsl_vector_get(c,k);
+		gsl_vector_set(c,i,s/gsl_matrix_get(R,i,i));
+	}
+
+}
+
+void GS_solve(gsl_matrix* Q, gsl_matrix* R, gsl_vector* b, gsl_vector* x){
+	gsl_blas_dgemv(CblasTrans,1,Q,b,0,x); //x=Q^(T)*b
+	backsub(R,x);
+}
+
+
+
 
 int main(){
-	//Data laves //
 
+	//Opgave A del 1) Gram-Schmidt orthogonalization//
+	printf("Opgave A del 1)\n\n");
 
+	//Data laves
 	int n=5, m=3; assert(n>=m);
 	gsl_matrix* A=gsl_matrix_alloc(n,m);
 	gsl_matrix* A_pro=gsl_matrix_alloc(n,m);
 	gsl_matrix* QtQ=gsl_matrix_alloc(m,m);
 	gsl_matrix* Acopy=gsl_matrix_alloc(n,m); //Jeg for brug for et copy da A skal blive til Q men jeg vil gerne kunne tjekke mit resultat
 	gsl_matrix* R=gsl_matrix_alloc(m,m);
-	gsl_vector* b=gsl_vector_alloc(n);
-	gsl_vector* x=gsl_vector_alloc(n);
-	gsl_vector* y=gsl_vector_calloc(n);	// callocs fylder ud med 0'er hvor alloc ikke gør som er hurtigere.
 
 	// Vi danner tilfældige A og b hvor indgangene alle er mellem 0 og 1 ligesom i forlæsningen omkring gsl matricer
 	for(int i=0; i< A->size1; i++)
@@ -72,16 +88,6 @@ int main(){
 		gsl_matrix_set(A,i,j,Aij);
 		}
 	gsl_matrix_memcpy(Acopy,A);
-	for(int i=0; i< b->size; i++)
-		{
-		double bi=RND;
-		gsl_vector_set(b,i,bi);
-		}
-
-
-
-
-	//Opgave A del 1) Gram-Schmidt orthogonalization//
 
 	GS_decomp(A,R);
 	gsl_blas_dgemm(CblasNoTrans,CblasNoTrans, 1,A ,R,0, A_pro);
@@ -94,22 +100,53 @@ int main(){
 	matrix_print("Det ses at Q^(T)Q giver idenditet",QtQ);
 	matrix_print("Det tjekkes om QR=A, som var den første matrix der blev printet",A_pro);
 
-
-
-
-	//Opgave A del 2 ligning løsning//
-
-
-
-
-// Vi rydder op//
+// Vi rydder op
 gsl_matrix_free(A);
 gsl_matrix_free(R);
 gsl_matrix_free(Acopy);
 gsl_matrix_free(QtQ);
 gsl_matrix_free(A_pro);
+
+
+	//Opgave A del 2 ligning løsning//
+	printf("Opgave A del 2)\n\n");
+
+	//Data laves
+	int N=5;
+	gsl_matrix* B=gsl_matrix_alloc(N,N);
+	gsl_matrix* Bcopy=gsl_matrix_alloc(N,N);
+	gsl_matrix* Rb=gsl_matrix_alloc(N,N);
+	gsl_vector* b=gsl_vector_alloc(N);
+	gsl_vector* x=gsl_vector_alloc(N);
+	gsl_vector* y=gsl_vector_alloc(N);
+	for(int i=0; i< B->size1; i++)
+		for(int j=0; j<B->size2; j++)
+		{
+		double Aij=RND;
+		gsl_matrix_set(B,i,j,Aij);
+		}
+	gsl_matrix_memcpy(Bcopy,B);
+	for(int i=0; i< b->size; i++)
+		{
+		double bi=RND;
+		gsl_vector_set(b,i,bi);
+		}
+
+	GS_decomp(B,Rb);
+	GS_solve(B,Rb,b,x);
+	gsl_blas_dgemv(CblasNoTrans,1,Bcopy,x,0,y);
+
+	printf("Tjekker om b og Ax er ens\n");
+	vector_print("b var fra starten af",b);
+	vector_print("A*x giver",y);
+	printf("Det ses at de to er ens\n");
+
+// Vi rydder op
+gsl_matrix_free(B);
+gsl_matrix_free(Bcopy);
+gsl_matrix_free(Rb);
+gsl_vector_free(y);
 gsl_vector_free(b);
 gsl_vector_free(x);
-gsl_vector_free(y);
 return 0;}
 // hvis du glemmer at free et alloc space er det ikke katastrofe inden for en main function, fordi den gør det selv ved exit af main functionen
