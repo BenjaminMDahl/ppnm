@@ -1,0 +1,92 @@
+Opgave A del 1)
+
+Vi printer A så vi har den til sammenligning
+  0.840188   0.394383   0.783099 
+   0.79844   0.911647   0.197551 
+  0.335223    0.76823   0.277775 
+   0.55397   0.477397   0.628871 
+  0.364784   0.513401    0.95223 
+
+pause
+Q som er den nye A
+   0.61022  -0.601989  0.0815511 
+  0.579899   0.257835  -0.580095 
+  0.243469   0.704145 -5.90794e-05 
+  0.402343  -0.060901   0.194335 
+  0.264939   0.267584   0.786812 
+
+Det ses at R er upper triangular
+   1.37686    1.28446    1.16536 
+         0   0.646889 -0.00838569 
+         0          0   0.820685 
+
+Det ses at Q^(T)Q giver idenditet
+         1 -2.91434e-16 -8.32667e-17 
+-2.91434e-16          1 -2.77556e-17 
+-8.32667e-17 -2.77556e-17          1 
+
+Det tjekkes om QR=A, som var den første matrix der blev printet
+  0.840188   0.394383   0.783099 
+   0.79844   0.911647   0.197551 
+  0.335223    0.76823   0.277775 
+   0.55397   0.477397   0.628871 
+  0.364784   0.513401    0.95223 
+
+Opgave A del 2)
+
+Tjekker om b og Ax er ens
+b var fra starten af
+  0.526745 
+  0.769914 
+  0.400229 
+  0.891529 
+  0.283315 
+
+A*x giver
+  0.526745 
+  0.769914 
+  0.400229 
+  0.891529 
+  0.283315 
+
+Det ses at de to er ens
+Opgave B)
+
+Her er matricen vi kigger på i opgave B
+  0.352458   0.807725   0.919026  0.0697553 
+  0.949327   0.525995  0.0860558   0.192214 
+  0.663227   0.890233   0.348893  0.0641713 
+  0.020023   0.457702  0.0630958    0.23828 
+
+Her er dens udregnede invers
+ 0.0682619    1.27179  -0.319938  -0.959742 
+ -0.780345   -1.29983    2.25502   0.669676 
+   1.66796   0.482968   -1.56392  -0.456702 
+   1.05153    2.26203   -3.89057    3.11197 
+
+Her ses at A*B giver identitets matricen
+         1 -8.32667e-17 -1.66533e-16 8.32667e-17 
+-3.88578e-16          1 4.44089e-16 1.11022e-16 
+-4.16334e-17 4.16334e-16          1 8.32667e-17 
+1.11022e-16 2.22045e-16 -1.11022e-16          1 
+
+Det samme fås for B*A så B=A^(-1)
+         1 -2.77556e-16 -4.16334e-16 -8.32667e-17 
+1.5786e-15          1 5.6205e-16 3.33067e-16 
+-1.17094e-15 -7.21645e-16          1 -1.66533e-16 
+-1.5335e-15 -1.11022e-15 -6.66134e-16          1 
+
+Opgave C)
+
+tiden det tog for at decompose en n=100 sqaure matrix=
+  0.007789
+tiden det tog for at decompose en n=500 sqaure matrix=
+    1.1458
+Tidsforskellen for tid(n=500)/tid(n=100)=
+   147.105
+Det ses at når n bliver 5 gange større er tiden blevet ca 5^3=125 gange større som forventet
+tiden det tog for at decompose en n=500 sqaure matrix med GSL=
+  0.142562
+Tidsforskellen for minkode/GSL
+   8.03723
+Det ses at GSL's metode er noget hurtigere end min
