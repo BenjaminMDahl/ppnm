@@ -79,14 +79,14 @@ Det samme fås for B*A så B=A^(-1)
 Opgave C)
 
 tiden det tog for at decompose en n=100 sqaure matrix=
-  0.007789
+  0.007764
 tiden det tog for at decompose en n=500 sqaure matrix=
-    1.1458
+  0.958254
 Tidsforskellen for tid(n=500)/tid(n=100)=
-   147.105
+   123.423
 Det ses at når n bliver 5 gange større er tiden blevet ca 5^3=125 gange større som forventet
 tiden det tog for at decompose en n=500 sqaure matrix med GSL=
-  0.142562
+  0.125036
 Tidsforskellen for minkode/GSL
-   8.03723
+   7.66382
 Det ses at GSL's metode er noget hurtigere end min
