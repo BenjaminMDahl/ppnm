@@ -14,8 +14,8 @@ fit.png: out.txt Makefile
 	set ylabel "y";\
 	set title "Least square";\
 	plot \
-	"$<" index 0 using 1:3:5 with errorbars title "data with log(y)" \
-	,"$<" index 1 using 1:2 with lines color blue title "least square line"\
+	"$<" index 1 using 1:3:5 with errorbars title "data with log(y)" \
+	,"$<" index 2 using 1:2 with lines color blue title "least square line"\
 	' | pyxplot
 
 out.txt:main
