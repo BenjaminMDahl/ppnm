@@ -101,14 +101,25 @@ int main(){
 	dy[i]=y[i]/20;
 	ln_y[i]=log(y[i]);
 	dln_y[i]=dy[i]/y[i];}
-	printf("data:x y log(y) dy dlog(y)\n");
-	for(int i=0;i<n;i++)printf("%6g %6g %6g %6g %6g\n",x[i],y[i],ln_y[i],dy[i],dln_y[i]);
 
 	int m=2; //antal funktioner
 	gsl_vector* c=gsl_vector_alloc(m);
 	double (*f)(int,double);f=fun;		 //jeg kan ikke bare give least square fun direkte fra main, der skal være noget i main som peger på fun jeg kan give videre
 	least_square(n,m,x,ln_y,dln_y,f,c);
-	vector_print("her er mine c'er",c);
+//	vector_print("her er mine c'er",c);
+
+	printf("#index0: data:x y log(y) dy dlog(y)\n");
+	for(int i=0;i<n;i++)printf("%6g %6g %6g %6g %6g\n",x[i],y[i],ln_y[i],dy[i],dln_y[i]);
+	printf("\n\n");
+
+	printf("#index1: x-fit, y-fit\n");
+	int N=200; double x_fit[N],y_fit[N];
+	for(int i=0;i<N;i++){
+	x_fit[i]=(double)(i*15.5)/N;
+	y_fit[i]=gsl_vector_get(c,0)+x_fit[i]*gsl_vector_get(c,1);
+	printf("%7g %7g\n",x_fit[i],y_fit[i]);}
+	printf("\n\n");
+
 
 return 0;
 }
