@@ -141,14 +141,16 @@ int main(){
 	for(int i=0;i<n;i++)printf("%6g %6g %6g %6g %6g\n",x[i],y[i],ln_y[i],dy[i],dln_y[i]);
 	printf("\n\n");
 
-	printf("#index 1: x-fit, y-fit, y-fit+sigma y-fit-sigma\n");
-	int N=200; double x_fit[N],y_fit[N],y_fitp1[N],y_fitm1[N];
+	printf("#index 1: x-fit, y-fit, y-fit+sigma, y-fit-sigma, y-fit+2*sigma, y-fit-2*sigma\n");
+	int N=200; double x_fit[N],y_fit[N],y_fitp1[N],y_fitm1[N],y_fitp2[N],y_fitm2[N];
 	for(int i=0;i<N;i++){
 	x_fit[i]=(double)(i*15.5)/N;
 	y_fit[i]=gsl_vector_get(c,0)+x_fit[i]*gsl_vector_get(c,1);
-	y_fitp1[i]=gsl_vector_get(c,0)+gsl_matrix_get(dc,0,0)+x_fit[i]*(gsl_vector_get(c,1)+gsl_matrix_get(dc,1,1));
-	y_fitm1[i]=gsl_vector_get(c,0)-gsl_matrix_get(dc,0,0)+x_fit[i]*(gsl_vector_get(c,1)-gsl_matrix_get(dc,1,1));
-	printf("%7g %7g %7g %7g\n",x_fit[i],y_fit[i],y_fitp1[i],y_fitm1[i]);}
+	y_fitp1[i]=gsl_vector_get(c,0)+gsl_matrix_get(dc,0,0)-x_fit[i]*(gsl_vector_get(c,1)+gsl_matrix_get(dc,1,1));
+	y_fitm1[i]=gsl_vector_get(c,0)-gsl_matrix_get(dc,0,0)-x_fit[i]*(gsl_vector_get(c,1)-gsl_matrix_get(dc,1,1));
+	y_fitp2[i]=gsl_vector_get(c,0)+2*gsl_matrix_get(dc,0,0)-x_fit[i]*(gsl_vector_get(c,1)+2*gsl_matrix_get(dc,1,1));
+	y_fitm2[i]=gsl_vector_get(c,0)-2*gsl_matrix_get(dc,0,0)-x_fit[i]*(gsl_vector_get(c,1)-2*gsl_matrix_get(dc,1,1));
+	printf("%7g %7g %7g %7g %7g %7g\n",x_fit[i],y_fit[i],y_fitp1[i],y_fitm1[i],y_fitp2[i],y_fitm2[i]);}
 	printf("\n\n");
 
 
