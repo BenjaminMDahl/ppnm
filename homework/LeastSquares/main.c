@@ -72,7 +72,22 @@ double fun(int i, double x){
 		}
 	}
 
-void least_square(int n, int m, double* x,double* y, double* dy,double f(int,double),gsl_vector* c){
+void GS_inverse(gsl_matrix* Q, gsl_matrix* R, gsl_matrix* I){
+	int n=Q->size1; assert(Q->size1==Q->size2); //Tjekker at Q og dermed A er en square matrix
+	gsl_vector* bi=gsl_vector_calloc(n);
+	gsl_vector* xi=gsl_vector_alloc(n);
+
+	for(int i=0;i<n;i++){
+		gsl_vector_set(bi,i,1);
+		if(i>0)gsl_vector_set(bi,i-1,0);
+		GS_solve(Q,R,bi,xi);
+		for(int j=0;j<n;j++)gsl_matrix_set(I,j,i,gsl_vector_get(xi,j));
+	}
+	gsl_vector_free(bi);gsl_vector_free(xi);
+}
+
+
+void least_square(int n, int m, double* x,double* y, double* dy,double f(int,double),gsl_vector* c,gsl_matrix* dc){
 	//makes A=f_k(x)//
 	gsl_matrix* A=gsl_matrix_alloc(n,m);
 	gsl_matrix* R=gsl_matrix_alloc(m,m);
@@ -89,7 +104,13 @@ void least_square(int n, int m, double* x,double* y, double* dy,double f(int,dou
 		gsl_vector_set(b,i,bi);}
 	GS_decomp(A,R);
 	GS_solve(A,R,b,c);
-	gsl_matrix_free(A);gsl_matrix_free(R);gsl_vector_free(b);
+
+	// inverser R og gemmer i dc til variance//
+	gsl_matrix* Rr=gsl_matrix_alloc(m,m);
+	GS_decomp(R,Rr);
+	GS_inverse(R,Rr,dc);
+
+	gsl_matrix_free(A);gsl_matrix_free(R);gsl_vector_free(b); gsl_matrix_free(Rr);
 }
 
 int main(){
@@ -104,11 +125,15 @@ int main(){
 
 	int m=2; //antal funktioner
 	gsl_vector* c=gsl_vector_alloc(m);
+	gsl_matrix* dc=gsl_matrix_alloc(m,m);
 	double (*f)(int,double);f=fun;		 //jeg kan ikke bare give least square fun direkte fra main, der skal være noget i main som peger på fun jeg kan give videre
-	least_square(n,m,x,ln_y,dln_y,f,c);
+	least_square(n,m,x,ln_y,dln_y,f,c,dc);
 	printf("#index -1: Resultater som ikke skal plottes\n");
 	vector_print("her er mine c'er",c);
-	printf("Fra overstående c[1] får vi følgende halverignstid\n 224Ra_1/2=%7g \n",log(2)/gsl_vector_get(c,1));
+	printf("Fra overstående c[1] får vi følgende halverignstid\n 224Ra_1/2=%7g \n\n",log(2)/gsl_vector_get(c,1));
+	matrix_print("Her fås min covariance matrice for C'erne",dc);
+	printf("Fra overstående kan man udlede at usikkerheden på min funde halveringstid til\n sigma_224Ra_1/2=%7g \n",sqrt(gsl_matrix_get(dc,1,1))/(gsl_vector_get(c,1)*gsl_vector_get(c,1)));
+	printf("Det ses at usikkerheden er ret stor, og den man er sikker på i dag (3.627 af hvad jeg har kunne finde på nettet) er inden for de usikkerheder.\n");
 	printf("\n\n");
 
 
@@ -116,13 +141,16 @@ int main(){
 	for(int i=0;i<n;i++)printf("%6g %6g %6g %6g %6g\n",x[i],y[i],ln_y[i],dy[i],dln_y[i]);
 	printf("\n\n");
 
-	printf("#index 1: x-fit, y-fit\n");
-	int N=200; double x_fit[N],y_fit[N];
+	printf("#index 1: x-fit, y-fit, y-fit+sigma y-fit-sigma\n");
+	int N=200; double x_fit[N],y_fit[N],y_fitp1[N],y_fitm1[N];
 	for(int i=0;i<N;i++){
 	x_fit[i]=(double)(i*15.5)/N;
 	y_fit[i]=gsl_vector_get(c,0)+x_fit[i]*gsl_vector_get(c,1);
-	printf("%7g %7g\n",x_fit[i],y_fit[i]);}
+	y_fitp1[i]=gsl_vector_get(c,0)+gsl_matrix_get(dc,0,0)+x_fit[i]*(gsl_vector_get(c,1)+gsl_matrix_get(dc,1,1));
+	y_fitm1[i]=gsl_vector_get(c,0)-gsl_matrix_get(dc,0,0)+x_fit[i]*(gsl_vector_get(c,1)-gsl_matrix_get(dc,1,1));
+	printf("%7g %7g %7g %7g\n",x_fit[i],y_fit[i],y_fitp1[i],y_fitm1[i]);}
 	printf("\n\n");
+
 
 
 return 0;
