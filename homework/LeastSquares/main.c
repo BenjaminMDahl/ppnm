@@ -145,7 +145,7 @@ int main(){
 	int N=200; double x_fit[N],y_fit[N],y_fitp1[N],y_fitm1[N],y_fitp2[N],y_fitm2[N];
 	for(int i=0;i<N;i++){
 	x_fit[i]=(double)(i*15.5)/N;
-	y_fit[i]=gsl_vector_get(c,0)+x_fit[i]*gsl_vector_get(c,1);
+	y_fit[i]=gsl_vector_get(c,0)-x_fit[i]*gsl_vector_get(c,1);
 	y_fitp1[i]=gsl_vector_get(c,0)+gsl_matrix_get(dc,0,0)-x_fit[i]*(gsl_vector_get(c,1)+gsl_matrix_get(dc,1,1));
 	y_fitm1[i]=gsl_vector_get(c,0)-gsl_matrix_get(dc,0,0)-x_fit[i]*(gsl_vector_get(c,1)-gsl_matrix_get(dc,1,1));
 	y_fitp2[i]=gsl_vector_get(c,0)+2*gsl_matrix_get(dc,0,0)-x_fit[i]*(gsl_vector_get(c,1)+2*gsl_matrix_get(dc,1,1));
