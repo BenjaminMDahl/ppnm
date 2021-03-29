@@ -8,13 +8,13 @@ fit.png: out.txt Makefile
 	echo '\
 	set term png;\
 	set output "$@";\
-	set key top right;\
+	set key top;\
 	set fontsize 0.5;\
 	set xlabel "x";\
 	set ylabel "y";\
 	set title "Least square";\
 	plot \
-	"$<" index 0 using 1:2:5 with errorbars title "data with log(y)" \
+	"$<" index 0 using 1:3:5 with errorbars title "data with log(y)" \
 	,"$<" index 1 using 1:2 with lines color blue title "least square line"\
 	' | pyxplot
 
