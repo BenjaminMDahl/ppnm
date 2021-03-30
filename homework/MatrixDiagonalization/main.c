@@ -149,9 +149,9 @@ for (int k=0; k < N/3; k++){
 printf("\n\n");
 
 printf("#index1: x sin(x) 2*sin(2x)\n");
-int M=630; double x[M];
+int M=310; double x[M];
 for(int i=0;i<M;i++){
-x[i]=i/(100);
+x[i]=(double)2*i/(100);
 printf("%6g %6g %6g\n",x[i],sin(x[i]),2*sin(2*x[i]));}
 
 
