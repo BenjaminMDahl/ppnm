@@ -17,7 +17,7 @@ void matrix_print(char s[], gsl_matrix* A){
 	int n=A->size1, m=A->size2;
 	for(int i=0;i<n;i++){
 		for(int j=0; j<m;j++){
-			if(fabs(gsl_matrix_get(A,i,j))<10e-11)gsl_matrix_set(A,i,j,0);
+			if(fabs(gsl_matrix_get(A,i,j))<10e-7)gsl_matrix_set(A,i,j,0);
 		}
 	}
 	printf("%s\n",s);
@@ -66,6 +66,7 @@ void Jtimes(gsl_matrix* A, int p, int q, double theta){
 
 void jacobi_diag(gsl_matrix* A , gsl_matrix* V){
 		int changed;
+		gsl_matrix_set_identity(V);
 		do{
 			changed=0;
 			for(int p=0;p<A->size1-1;p++){
@@ -93,7 +94,7 @@ void jacobi_diag(gsl_matrix* A , gsl_matrix* V){
 			// ----- Her kommer Main ----- //
 
 int main(){
-
+printf("#index0:stof der ikke skal plottes\n");
 // Data laves
 int n=2;
 gsl_matrix* A=gsl_matrix_alloc(n,n);
@@ -104,7 +105,6 @@ gsl_matrix* res12=gsl_matrix_alloc(n,n);
 gsl_matrix* res2=gsl_matrix_alloc(n,n);
 gsl_matrix* res22=gsl_matrix_alloc(n,n);
 gsl_matrix* res3=gsl_matrix_alloc(n,n);
-gsl_matrix_set_identity(V);
 make_rand_sym_matrix(A);
 gsl_matrix_memcpy(Acopy,A);
 
@@ -123,9 +123,43 @@ matrix_print("Vi udregner VDV^(T) og ser at vi får A igen",res22);
 gsl_blas_dgemm(CblasTrans,CblasNoTrans,1,V,V,0,res3);
 matrix_print("Vi udregner V^(T)V og ser at vi får en identitets matrice ud",res3);
 
+// Opgave B
+int N=10;
+double s=1.0/(N+1);
+gsl_matrix* H = gsl_matrix_alloc(N,N);
+for(int i=0;i<N-1;i++){
+  gsl_matrix_set(H,i,i,-2);
+  gsl_matrix_set(H,i,i+1,1);
+  gsl_matrix_set(H,i+1,i,1);
+  }
+gsl_matrix_set(H,n-1,n-1,-2);
+gsl_matrix_scale(H,-1/s/s);
+
+matrix_print("Min H:",H);
+gsl_matrix* V_h = gsl_matrix_alloc(N,N);
+jacobi_diag(H,V_h);
+matrix_print("H efter jacobi",H);
+matrix_print("Mit V som er eigenfunktioner:",V_h);
+printf("k: calculated vs exact\n");
+for (int k=0; k < N/3; k++){
+    double exact = M_PI*M_PI*(k+1)*(k+1);
+    double calculated = gsl_matrix_get(H,k,k);
+    printf("%i %g %g\n",k,calculated,exact);}
+
+printf("\n\n");
+
+printf("#index1: x sin(x) 2*sin(2x)\n");
+int M=630; double x[M];
+for(int i=0;i<M;i++){
+x[i]=i/(200*M_PI);
+printf("%6g %6g %6g\n",x[i],sin(x[i]),2*sin(2*x[i]));}
 
 
-gsl_matrix_free(A);gsl_matrix_free(Acopy);gsl_matrix_free(V);gsl_matrix_free(res1);gsl_matrix_free(res2);gsl_matrix_free(res3);
 
+
+
+
+
+gsl_matrix_free(A);gsl_matrix_free(Acopy);gsl_matrix_free(V);gsl_matrix_free(res1);gsl_matrix_free(res2);gsl_matrix_free(res3),gsl_matrix_free(H),gsl_matrix_free(V_h);
 return 0;
 }
