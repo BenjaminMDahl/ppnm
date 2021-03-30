@@ -1,0 +1,24 @@
+Min symmetriske tilfældige matrice
+  0.840188   0.394383 
+  0.394383   0.783099 
+
+Min A efter Jacobi algorithmen, hvilket skulles svare til D
+  0.416229          0 
+         0    1.20706 
+
+Min V matrice med egenvektorer
+  0.681106   0.732184 
+ -0.732184   0.681106 
+
+Vi udregner V^(T)AV og ser at det give vores D igen:
+  0.416229          0 
+         0    1.20706 
+
+Vi udregner VDV^(T) og ser at vi får A igen
+  0.840188   0.394383 
+  0.394383   0.783099 
+
+Vi udregner V^(T)V og ser at vi får en identitets matrice ud
+         1          0 
+         0          1 
+
