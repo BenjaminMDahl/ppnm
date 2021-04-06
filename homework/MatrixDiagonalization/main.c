@@ -124,7 +124,7 @@ gsl_blas_dgemm(CblasTrans,CblasNoTrans,1,V,V,0,res3);
 matrix_print("Vi udregner V^(T)V og ser at vi får en identitets matrice ud",res3);
 
 // Opgave B
-int N=10;
+int N=20;
 double s=1.0/(N+1);
 gsl_matrix* H = gsl_matrix_alloc(N,N);
 gsl_matrix* V_h = gsl_matrix_alloc(N,N);
@@ -150,17 +150,14 @@ for (int k=0; k < N/3; k++){
 printf("\n\n");
 
 
-printf("#index1: numerical\n");
-  for(int i=0;i<N;i++)
-	printf("%6g %6g %6g %6g %6g\n",(i+1.0)/(n+1), gsl_matrix_get(V_h,i,0), gsl_matrix_get(V_h,i,1), gsl_matrix_get(V_h,i,2), gsl_matrix_get(V_h,i,3));
+printf("#index1: numerical vs analytical\n");
+ 	for(int i=0;i<N;i++){
+	double k=(i+1.0)/(n+1);
+	printf("%6g %6g %6g %6g %6g %6g %6g\n",k, gsl_matrix_get(V_h,i,0), gsl_matrix_get(V_h,i,1), gsl_matrix_get(V_h,i,2), sin(k),sin(2*k),sin(3*k));
+	}
 printf("\n\n");
 
 
-printf("#index2: x sin(x) 2*sin(2x)\n");
-int M=310; double x[M];
-for(int i=0;i<M;i++){
-x[i]=(double)2*i/(100);
-printf("%6g %6g %6g %6g %6g\n",x[i],sin(M_PI*x[i])+1,sin(2*M_PI*x[i])+2.5,sin(3*M_PI*x[i])+4.0,sin(4*M_PI*x[i])+5.5);}
 
 
 
