@@ -15,8 +15,8 @@ eigenfunctions.png: out.txt
 	set ylabel "Energy";\
 	set title "Eigenfunctions";\
 	plot \
-	"$<" index 1 using 1:2 with lines color red title "sin(x)" \
-	,"$<" index 1 using 1:3 with lines color blue title "2*sin(2*x)" \
+	"$<" index 1 using 1:2 with points color red title "Wavefunction k=1" \
+	,"$<" index 1 using 1:3 with points color blue title "Wavefunction k=2" \
 	' | pyxplot
 
 out.txt:main
