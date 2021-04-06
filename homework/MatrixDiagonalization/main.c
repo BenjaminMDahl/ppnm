@@ -151,7 +151,7 @@ void jacobi_diag_op(gsl_matrix* A , gsl_matrix* V){
 			// ----- Her kommer Main ----- //
 
 int main(){
-/*
+
 printf("#index0:stof der ikke skal plottes\n");
 // Data laves
 
@@ -213,17 +213,17 @@ gsl_matrix* v_10=gsl_matrix_alloc(25,25);
 make_rand_sym_matrix(a_10);
 gsl_matrix* a_100=gsl_matrix_alloc(250,250);
 gsl_matrix* v_100=gsl_matrix_alloc(250,250);
-gsl_matrix* a_100_copy=gsl_matrix_alloc(250,250);
-gsl_matrix* v_100_copy=gsl_matrix_alloc(250,250);
+//gsl_matrix* a_100_copy=gsl_matrix_alloc(250,250);
+//gsl_matrix* v_100_copy=gsl_matrix_alloc(250,250);
 make_rand_sym_matrix(a_100);
 gsl_matrix* a_gsl=gsl_matrix_alloc(250,250);
 gsl_matrix* v_gsl=gsl_matrix_alloc(250,250);
 gsl_vector* vv=gsl_vector_alloc(250);
-gsl_matrix_memcpy(a_gsl,a_100);
-gsl_matrix_memcpy(a_100_copy,a_100);
+//gsl_matrix_memcpy(a_gsl,a_100);
+//gsl_matrix_memcpy(a_100_copy,a_100);
 
 clock_t start, end;
-double cpu_time_used_10, cpu_time_used_100, cpu_time_used_gsl, cpu_time_used_copy;
+double cpu_time_used_10, cpu_time_used_100, cpu_time_used_gsl; //cpu_time_used_copy
 
 	start = clock();
 	jacobi_diag(a_10,v_10);
@@ -249,7 +249,8 @@ printf("Det ses at forskellen er næsten 1000, hvilket er at forvente, hvis der 
 printf("Nu sammenligner vi vores rotine med GSL. For den samme n=250 matrice tog den %6g i CPU tid.\n",cpu_time_used_gsl);
 printf("Tiden i forhold til hinanden hvor vi har MinMetode/GSL giver %5g\n",cpu_time_used_100/cpu_time_used_gsl);
 printf("Det ses at GSL stadig er hurtigere, så vi prøver nu at optimere vores kode, ved kun at opdatere den øvre halvdel af matricen vi rotere\n");
-*/
+
+/*
 
 gsl_matrix* test=gsl_matrix_alloc(6,6);
 gsl_matrix* vtest=gsl_matrix_alloc(6,6);
@@ -260,12 +261,12 @@ make_rand_sym_matrix(test);
 //	end = clock();
 //	cpu_time_used_copy = ((double) (end - start)) / CLOCKS_PER_SEC;
 
-/*
+
 matrix_print("For god ordens skyld starter vi med at tjekke at vores optimerede giver det rigtige, altså 0'er over diogonalen som har egenværdierne",a_100_copy);
 matrix_print("Den ikke optimerede gave følgene matrice og det ses at egenværdierne er ens",a_100);
 printf("Tiden det tog for den optimerede var %6g\n",cpu_time_used_copy);
 printf("Forskellen var gammel/op=%6g\n",cpu_time_used_100/cpu_time_used_copy);
-
+*/
 
 printf("\n\n");
 
@@ -275,12 +276,12 @@ printf("#index1: numerical vs analytical\n");
 	double k=(i+1.0)/(N+1);
 	printf("%6g %6g %6g %6g %6g %6g %6g\n",k, gsl_matrix_get(V_h,i,0), gsl_matrix_get(V_h,i,1)+1.5, gsl_matrix_get(V_h,i,2)+3, sqrt(2/M_PI)*sin(M_PI*k/2),-sqrt(2/M_PI)*sin(M_PI*2*k/2)+1.5,sqrt(2/M_PI)*sin(M_PI*3*k/2)+3);
 	}
-*/
 
 
 
 
-//gsl_matrix_free(A);gsl_matrix_free(Acopy);gsl_matrix_free(V);gsl_matrix_free(res1);gsl_matrix_free(res2);gsl_matrix_free(res3),gsl_matrix_free(H),gsl_matrix_free(V_h);
+
+gsl_matrix_free(A);gsl_matrix_free(Acopy);gsl_matrix_free(V);gsl_matrix_free(res1);gsl_matrix_free(res2);gsl_matrix_free(res3),gsl_matrix_free(H),gsl_matrix_free(V_h);
 return 0;
 }
 
