@@ -274,7 +274,7 @@ printf("\n\n");
 printf("#index1: numerical vs analytical\n");
  	for(int i=0;i<N;i++){
 	double k=(i+1.0)/(N+1);
-	printf("%6g %6g %6g %6g %6g %6g %6g\n",k, gsl_matrix_get(V_h,i,0), gsl_matrix_get(V_h,i,1)+1.5, gsl_matrix_get(V_h,i,2)+3, sqrt(2/M_PI)*sin(M_PI*k/2),-sqrt(2/M_PI)*sin(M_PI*2*k/2)+1.5,sqrt(2/M_PI)*sin(M_PI*3*k/2)+3);
+	printf("%6g %6g %6g %6g %6g %6g %6g\n",k, gsl_matrix_get(V_h,i,0), gsl_matrix_get(V_h,i,1)+1.5, gsl_matrix_get(V_h,i,2)+3, sqrt(2/M_PI)*sin(M_PI*k/2),sqrt(2/M_PI)*sin(M_PI*2*k/2)+1.5,-sqrt(2/M_PI)*sin(M_PI*3*k/2)+3);
 	}
 
 
