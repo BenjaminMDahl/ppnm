@@ -144,7 +144,7 @@ matrix_print("Mit V som er eigenfunktioner:",V_h);
 printf("k: calculated vs exact (hbar^2/2mL^2=1)\n");
 for (int k=0; k < N/3; k++){
 	double exact = M_PI*M_PI*(k+1)*(k+1);
-	double calculated = gsl_matrix_get(H,k,k);
+	double calculated = gsl_matrix_get(H,k+1,k+1);
    	printf("%i %g %g\n",k,calculated,exact);}
 
 printf("\n\n");
@@ -153,13 +153,9 @@ printf("\n\n");
 printf("#index1: numerical vs analytical\n");
  	for(int i=0;i<N;i++){
 	double k=(i+1.0)/(N+1);
-	printf("%6g %6g %6g %6g %6g %6g %6g\n",k, gsl_matrix_get(V_h,i,1), gsl_matrix_get(V_h,i,2)+1.5, gsl_matrix_get(V_h,i,3)+3, sqrt(2)*sin(k/2),sqrt(2)*sin(2*k/2)+1.5,sqrt(2)*sin(3*k/2)+3);
+	printf("%6g %6g %6g %6g %6g %6g %6g\n",k, gsl_matrix_get(V_h,i,1), gsl_matrix_get(V_h,i,2)+1.5, gsl_matrix_get(V_h,i,3)+3, sqrt(2)*sin(M_PI*M_PI*k/2),sqrt(2)*sin(M_PI*M_PI*2*k/2)+1.5,sqrt(2)*sin(M_PI*M_PI*3*k/2)+3);
 	}
 printf("\n\n");
-
-
-
-
 
 
 
