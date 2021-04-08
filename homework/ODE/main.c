@@ -82,7 +82,8 @@ int OdeDriverRecorder(
 	gsl_vector* yb,                     			// y(b) to be calculated
 	double h,                     				// initial step-size
 	double acc,                   				// absolute accuracy goal
-	double eps){                    			// relative accuracy goal
+	double eps,
+	char *program){                    			// relative accuracy goal
 
 	int i, k=0, n=ya->size;
 	double syh, sdy, err, norm_y, tol, xi=a;
@@ -90,7 +91,7 @@ int OdeDriverRecorder(
 	gsl_vector* ybcopy=gsl_vector_alloc(n);
 	gsl_vector_memcpy(yb,ya);
 	FILE *path;
-	path = fopen("path.txt","w");
+	path = fopen(program,"w");
 	do
 	{
 		if(xi+h>b) h=b-xi;	//Tjekker om det oplyste første step er for stort
@@ -144,7 +145,7 @@ int main(){
 	gsl_vector_set(ya,0,1); gsl_vector_set(ya,1,0);
 	gsl_vector_set(exact,0,0); gsl_vector_set(exact,1,-1);
 
-	int k=OdeDriverRecorder(u,a,b,ya,yb,h,acc,eps);
+	int k=OdeDriverRecorder(u,a,b,ya,yb,h,acc,eps,"path.txt");
 
 	vector_print("Min start vektor for u''=-u",ya);
 	vector_print("Her er løsningen",yb);
@@ -172,7 +173,7 @@ int main(){
 	gsl_vector* ybe=gsl_vector_alloc(3);
 	gsl_vector_set(yae,0,S); gsl_vector_set(yae,1,I); gsl_vector_set(yae,2,R);
 
-	int ke=OdeDriver(epidemic,t0,tyear,yae,ybe,he,acce,epse);
+	int ke=OdeDriverRecorder(epidemic,t0,tyear,yae,ybe,he,acce,epse,"Epidemic.txt");
 
 	vector_print("Epidemiens udgangspunkt hvor fra øverst til nederst vi har: S/I/R",yae);
 	vector_print("Resultatet efter et år",ybe);
