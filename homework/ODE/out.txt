@@ -1,0 +1,25 @@
+Min start vektor for u''=-u
+         1 
+         0 
+
+Her er løsningen
+ -0.373722 
+ -0.927565 
+
+Det analytiske svar er
+         0 
+        -1 
+
+Det tog 60 skridt
+
+Epidemiens udgangspunkt hvor fra øverst til nederst vi har: S/I/R
+5.2708e+06 
+      3200 
+    226000 
+
+Resultatet efter et år
+-1.24053e+08 
+-1.85947e+06 
+1.31412e+08 
+
+Det tog så mange skridt: 3 
