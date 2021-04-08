@@ -19,7 +19,8 @@ cos.png: path.txt
 	set ylabel "Energy";\
 	set title "Eigenfunctions";\
 	plot \
-	"$<" using 1:2 with lines color red title "ODE of u''=-u" \
+	"$<" using 1:2 with lines color red title "u from ODE" \
+	,"$<" using 1:3 with lines color blue title "du/dt from ODE" \
 	' | pyxplot
 
 epidemic.png: Epidemic.txt

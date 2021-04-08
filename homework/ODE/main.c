@@ -74,6 +74,14 @@ int OdeDriver(
 return k;
 }
 
+void printdata(double x,gsl_vector* y,FILE *path){
+int n=y->size;
+fprintf(path,"%g6 ",x);
+for(int i=0;i<n;i++)fprintf(path,"%g6 ",gsl_vector_get(y,i));
+fprintf(path,"\n");
+}
+
+
 int OdeDriverRecorder(
 	void f(double,gsl_vector*,gsl_vector*), 		// right-hand-side of dy/dt=f(t,y)
 	double a,			                     	// the start-point a
@@ -105,7 +113,8 @@ int OdeDriverRecorder(
 		if(err<tol){
 			xi+=h;
 			k++;
-			fprintf(path,"%g %g\n",xi,gsl_vector_get(yb,0));}
+			//fprintf(path,"%g %g\n",xi,gsl_vector_get(yb,0));}
+			printdata(xi,yb,path);}
 		if(err==0) h*=2; // Vi skal lige passe på ikke at dele med 0
 		else h*=pow(tol/err,0.25)*0.95;
 
