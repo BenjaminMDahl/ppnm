@@ -137,7 +137,7 @@ void epidemic(double t,gsl_vector* y, gsl_vector* dydt){
 int main(){
 
 	// u''=-u
-	double a=0, b=M_PI/2, h=M_PI/2000, acc=0.0005, eps=0.001;
+	double a=0, b=M_PI*2, h=M_PI*2/2000, acc=0.0005, eps=0.001;
 	gsl_vector* ya=gsl_vector_alloc(2);
 	gsl_vector* yb=gsl_vector_alloc(2);
 	gsl_vector* exact=gsl_vector_alloc(2);

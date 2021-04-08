@@ -3,14 +3,14 @@ Min start vektor for u''=-u
          0 
 
 Her er løsningen
- -0.373722 
- -0.927565 
+  0.762233 
+ -0.647389 
 
 Det analytiske svar er
          0 
         -1 
 
-Det tog 60 skridt
+Det tog 383 skridt
 
 Epidemiens udgangspunkt hvor fra øverst til nederst vi har: S/I/R
 5.2708e+06 
