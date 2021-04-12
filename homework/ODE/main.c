@@ -25,6 +25,7 @@ void rkstep12(
 
 	int i, n=yt->size;
 	gsl_vector* k0=gsl_vector_alloc(n); gsl_vector* k12=gsl_vector_alloc(n); gsl_vector* y_half=gsl_vector_alloc(n);
+
 	f(t,yt,k0); // k'erne dannes
 	for(i=0;i<n;i++)gsl_vector_set(y_half,i,gsl_vector_get(yt,i)+gsl_vector_get(k0,i)*h/2);
 	f(t+h/2,y_half,k12);
@@ -128,8 +129,10 @@ return k;
 
 //Forsøgs kaninen u''=-u
 void u(double t,gsl_vector* y, gsl_vector* dydt){
-	gsl_vector_set(dydt,0,gsl_vector_get(y,1));
-	gsl_vector_set(dydt,1,-gsl_vector_get(y,0));
+	double y1=gsl_vector_get(y,1);
+	double y2=-gsl_vector_get(y,0);
+	gsl_vector_set(dydt,0,y1);
+	gsl_vector_set(dydt,1,y2);
 }
 
 /* void u1(double t,gsl_vector* y, gsl_vector* dydt){
@@ -139,15 +142,18 @@ void u(double t,gsl_vector* y, gsl_vector* dydt){
 
 void epidemic(double t,gsl_vector* y, gsl_vector* dydt){
 	double N=5500000, Tr=7, Tc=2;
-	gsl_vector_set(dydt,0,-(gsl_vector_get(y,1)*gsl_vector_get(y,0))/(N*Tc));
-	gsl_vector_set(dydt,1,(gsl_vector_get(y,1)*gsl_vector_get(y,0))/(N*Tc)-gsl_vector_get(y,1)/Tr);
-	gsl_vector_set(dydt,2,gsl_vector_get(y,1)/Tr);
+	double y0=-(gsl_vector_get(y,1)*gsl_vector_get(y,0))/(N*Tc);
+	double y1=(gsl_vector_get(y,1)*gsl_vector_get(y,0))/(N*Tc)-gsl_vector_get(y,1)/Tr;
+	double y2=gsl_vector_get(y,1)/Tr;
+	gsl_vector_set(dydt,0,y0);				//dS/dt=-(I*S)/(N*T_c)
+	gsl_vector_set(dydt,1,y1);		//dI/dt=(I*S)/(N*T_c)-I/T_r
+	gsl_vector_set(dydt,2,y2);								//dR/dt=I/T_r
 }
 
 int main(){
 
 	// u''=-u
-	double a=0, b=M_PI*2, h=M_PI*2/2000, acc=0.0005, eps=0.001;
+	double a=0, b=M_PI*2, h=0.1, acc=0.01, eps=0.01;
 	gsl_vector* ya=gsl_vector_alloc(2);
 	gsl_vector* yb=gsl_vector_alloc(2);
 	gsl_vector* exact=gsl_vector_alloc(2);
@@ -176,7 +182,7 @@ int main(){
 
 	// Epidemic
 
-	double t0=0, tyear=365, he=0.0005, acce=0.0005, epse=0.001;
+	double t0=0, tyear=365, he=0.1, acce=0.001, epse=0.001;
 	double N=5500000, I=3200, R=226000, S=N-R-I;
 	gsl_vector* yae=gsl_vector_alloc(3);
 	gsl_vector* ybe=gsl_vector_alloc(3);

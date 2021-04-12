@@ -34,8 +34,8 @@ epidemic.png: Epidemic.txt
 	set title "Eigenfunctions";\
 	plot \
 	"$<" using 1:2 with lines color red title "ODE for S" \
-	,"$<" using 1:3 with lines color red title "ODE for I" \
-	,"$<" using 1:4 with lines color red title "ODE for R" \
+	,"$<" using 1:3 with lines color green title "ODE for I" \
+	,"$<" using 1:4 with lines color blue title "ODE for R" \
 	' | pyxplot
 
 
