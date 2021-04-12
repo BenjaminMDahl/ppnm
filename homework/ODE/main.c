@@ -26,12 +26,16 @@ void rkstep12(
 	int i, n=yt->size;
 	gsl_vector* k0=gsl_vector_alloc(n); gsl_vector* k12=gsl_vector_alloc(n); gsl_vector* y_half=gsl_vector_alloc(n);
 
-	f(t,yt,k0); // k'erne dannes
-	for(i=0;i<n;i++)gsl_vector_set(y_half,i,gsl_vector_get(yt,i)+gsl_vector_get(k0,i)*h/2);
+	f(t,yt,k0);
+	for(i=0;i<n;i++){
+		double	y_half_i=gsl_vector_get(yt,i)+gsl_vector_get(k0,i)*h/2;
+		gsl_vector_set(y_half,i,y_half_i);}
 	f(t+h/2,y_half,k12);
 	for(i=0;i<n;i++){
-		gsl_vector_set(yh,i,gsl_vector_get(yt,i)+gsl_vector_get(k12,i)*h);
-		gsl_vector_set(dy,i,(gsl_vector_get(k12,i)-gsl_vector_get(k0,i))*h/2);}
+		double yh_i=gsl_vector_get(yt,i)+gsl_vector_get(k12,i)*h;
+		double dy_i=(gsl_vector_get(k0,i)-gsl_vector_get(k12,i))*h/2; //Disse bliver for små
+		gsl_vector_set(yh,i,yh_i);
+		gsl_vector_set(dy,i,dy_i);}
 
 	gsl_vector_free(k0);gsl_vector_free(k12);gsl_vector_free(y_half);
 }
@@ -77,8 +81,8 @@ return k;
 
 void printdata(double x,gsl_vector* y,FILE *path){
 int n=y->size;
-fprintf(path,"%g6 ",x);
-for(int i=0;i<n;i++)fprintf(path,"%g6 ",gsl_vector_get(y,i));
+fprintf(path,"%6g ",x);
+for(int i=0;i<n;i++)fprintf(path,"%6g ",gsl_vector_get(y,i));
 fprintf(path,"\n");
 }
 
@@ -101,8 +105,10 @@ int OdeDriverRecorder(
 	gsl_vector_memcpy(yb,ya);
 	FILE *path;
 	path = fopen(program,"w");
-	do
+	printdata(xi,yb,path);
+	while(xi<b)
 	{
+		printf("Stepsize=%g \n",h);
 		if(xi+h>b) h=b-xi;	//Tjekker om det oplyste første step er for stort
 		gsl_vector_memcpy(ybcopy,yb);
 		rkstep12(f,xi,ybcopy,h,yb,dy);
@@ -114,13 +120,12 @@ int OdeDriverRecorder(
 		if(err<tol){
 			xi+=h;
 			k++;
-			//fprintf(path,"%g %g\n",xi,gsl_vector_get(yb,0));}
-			printdata(xi,yb,path);}
-		if(err==0) h*=2; // Vi skal lige passe på ikke at dele med 0
-		else h*=pow(tol/err,0.25)*0.95;
-
+			printdata(xi,yb,path);
+			printf("tol=%g and err=%g\n",tol,err);}
+		if(err>0) h*=pow(tol/err,0.25)*0.95 ; // Vi skal lige passe på ikke at dele med 0
+		else h*=2;
 	}
-	while(xi<b);
+
 
 	fclose(path);
 	gsl_vector_free(ybcopy); gsl_vector_free(dy);
@@ -135,10 +140,11 @@ void u(double t,gsl_vector* y, gsl_vector* dydt){
 	gsl_vector_set(dydt,1,y2);
 }
 
-/* void u1(double t,gsl_vector* y, gsl_vector* dydt){
-	gsl_vector_set(dydt,0,gsl_vector_get(y,1));
-	gsl_vector_set(dydt,1,6);}
-*/
+// konstant
+void u1(double t,gsl_vector* y, gsl_vector* dydt){
+	double y0=1;
+	gsl_vector_set(dydt,0,y0);}
+
 
 void epidemic(double t,gsl_vector* y, gsl_vector* dydt){
 	double N=5500000, Tr=7, Tc=2;
@@ -150,10 +156,27 @@ void epidemic(double t,gsl_vector* y, gsl_vector* dydt){
 	gsl_vector_set(dydt,2,y2);								//dR/dt=I/T_r
 }
 
+
+
+
 int main(){
 
+	// u'=0 (svar y=konstant)
+	double a1=0, b1=3, h1=(double)1/10, acc1=0.001, eps1=0.001;
+	gsl_vector* ya1=gsl_vector_alloc(1);
+	gsl_vector* yb1=gsl_vector_alloc(1);
+	gsl_vector_set(ya1,0,1);
+	printf("start h=%6g \n",h1);
+	int k1=OdeDriverRecorder(u1,a1,b1,ya1,yb1,h1,acc1,eps1,"test.txt");
+
+
+	vector_print("A start",ya1);
+	vector_print("Her er løsningen",yb1);
+	printf("skridt %i\n",k1);
+
+
 	// u''=-u
-	double a=0, b=M_PI*2, h=0.1, acc=0.01, eps=0.01;
+	double a=0, b=M_PI*2, h=0.0001, acc=0.001, eps=0.001;
 	gsl_vector* ya=gsl_vector_alloc(2);
 	gsl_vector* yb=gsl_vector_alloc(2);
 	gsl_vector* exact=gsl_vector_alloc(2);
@@ -166,19 +189,8 @@ int main(){
 	vector_print("Her er løsningen",yb);
 	vector_print("Det analytiske svar er",exact);
 	printf("Det tog %i skridt\n\n",k);
-/*
-	// u''=6 (svar y=x^3+1)
-	double a1=0, b1=3, h1=5/100;
-	gsl_vector* ya1=gsl_vector_alloc(2);
-	gsl_vector* yb1=gsl_vector_alloc(2);
-	gsl_vector_set(ya1,0,1); gsl_vector_set(ya1,1,3);
-	int k1=OdeDriver(u1,a1,b1,ya1,yb1,h1,acc,eps);
 
 
-	vector_print("A start",ya1);
-	vector_print("Her er løsningen",yb1);
-	printf("skridt 1 %i\n",k1);
-*/
 
 	// Epidemic
 
