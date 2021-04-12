@@ -1,0 +1,695 @@
+start h=   0.1 
+Stepsize=0.1 
+tol=0.000383406 and err=0
+Stepsize=0.2 
+tol=0.000593857 and err=0
+Stepsize=0.4 
+tol=0.000985901 and err=0
+Stepsize=0.8 
+tol=0.00180739 and err=0
+Stepsize=1.6 
+tol=0.00353553 and err=0
+A start
+         1 
+
+Her er løsningen
+         4 
+
+skridt 5
+Stepsize=0.0001 
+tol=7.97845e-06 and err=2.5e-09
+Stepsize=0.000714033 
+tol=2.13119e-05 and err=1.27448e-07
+Stepsize=0.00243929 
+tol=3.93427e-05 and err=1.48633e-06
+Stepsize=0.00525624 
+tol=5.75994e-05 and err=6.8845e-06
+Stepsize=0.00849249 
+tol=7.28985e-05 and err=1.78765e-05
+Stepsize=0.0114648 
+tol=8.41995e-05 and err=3.22971e-05
+Stepsize=0.0138397 
+tol=9.1838e-05 and err=4.65021e-05
+Stepsize=0.0155861 
+tol=9.66462e-05 and err=5.81089e-05
+Stepsize=0.016815 
+tol=9.94583e-05 and err=6.64778e-05
+Stepsize=0.017667 
+tol=0.000100935 and err=7.19886e-05
+Stepsize=0.0182633 
+tol=0.000101545 and err=7.53397e-05
+Stepsize=0.0186944 
+tol=0.000101602 and err=7.71892e-05
+Stepsize=0.0190227 
+tol=0.000101309 and err=7.80423e-05
+Stepsize=0.0192897 
+tol=0.000100793 and err=7.82507e-05
+Stepsize=0.0195225 
+tol=0.000100136 and err=7.80463e-05
+Stepsize=0.0197387 
+tol=9.93879e-05 and err=7.75773e-05
+Stepsize=0.0199499 
+tol=9.85785e-05 and err=7.69361e-05
+Stepsize=0.0201641 
+tol=9.77276e-05 and err=7.61797e-05
+Stepsize=0.0203867 
+tol=9.6847e-05 and err=7.53424e-05
+Stepsize=0.020622 
+tol=9.59443e-05 and err=7.44444e-05
+Stepsize=0.0208738 
+tol=9.50244e-05 and err=7.34971e-05
+Stepsize=0.0211455 
+tol=9.40907e-05 and err=7.25058e-05
+Stepsize=0.0214405 
+tol=9.31456e-05 and err=7.14724e-05
+Stepsize=0.0217627 
+tol=9.21913e-05 and err=7.03959e-05
+Stepsize=0.0221168 
+tol=9.12297e-05 and err=6.92731e-05
+Stepsize=0.0225081 
+tol=9.02629e-05 and err=6.80987e-05
+Stepsize=0.0229433 
+tol=8.92934e-05 and err=6.6865e-05
+Stepsize=0.0234306 
+tol=8.83243e-05 and err=6.55616e-05
+Stepsize=0.0239809 
+tol=8.73594e-05 and err=6.41743e-05
+Stepsize=0.024608 
+tol=8.64039e-05 and err=6.26832e-05
+Stepsize=0.0253306 
+tol=8.54649e-05 and err=6.10607e-05
+Stepsize=0.0261743 
+tol=8.45525e-05 and err=5.92662e-05
+Stepsize=0.0271756 
+tol=8.3681e-05 and err=5.72388e-05
+Stepsize=0.0283881 
+tol=8.28721e-05 and err=5.48829e-05
+Stepsize=0.0298953 
+tol=8.21599e-05 and err=5.20387e-05
+Stepsize=0.0318354 
+tol=8.16017e-05 and err=4.84197e-05
+Stepsize=0.034459 
+tol=8.13017e-05 and err=4.34581e-05
+Stepsize=0.0382854 
+tol=8.14749e-05 and err=3.58518e-05
+Stepsize=0.0446566 
+tol=8.59418e-05 and err=2.18123e-05
+Stepsize=0.0597702 
+tol=0.000107667 and err=1.73409e-05
+Stepsize=0.0896316 
+Stepsize=0.0779949 
+Stepsize=0.0598742 
+Stepsize=0.0467784 
+Stepsize=0.0383938 
+Stepsize=0.0330502 
+Stepsize=0.0295563 
+Stepsize=0.0271944 
+Stepsize=0.0255413 
+tol=0.000107131 and err=0.000105747
+Stepsize=0.0243432 
+tol=0.000106455 and err=0.000100784
+Stepsize=0.0234447 
+tol=0.000106211 and err=9.76011e-05
+Stepsize=0.0227482 
+tol=0.000106261 and err=9.55721e-05
+Stepsize=0.0221912 
+tol=0.000106508 and err=9.4303e-05
+Stepsize=0.021733 
+tol=0.000106889 and err=9.35415e-05
+Stepsize=0.0213464 
+tol=0.000107359 and err=9.31227e-05
+Stepsize=0.0210133 
+tol=0.000107889 and err=9.29381e-05
+Stepsize=0.0207212 
+tol=0.000108456 and err=9.29148e-05
+Stepsize=0.0204612 
+tol=0.000109048 and err=9.30037e-05
+Stepsize=0.0202271 
+tol=0.000109653 and err=9.31713e-05
+Stepsize=0.0200143 
+tol=0.000110265 and err=9.33944e-05
+Stepsize=0.0198195 
+tol=0.000110879 and err=9.36568e-05
+Stepsize=0.0196402 
+tol=0.000111492 and err=9.3947e-05
+Stepsize=0.0194741 
+tol=0.000112099 and err=9.42566e-05
+Stepsize=0.0193199 
+tol=0.000112701 and err=9.45797e-05
+Stepsize=0.0191761 
+tol=0.000113294 and err=9.49115e-05
+Stepsize=0.0190417 
+tol=0.000113878 and err=9.52487e-05
+Stepsize=0.0189158 
+tol=0.000114452 and err=9.55885e-05
+Stepsize=0.0187976 
+tol=0.000115015 and err=9.59288e-05
+Stepsize=0.0186865 
+tol=0.000115566 and err=9.62678e-05
+Stepsize=0.0185818 
+tol=0.000116105 and err=9.66041e-05
+Stepsize=0.0184832 
+tol=0.000116632 and err=9.69366e-05
+Stepsize=0.01839 
+tol=0.000117146 and err=9.72642e-05
+Stepsize=0.018302 
+tol=0.000117646 and err=9.7586e-05
+Stepsize=0.0182188 
+tol=0.000118133 and err=9.79014e-05
+Stepsize=0.0181401 
+tol=0.000118606 and err=9.82096e-05
+Stepsize=0.0180655 
+tol=0.000119064 and err=9.85101e-05
+Stepsize=0.0179949 
+tol=0.000119509 and err=9.88025e-05
+Stepsize=0.0179279 
+tol=0.000119939 and err=9.90861e-05
+Stepsize=0.0178645 
+tol=0.000120354 and err=9.93607e-05
+Stepsize=0.0178044 
+tol=0.000120755 and err=9.96259e-05
+Stepsize=0.0177473 
+tol=0.000121141 and err=9.98813e-05
+Stepsize=0.0176933 
+tol=0.000121511 and err=0.000100127
+Stepsize=0.017642 
+tol=0.000121867 and err=0.000100362
+Stepsize=0.0175935 
+tol=0.000122207 and err=0.000100586
+Stepsize=0.0175475 
+tol=0.000122532 and err=0.0001008
+Stepsize=0.0175039 
+tol=0.000122841 and err=0.000101003
+Stepsize=0.0174627 
+tol=0.000123135 and err=0.000101195
+Stepsize=0.0174237 
+tol=0.000123414 and err=0.000101375
+Stepsize=0.0173869 
+tol=0.000123676 and err=0.000101544
+Stepsize=0.0173522 
+tol=0.000123923 and err=0.000101701
+Stepsize=0.0173195 
+tol=0.000124154 and err=0.000101846
+Stepsize=0.0172887 
+tol=0.000124369 and err=0.00010198
+Stepsize=0.0172598 
+tol=0.000124569 and err=0.000102102
+Stepsize=0.0172327 
+tol=0.000124752 and err=0.000102211
+Stepsize=0.0172074 
+tol=0.00012492 and err=0.000102308
+Stepsize=0.0171838 
+tol=0.000125071 and err=0.000102393
+Stepsize=0.0171618 
+tol=0.000125207 and err=0.000102466
+Stepsize=0.0171415 
+tol=0.000125326 and err=0.000102526
+Stepsize=0.0171228 
+tol=0.000125429 and err=0.000102574
+Stepsize=0.0171056 
+tol=0.000125517 and err=0.000102609
+Stepsize=0.0170899 
+tol=0.000125588 and err=0.000102631
+Stepsize=0.0170758 
+tol=0.000125643 and err=0.000102641
+Stepsize=0.0170631 
+tol=0.000125681 and err=0.000102638
+Stepsize=0.0170519 
+tol=0.000125704 and err=0.000102622
+Stepsize=0.0170421 
+tol=0.00012571 and err=0.000102593
+Stepsize=0.0170337 
+tol=0.0001257 and err=0.000102552
+Stepsize=0.0170267 
+tol=0.000125674 and err=0.000102497
+Stepsize=0.0170211 
+tol=0.000125632 and err=0.000102429
+Stepsize=0.0170169 
+tol=0.000125574 and err=0.000102349
+Stepsize=0.0170141 
+tol=0.000125499 and err=0.000102255
+Stepsize=0.0170126 
+tol=0.000125408 and err=0.000102148
+Stepsize=0.0170125 
+tol=0.000125301 and err=0.000102028
+Stepsize=0.0170138 
+tol=0.000125178 and err=0.000101895
+Stepsize=0.0170165 
+tol=0.000125039 and err=0.000101749
+Stepsize=0.0170205 
+tol=0.000124883 and err=0.000101589
+Stepsize=0.0170259 
+tol=0.000124711 and err=0.000101416
+Stepsize=0.0170326 
+tol=0.000124523 and err=0.00010123
+Stepsize=0.0170408 
+tol=0.000124319 and err=0.000101031
+Stepsize=0.0170504 
+tol=0.000124099 and err=0.000100818
+Stepsize=0.0170615 
+tol=0.000123863 and err=0.000100593
+Stepsize=0.0170739 
+tol=0.000123611 and err=0.000100353
+Stepsize=0.0170879 
+tol=0.000123343 and err=0.000100101
+Stepsize=0.0171033 
+tol=0.000123058 and err=9.98348e-05
+Stepsize=0.0171203 
+tol=0.000122758 and err=9.95555e-05
+Stepsize=0.0171388 
+tol=0.000122442 and err=9.92628e-05
+Stepsize=0.017159 
+tol=0.00012211 and err=9.89566e-05
+Stepsize=0.0171807 
+tol=0.000121762 and err=9.8637e-05
+Stepsize=0.0172041 
+tol=0.000121398 and err=9.8304e-05
+Stepsize=0.0172292 
+tol=0.000121018 and err=9.79575e-05
+Stepsize=0.0172561 
+tol=0.000120622 and err=9.75974e-05
+Stepsize=0.0172847 
+tol=0.000120211 and err=9.72239e-05
+Stepsize=0.0173153 
+tol=0.000119784 and err=9.68368e-05
+Stepsize=0.0173477 
+tol=0.000119341 and err=9.64361e-05
+Stepsize=0.0173822 
+tol=0.000118883 and err=9.60219e-05
+Stepsize=0.0174187 
+tol=0.000118409 and err=9.55939e-05
+Stepsize=0.0174573 
+tol=0.00011792 and err=9.51524e-05
+Stepsize=0.0174982 
+tol=0.000117415 and err=9.46971e-05
+Stepsize=0.0175414 
+tol=0.000116895 and err=9.4228e-05
+Stepsize=0.017587 
+tol=0.000116359 and err=9.37452e-05
+Stepsize=0.0176351 
+tol=0.000115808 and err=9.32485e-05
+Stepsize=0.0176858 
+tol=0.000115242 and err=9.27379e-05
+Stepsize=0.0177393 
+tol=0.00011466 and err=9.22133e-05
+Stepsize=0.0177957 
+tol=0.000114064 and err=9.16746e-05
+Stepsize=0.0178552 
+tol=0.000113452 and err=9.11218e-05
+Stepsize=0.0179178 
+tol=0.000112825 and err=9.05547e-05
+Stepsize=0.0179838 
+tol=0.000112184 and err=8.99733e-05
+Stepsize=0.0180534 
+tol=0.000111527 and err=8.93774e-05
+Stepsize=0.0181268 
+tol=0.000110856 and err=8.87669e-05
+Stepsize=0.0182042 
+tol=0.000110169 and err=8.81417e-05
+Stepsize=0.0182859 
+tol=0.000109469 and err=8.75015e-05
+Stepsize=0.0183721 
+tol=0.000108753 and err=8.68461e-05
+Stepsize=0.0184631 
+tol=0.000108024 and err=8.61755e-05
+Stepsize=0.0185593 
+tol=0.000107279 and err=8.54892e-05
+Stepsize=0.0186611 
+tol=0.000106521 and err=8.4787e-05
+Stepsize=0.0187688 
+tol=0.000105749 and err=8.40686e-05
+Stepsize=0.018883 
+tol=0.000104962 and err=8.33337e-05
+Stepsize=0.0190041 
+tol=0.000104162 and err=8.25817e-05
+Stepsize=0.0191327 
+tol=0.000103347 and err=8.18123e-05
+Stepsize=0.0192695 
+tol=0.00010252 and err=8.10248e-05
+Stepsize=0.0194152 
+tol=0.000101679 and err=8.02187e-05
+Stepsize=0.0195706 
+tol=0.000100825 and err=7.93931e-05
+Stepsize=0.0197367 
+tol=9.99578e-05 and err=7.85472e-05
+Stepsize=0.0199145 
+tol=9.90783e-05 and err=7.76801e-05
+Stepsize=0.0201053 
+tol=9.81866e-05 and err=7.67904e-05
+Stepsize=0.0203105 
+tol=9.7283e-05 and err=7.58769e-05
+Stepsize=0.0205317 
+tol=9.63681e-05 and err=7.49378e-05
+Stepsize=0.020771 
+tol=9.54424e-05 and err=7.39711e-05
+Stepsize=0.0210305 
+tol=9.45065e-05 and err=7.29744e-05
+Stepsize=0.0213131 
+tol=9.35614e-05 and err=7.19448e-05
+Stepsize=0.0216219 
+tol=9.2608e-05 and err=7.08784e-05
+Stepsize=0.021961 
+tol=9.16476e-05 and err=6.97709e-05
+Stepsize=0.0223351 
+tol=9.06817e-05 and err=6.86163e-05
+Stepsize=0.0227501 
+tol=8.97125e-05 and err=6.74074e-05
+Stepsize=0.0232137 
+tol=8.87423e-05 and err=6.61344e-05
+Stepsize=0.0237352 
+tol=8.77748e-05 and err=6.47846e-05
+Stepsize=0.0243272 
+tol=8.68144e-05 and err=6.33408e-05
+Stepsize=0.0250059 
+tol=8.58672e-05 and err=6.17787e-05
+Stepsize=0.0257937 
+tol=8.49418e-05 and err=6.00642e-05
+Stepsize=0.0267216 
+tol=8.40504e-05 and err=5.81464e-05
+Stepsize=0.027835 
+tol=8.32112e-05 and err=5.59469e-05
+Stepsize=0.0292022 
+tol=8.2452e-05 and err=5.33387e-05
+Stepsize=0.0309335 
+tol=8.18181e-05 and err=5.01014e-05
+Stepsize=0.0332202 
+tol=8.13892e-05 and err=4.58183e-05
+Stepsize=0.0364341 
+tol=8.13196e-05 and err=3.95986e-05
+Stepsize=0.0414343 
+tol=8.19626e-05 and err=2.91431e-05
+Stepsize=0.0509746 
+tol=9.5727e-05 and err=6.04889e-06
+Stepsize=0.0965868 
+tol=0.000148653 and err=0.000146441
+Stepsize=0.092102 
+Stepsize=0.0687333 
+Stepsize=0.0514248 
+Stepsize=0.0407557 
+Stepsize=0.0342342 
+Stepsize=0.0301245 
+Stepsize=0.0274336 
+Stepsize=0.0256024 
+Stepsize=0.0243085 
+tol=0.000107133 and err=0.00010232
+Stepsize=0.02336 
+tol=0.000106742 and err=9.85521e-05
+Stepsize=0.0226394 
+tol=0.0001067 and err=9.61794e-05
+Stepsize=0.0220729 
+tol=0.000106891 and err=9.47081e-05
+Stepsize=0.0216133 
+tol=0.000107237 and err=9.38284e-05
+Stepsize=0.0212298 
+tol=0.000107685 and err=9.3342e-05
+Stepsize=0.0209021 
+tol=0.0001082 and err=9.31198e-05
+Stepsize=0.0206162 
+tol=0.000108758 and err=9.30768e-05
+Stepsize=0.0203628 
+tol=0.000109343 and err=9.31564e-05
+Stepsize=0.0201352 
+tol=0.000109943 and err=9.33206e-05
+Stepsize=0.0199287 
+tol=0.000110551 and err=9.35433e-05
+Stepsize=0.0197397 
+tol=0.000111161 and err=9.38068e-05
+Stepsize=0.0195656 
+tol=0.00011177 and err=9.40986e-05
+Stepsize=0.0194045 
+tol=0.000112373 and err=9.44097e-05
+Stepsize=0.0192547 
+tol=0.00011297 and err=9.47339e-05
+Stepsize=0.019115 
+tol=0.000113559 and err=9.50665e-05
+Stepsize=0.0189844 
+tol=0.000114138 and err=9.54038e-05
+Stepsize=0.018862 
+tol=0.000114707 and err=9.57433e-05
+Stepsize=0.018747 
+tol=0.000115264 and err=9.60827e-05
+Stepsize=0.0186388 
+tol=0.00011581 and err=9.64203e-05
+Stepsize=0.0185368 
+tol=0.000116344 and err=9.67549e-05
+Stepsize=0.0184407 
+tol=0.000116865 and err=9.70851e-05
+Stepsize=0.0183499 
+tol=0.000117372 and err=9.74102e-05
+Stepsize=0.018264 
+tol=0.000117867 and err=9.77292e-05
+Stepsize=0.0181829 
+tol=0.000118347 and err=9.80414e-05
+Stepsize=0.018106 
+tol=0.000118814 and err=9.83462e-05
+Stepsize=0.0180333 
+tol=0.000119266 and err=9.86431e-05
+Stepsize=0.0179643 
+tol=0.000119704 and err=9.89316e-05
+Stepsize=0.017899 
+tol=0.000120128 and err=9.92113e-05
+Stepsize=0.017837 
+tol=0.000120537 and err=9.94817e-05
+Stepsize=0.0177783 
+tol=0.000120931 and err=9.97425e-05
+Stepsize=0.0177226 
+tol=0.00012131 and err=9.99935e-05
+Stepsize=0.0176698 
+tol=0.000121674 and err=0.000100234
+Stepsize=0.0176198 
+tol=0.000122022 and err=0.000100465
+Stepsize=0.0175724 
+tol=0.000122356 and err=0.000100684
+Stepsize=0.0175275 
+tol=0.000122674 and err=0.000100893
+Stepsize=0.017485 
+tol=0.000122976 and err=0.000101091
+Stepsize=0.0174448 
+tol=0.000123263 and err=0.000101278
+Stepsize=0.0174069 
+tol=0.000123534 and err=0.000101453
+Stepsize=0.017371 
+tol=0.00012379 and err=0.000101617
+Stepsize=0.0173372 
+tol=0.00012403 and err=0.000101769
+Stepsize=0.0173053 
+tol=0.000124254 and err=0.000101909
+Stepsize=0.0172754 
+tol=0.000124462 and err=0.000102037
+Stepsize=0.0172473 
+tol=0.000124654 and err=0.000102153
+Stepsize=0.017221 
+tol=0.000124831 and err=0.000102257
+Stepsize=0.0171965 
+tol=0.000124991 and err=0.000102349
+Stepsize=0.0171736 
+tol=0.000125135 and err=0.000102429
+Stepsize=0.0171524 
+tol=0.000125264 and err=0.000102496
+Stepsize=0.0171328 
+tol=0.000125376 and err=0.00010255
+Stepsize=0.0171147 
+tol=0.000125472 and err=0.000102592
+Stepsize=0.0170983 
+tol=0.000125552 and err=0.000102622
+Stepsize=0.0170833 
+tol=0.000125616 and err=0.000102639
+Stepsize=0.0170698 
+tol=0.000125663 and err=0.000102643
+Stepsize=0.0170578 
+tol=0.000125695 and err=0.000102634
+Stepsize=0.0170472 
+tol=0.00012571 and err=0.000102612
+Stepsize=0.017038 
+tol=0.000125709 and err=0.000102578
+Stepsize=0.0170303 
+tol=0.000125692 and err=0.00010253
+Stepsize=0.0170239 
+tol=0.000125659 and err=0.00010247
+Stepsize=0.017019 
+tol=0.00012561 and err=0.000102396
+Stepsize=0.0170154 
+tol=0.000125544 and err=0.00010231
+Stepsize=0.0170131 
+tol=0.000125462 and err=0.00010221
+Stepsize=0.0170123 
+tol=0.000125364 and err=0.000102097
+Stepsize=0.0170128 
+tol=0.00012525 and err=0.000101971
+Stepsize=0.0170147 
+tol=0.000125119 and err=0.000101832
+Stepsize=0.0170179 
+tol=0.000124972 and err=0.00010168
+Stepsize=0.0170226 
+tol=0.00012481 and err=0.000101515
+Stepsize=0.0170286 
+tol=0.000124631 and err=0.000101336
+Stepsize=0.017036 
+tol=0.000124436 and err=0.000101144
+Stepsize=0.0170448 
+tol=0.000124224 and err=0.000100939
+Stepsize=0.017055 
+tol=0.000123997 and err=0.00010072
+Stepsize=0.0170667 
+tol=0.000123754 and err=0.000100488
+Stepsize=0.0170799 
+tol=0.000123494 and err=0.000100243
+Stepsize=0.0170945 
+tol=0.000123219 and err=9.99847e-05
+Stepsize=0.0171106 
+tol=0.000122927 and err=9.97128e-05
+Stepsize=0.0171283 
+tol=0.00012262 and err=9.94275e-05
+Stepsize=0.0171475 
+tol=0.000122297 and err=9.91287e-05
+Stepsize=0.0171683 
+tol=0.000121957 and err=9.88166e-05
+Stepsize=0.0171908 
+tol=0.000121602 and err=9.8491e-05
+Stepsize=0.017215 
+tol=0.000121231 and err=9.81519e-05
+Stepsize=0.0172409 
+tol=0.000120844 and err=9.77993e-05
+Stepsize=0.0172685 
+tol=0.000120442 and err=9.74332e-05
+Stepsize=0.017298 
+tol=0.000120024 and err=9.70536e-05
+Stepsize=0.0173294 
+tol=0.00011959 and err=9.66605e-05
+Stepsize=0.0173627 
+tol=0.00011914 and err=9.62537e-05
+Stepsize=0.0173981 
+tol=0.000118675 and err=9.58333e-05
+Stepsize=0.0174355 
+tol=0.000118194 and err=9.53993e-05
+Stepsize=0.0174752 
+tol=0.000117697 and err=9.49516e-05
+Stepsize=0.0175171 
+tol=0.000117186 and err=9.44902e-05
+Stepsize=0.0175613 
+tol=0.000116659 and err=9.4015e-05
+Stepsize=0.017608 
+tol=0.000116116 and err=9.35259e-05
+Stepsize=0.0176573 
+tol=0.000115558 and err=9.3023e-05
+Stepsize=0.0177092 
+tol=0.000114985 and err=9.25061e-05
+Stepsize=0.017764 
+tol=0.000114397 and err=9.19752e-05
+Stepsize=0.0178218 
+tol=0.000113793 and err=9.14302e-05
+Stepsize=0.0178826 
+tol=0.000113175 and err=9.0871e-05
+Stepsize=0.0179468 
+tol=0.000112541 and err=9.02976e-05
+Stepsize=0.0180144 
+tol=0.000111893 and err=8.97097e-05
+Stepsize=0.0180856 
+tol=0.00011123 and err=8.91073e-05
+Stepsize=0.0181608 
+tol=0.000110552 and err=8.84902e-05
+Stepsize=0.01824 
+tol=0.000109859 and err=8.78582e-05
+Stepsize=0.0183237 
+tol=0.000109152 and err=8.72113e-05
+Stepsize=0.018412 
+tol=0.00010843 and err=8.65491e-05
+Stepsize=0.0185053 
+tol=0.000107694 and err=8.58715e-05
+Stepsize=0.0186039 
+tol=0.000106943 and err=8.51781e-05
+Stepsize=0.0187083 
+tol=0.000106178 and err=8.44687e-05
+Stepsize=0.0188189 
+tol=0.0001054 and err=8.3743e-05
+Stepsize=0.0189361 
+tol=0.000104607 and err=8.30005e-05
+Stepsize=0.0190604 
+tol=0.0001038 and err=8.22408e-05
+Stepsize=0.0191926 
+tol=0.00010298 and err=8.14633e-05
+Stepsize=0.0193333 
+tol=0.000102146 and err=8.06676e-05
+Stepsize=0.0194832 
+tol=0.0001013 and err=7.98528e-05
+Stepsize=0.0196433 
+tol=0.00010044 and err=7.90183e-05
+Stepsize=0.0198144 
+tol=9.9567e-05 and err=7.8163e-05
+Stepsize=0.0199979 
+tol=9.8682e-05 and err=7.7286e-05
+Stepsize=0.0201949 
+tol=9.77849e-05 and err=7.63858e-05
+Stepsize=0.020407 
+tol=9.68761e-05 and err=7.54611e-05
+Stepsize=0.0206361 
+tol=9.59563e-05 and err=7.45099e-05
+Stepsize=0.0208841 
+tol=9.50259e-05 and err=7.35301e-05
+Stepsize=0.0211536 
+tol=9.40858e-05 and err=7.25191e-05
+Stepsize=0.0214474 
+tol=9.31368e-05 and err=7.14735e-05
+Stepsize=0.0217692 
+tol=9.21801e-05 and err=7.03894e-05
+Stepsize=0.0221232 
+tol=9.1217e-05 and err=6.92616e-05
+Stepsize=0.0225148 
+tol=9.02493e-05 and err=6.80838e-05
+Stepsize=0.0229505 
+tol=8.92793e-05 and err=6.68476e-05
+Stepsize=0.0234386 
+tol=8.83098e-05 and err=6.55421e-05
+Stepsize=0.0239898 
+tol=8.73447e-05 and err=6.41527e-05
+Stepsize=0.0246182 
+tol=8.63893e-05 and err=6.26595e-05
+Stepsize=0.0253424 
+tol=8.54506e-05 and err=6.10344e-05
+Stepsize=0.0261883 
+tol=8.45385e-05 and err=5.92366e-05
+Stepsize=0.0271923 
+tol=8.36677e-05 and err=5.72049e-05
+Stepsize=0.0284087 
+tol=8.28599e-05 and err=5.48427e-05
+Stepsize=0.0299214 
+tol=8.21495e-05 and err=5.1989e-05
+Stepsize=0.0318697 
+tol=8.15943e-05 and err=4.83544e-05
+Stepsize=0.0345071 
+tol=8.12994e-05 and err=4.33644e-05
+Stepsize=0.0383592 
+tol=8.14828e-05 and err=3.56979e-05
+Stepsize=0.0447919 
+tol=5.58149e-05 and err=3.85121e-06
+Min start vektor for u''=-u
+         1 
+         0 
+
+Her er løsningen
+  0.715115 
+ -0.699079 
+
+Det analytiske svar er
+         0 
+        -1 
+
+Det tog 315 skridt
+
+Stepsize=0.1 
+tol=0.00910367 and err=8.49321e-15
+Stepsize=96.6629 
+tol=0.283039 and err=2.32831e-10
+Stepsize=17146.9 
+tol=0.471494 and err=4.17233e-07
+Epidemiens udgangspunkt hvor fra øverst til nederst vi har: S/I/R
+5.2708e+06 
+      3200 
+    226000 
+
+Resultatet efter et år
+3.59442e+10 
+-3.69394e+10 
+1.00076e+09 
+
+Det tog så mange skridt: 3 

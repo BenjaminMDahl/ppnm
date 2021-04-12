@@ -194,7 +194,7 @@ int main(){
 
 	// Epidemic
 
-	double t0=0, tyear=365, he=0.1, acce=0.001, epse=0.001;
+	double t0=0, tyear=365, he=0.1, acce=0.0000001, epse=0.0000001;
 	double N=5500000, I=3200, R=226000, S=N-R-I;
 	gsl_vector* yae=gsl_vector_alloc(3);
 	gsl_vector* ybe=gsl_vector_alloc(3);
