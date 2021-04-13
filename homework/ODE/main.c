@@ -165,7 +165,7 @@ int main(){
 	printf("Det tog så mange skridt: %i \n",ke);
 
 
-	printf("OPGAVE B Store the path\n \n");
+	printf("\n \n OPGAVE B Store the path\n \n");
 
 	printf("Min løsning til at gemme vejen fra a til b, har været at give odedriver et argument mere, hvor den tage en string\n");
 	printf("Denne string er navnet på den fil odedriver danner og gemme vejen i direkte på disken, der er 3 af disse filer en for\n");

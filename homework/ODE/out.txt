@@ -38,7 +38,9 @@ Resultatet efter et år
 
 Vi har plottet dette i figurer Epidemic.png og det ligner meget godt plottet fra Wikisiden om SIR modellen
 Det tog så mange skridt: 72532 
-OPGAVE B Store the path
+
+ 
+ OPGAVE B Store the path
  
 Min løsning til at gemme vejen fra a til b, har været at give odedriver et argument mere, hvor den tage en string
 Denne string er navnet på den fil odedriver danner og gemme vejen i direkte på disken, der er 3 af disse filer en for

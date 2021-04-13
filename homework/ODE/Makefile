@@ -3,13 +3,13 @@ CFLAGS += $(shell /usr/bin/gsl-config --cflags)
 LDLIBS += $(shell /usr/bin/gsl-config --libs)
 
 
-default: out.txt cos.png epidemic.png
+default: out.txt cos.png epidemic.png line.png
 
 
 out.txt: main
 	./$< > $@
 
-png.png: line.txt
+line.png: line.txt
 	echo '\
 	set term png;\
 	set output "$@";\
