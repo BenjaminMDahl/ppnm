@@ -1,0 +1,8 @@
+Mit numeriske integral af sqrt(x) fra 0 til 1 giver
+   0.666682
+Det analytiske svar er
+   0.666667
+Mit numeriske integral af 4*sqrt(1-x^2) fra 0 til 1 giver
+     3.1416
+Det analytiske svar er
+    3.14159
