@@ -9,6 +9,8 @@ default: out.txt cos.png epidemic.png line.png
 out.txt: main
 	./$< > $@
 
+main: main.c DriverAndStepper.c TestFunctions.c
+
 line.png: line.txt
 	echo '\
 	set term png;\

@@ -25,19 +25,19 @@ Dette giver en meget passende overensstemelse, og det er også plottet i cos.png
  Det tog 338 skridt
 
 Til sidst har vi prøver at bruge SIR modellen for at få lavet et plot over corona situationen i Danmark.
-Vi har valgt følgende parametre N=5.5e+06 I=3200 R=226000 og undersøge udviklingen over 30 dage
+Vi har valgt følgende parametre N=5.5e+06 I=3200 R=226000 og undersøge udviklingen over 60 dage
 Epidemiens udgangspunkt hvor fra øverst til nederst vi har: S/I/R
-    723475 
-1.42987e+06 
-3.34665e+06 
+    217391 
+   46519.7 
+5.23609e+06 
 
 Resultatet efter et år
-    723475 
-1.42987e+06 
-3.34665e+06 
+    217391 
+   46519.7 
+5.23609e+06 
 
 Vi har plottet dette i figurer Epidemic.png og det ligner meget godt plottet fra Wikisiden om SIR modellen
-Det tog så mange skridt: 72532 
+Det tog så mange skridt: 126502 
 
  
  OPGAVE B Store the path
