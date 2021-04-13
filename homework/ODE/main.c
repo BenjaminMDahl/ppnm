@@ -48,7 +48,7 @@ fprintf(path,"\n");
 }
 
 
-int OdeDriverRecorder(
+int OdeDriver(
 	void f(double,gsl_vector*,gsl_vector*), 		// right-hand-side of dy/dt=f(t,y)
 	double a,			                     	// the start-point a
 	double b,                     				// the end-point of the integration
@@ -68,7 +68,6 @@ int OdeDriverRecorder(
 	printdata(xi,yb,path);
 	while(xi<b)
 	{
-		printf("Stepsize=%g \n",h);
 		if(xi+h>b) h=b-xi;	//Tjekker om det oplyste første step er for stort
 		rkstep12(f,xi,ya,h,yb,dy);
 		err=gsl_blas_dnrm2(dy);		//Summer alle dy'er op og tage absolut værdi for at få et udtryk for error
@@ -78,8 +77,7 @@ int OdeDriverRecorder(
 			xi+=h;
 			gsl_vector_memcpy(ya,yb);
 			k++;
-			printdata(xi,yb,path);
-			printf("tol=%g and err=%g\n",tol,err);}
+			printdata(xi,yb,path);}
 		if(err>0) h*=pow(tol/err,0.25)*0.95 ; // Vi skal lige passe på ikke at dele med 0
 		else h*=2;
 	}
@@ -119,19 +117,18 @@ void epidemic(double t,gsl_vector* y, gsl_vector* dydt){
 
 int main(){
 
-	// u'=0 (svar y=konstant)
+	printf("OPGAVE A Embedded Runge-Kutta ODE integrator\n \n");
+
+
 	double a1=0, b1=3, h1=(double)1/10, acc1=0.001, eps1=0.001;
 	gsl_vector* ya1=gsl_vector_alloc(1);
 	gsl_vector* yb1=gsl_vector_alloc(1);
 	gsl_vector_set(ya1,0,1);
-	printf("start h=%6g \n",h1);
-	int k1=OdeDriverRecorder(u1,a1,b1,ya1,yb1,h1,acc1,eps1,"test.txt");
-
-
-	vector_print("A start",ya1);
-	vector_print("Her er løsningen",yb1);
-	printf("skridt %i\n",k1);
-
+	int k1=OdeDriver(u1,a1,b1,ya1,yb1,h1,acc1,eps1,"line.txt");
+	printf("Vi har startet med en simple diff.ligning, hvor vi har y(0)=1 dy/dt=1, altså en lige linje\n");
+	vector_print("Vi har for denne fundet y(3) til",yb1);
+	printf("Hvilket passer godt med en linje med hældning 1 som skære y-aksen i 1.\n Vi kom frem til dette resultat på %i steps \n",k1);
+	printf("Vi har lavet et plot af linjen i figurer line.png.\n");
 
 	// u''=-u
 	double a=0, b=M_PI*2, h=0.0001, acc=0.001, eps=0.001;
@@ -141,29 +138,39 @@ int main(){
 	gsl_vector_set(ya,0,1); gsl_vector_set(ya,1,0);
 	gsl_vector_set(exact,0,0); gsl_vector_set(exact,1,-1);
 
-	int k=OdeDriverRecorder(u,a,b,ya,yb,h,acc,eps,"path.txt");
+	int k=OdeDriver(u,a,b,ya,yb,h,acc,eps,"cos.txt");
 
-	vector_print("Min start vektor for u''=-u",ya);
-	vector_print("Her er løsningen",yb);
+	printf("Vi prøver nu noget lidt mere spændende, hvor vi løser en diff.ligning, hvor vi ved at løsningen er cos(x).\n vi har altså y(0)=1 og d^2y/dt^2=-y\n");
+	vector_print("For dette er start vektoren",ya);
+	vector_print("Vi får efter 2 pi følgende vektor",yb);
 	vector_print("Det analytiske svar er",exact);
-	printf("Det tog %i skridt\n\n",k);
+	printf("Dette giver en meget passende overensstemelse, og det er også plottet i cos.png \n Det tog %i skridt\n\n",k);
 
 
 
-	// Epidemic
 
-	double t0=0, tyear=365, he=0.1, acce=0.0000001, epse=0.0000001;
+	double t0=0, tdays=30, he=0.1, acce=0.0000001, epse=0.0000001;
 	double N=5500000, I=3200, R=226000, S=N-R-I;
 	gsl_vector* yae=gsl_vector_alloc(3);
 	gsl_vector* ybe=gsl_vector_alloc(3);
 	gsl_vector_set(yae,0,S); gsl_vector_set(yae,1,I); gsl_vector_set(yae,2,R);
 
-	int ke=OdeDriverRecorder(epidemic,t0,tyear,yae,ybe,he,acce,epse,"Epidemic.txt");
+	int ke=OdeDriver(epidemic,t0,tdays,yae,ybe,he,acce,epse,"Epidemic.txt");
 
+	printf("Til sidst har vi prøver at bruge SIR modellen for at få lavet et plot over corona situationen i Danmark.\n");
+	printf("Vi har valgt følgende parametre N=%g I=%g R=%g og undersøge udviklingen over %g dage\n",N,I,R,tdays);
 	vector_print("Epidemiens udgangspunkt hvor fra øverst til nederst vi har: S/I/R",yae);
 	vector_print("Resultatet efter et år",ybe);
+	printf("Vi har plottet dette i figurer Epidemic.png og det ligner meget godt plottet fra Wikisiden om SIR modellen\n");
 	printf("Det tog så mange skridt: %i \n",ke);
 
+
+	printf("OPGAVE B Store the path\n \n");
+
+	printf("Min løsning til at gemme vejen fra a til b, har været at give odedriver et argument mere, hvor den tage en string\n");
+	printf("Denne string er navnet på den fil odedriver danner og gemme vejen i direkte på disken, der er 3 af disse filer en for\n");
+	printf("den lige linje, en for cos og en for epidemic. det er også disse filer der er brugt til at danne png'erne i Makefile.\n");
+	printf("Så længe den string man kalder odedriver med slutter på txt vil den også blive slettet igen med min clean function i Makefile.\n");
 
 return 0;
 }
