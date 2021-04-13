@@ -26,6 +26,8 @@ eigenfunctions.png: out.txt
 out.txt:main
 	./$< > $@
 
+main: main.c print.c jacobi.c
+
 .PHONEY:clean
 clean:
 	$(RM) *txt main *png

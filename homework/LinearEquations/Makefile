@@ -5,6 +5,8 @@ LDLIBS += $(shell /usr/bin/gsl-config --libs)
 out.txt:main
 	./$< > out.txt
 
+main: main.c solver.c
+
 .PHONEY:clean
 clean:
 	$(RM) *txt main

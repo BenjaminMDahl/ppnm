@@ -25,6 +25,8 @@ fit.png: out.txt Makefile
 out.txt:main
 	./$< > out.txt
 
+main: main.c print.c solver.c LeastSquare.c
+
 .PHONEY:clean
 clean:
 	$(RM) *txt main *png

@@ -111,13 +111,13 @@ k: calculated vs exact (hbar^2/2mL^2=1)
 
  Nu opgave C hvor vi undersøger tiden af vores operationer
 Vi undersøger tiden det tager for vores routine at køre, først for n=100 så n=1000
-Det tog 0.002489 i CPU tid at køre jacobi diag for n=25
-Det tog 2.54052 i CPU tid at køre jacobi diag for n=250
-Tiden delt med hinanden giver 1020.7
+Det tog 0.001973 i CPU tid at køre jacobi diag for n=25
+Det tog 2.07599 i CPU tid at køre jacobi diag for n=250
+Tiden delt med hinanden giver 1052.2
 Det ses at forskellen er næsten 1000, hvilket er at forvente, hvis der bruges N^3 operatrioner
 
-Nu sammenligner vi vores rotine med GSL. For den samme n=250 matrice tog den 0.026159 i CPU tid.
-Tiden i forhold til hinanden hvor vi har MinMetode/GSL giver 97.1184
+Nu sammenligner vi vores rotine med GSL. For den samme n=250 matrice tog den 0.02201 i CPU tid.
+Tiden i forhold til hinanden hvor vi har MinMetode/GSL giver 94.3202
 Det ses at GSL stadig er hurtigere, så vi prøver nu at optimere vores kode, ved kun at opdatere den øvre halvdel af matricen vi rotere
 
 

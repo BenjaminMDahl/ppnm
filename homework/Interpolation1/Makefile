@@ -9,6 +9,9 @@ default:out.main.txt out.quadratic.txt gsl.txt LinearSpline.png CubicSpline.png 
 out.main.txt: main
 	./$< > $@
 
+main: main.c
+
+
 out.quadratic.txt: quadratic
 	./$< > $@
 

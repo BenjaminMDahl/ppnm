@@ -7,145 +7,27 @@
 #include<gsl/gsl_linalg.h>
 #define RND (double)rand()/RAND_MAX
 
-void vector_print(char s[], gsl_vector* v){
-	printf("%s\n",s);
-	for(int i=0;i< v->size ;i++)printf("%10g \n",gsl_vector_get(v,i));
-	printf("\n");
-}
+void vector_print(char s[], gsl_vector* v);
 
-void matrix_print(char s[], gsl_matrix* A){
-	int n=A->size1, m=A->size2;
-	for(int i=0;i<n;i++){
-		for(int j=0; j<m;j++){
-			if(fabs(gsl_matrix_get(A,i,j))<10e-7)gsl_matrix_set(A,i,j,0);
-		}
-	}
-	printf("%s\n",s);
-	for(int i=0;i< n ;i++){							// Note til selv size1=vertical, size2=horisontal
-		for(int j=0;j< m ;j++)printf("%10g ",gsl_matrix_get(A,i,j));
-		printf("\n");}
-	printf("\n");
-}
+void matrix_print(char s[], gsl_matrix* A);
 
 
-void make_rand_sym_matrix(gsl_matrix* A){
-	for(int i=0; i< A->size1; i++){
-		double Aii=RND;
-		gsl_matrix_set(A,i,i,Aii);
-		for(int j=i+1; j<A->size2; j++){
-			double Asym=RND;
-			gsl_matrix_set(A,i,j,Asym);
-			gsl_matrix_set(A,j,i,Asym);
-			}
-	}
-}
+void make_rand_sym_matrix(gsl_matrix* A);
 
 // Fra opgaveformulering//
-void timesJ(gsl_matrix* A, int p, int q, double theta){
-	double c=cos(theta),s=sin(theta);
-	for(int i=0;i<A->size1;i++){
-		double new_aip=c*gsl_matrix_get(A,i,p)-s*gsl_matrix_get(A,i,q);
-		double new_aiq=s*gsl_matrix_get(A,i,p)+c*gsl_matrix_get(A,i,q);
-		gsl_matrix_set(A,i,p,new_aip);
-		gsl_matrix_set(A,i,q,new_aiq);
-		}
-}
+void timesJ(gsl_matrix* A, int p, int q, double theta);
 
 
-void Jtimes(gsl_matrix* A, int p, int q, double theta){
-	double c=cos(theta),s=sin(theta);
-	for(int i=0;i<A->size2;i++){
-		double new_api= c*gsl_matrix_get(A,p,i)+s*gsl_matrix_get(A,q,i);
-		double new_aqi=-s*gsl_matrix_get(A,p,i)+c*gsl_matrix_get(A,q,i);
-		gsl_matrix_set(A,p,i,new_api);
-		gsl_matrix_set(A,q,i,new_aqi);
-		}
-}
+void Jtimes(gsl_matrix* A, int p, int q, double theta);
 
 
-void jacobi_diag(gsl_matrix* A , gsl_matrix* V){
-		int changed;
-		gsl_matrix_set_identity(V);
-		do{
-			changed=0;
-			for(int p=0;p<A->size1-1;p++){
-			for(int q=p+1;q<A->size2;q++){
-			double apq=gsl_matrix_get(A,p,q);
-			double app=gsl_matrix_get(A,p,p);
-			double aqq=gsl_matrix_get(A,q,q);
-			double theta=0.5*atan2(2*apq,aqq-app);
-			double c=cos(theta),s=sin(theta);
-			double new_app=c*c*app-2*s*c*apq+s*s*aqq;
-			double new_aqq=s*s*app+2*s*c*apq+c*c*aqq;
-			if(new_app!=app || new_aqq!=aqq){         // Hvis C ikke kan se forskel på det nye og gamle diagonal element skal den ikke rotere igen, ellers skal den opdatere
-				changed=1;
-				timesJ(A,p,q, theta);
-				Jtimes(A,p,q,-theta);
-				timesJ(V,p,q,theta);		// Denne er til for også at få egenvektor matricen ud
-		}
-	}
-		}
-
-		}while(changed!=0);
-}
-
-
+void jacobi_diag(gsl_matrix* A , gsl_matrix* V);
 //Optimeret udgave af overstående//
 
-void timesJ_op(gsl_matrix* A, int p, int q, double theta){
-	double c=cos(theta),s=sin(theta);
-	for(int i=0;i<p+1;i++){
-		double new_aip=c*gsl_matrix_get(A,i,p)-s*gsl_matrix_get(A,i,q);
-		gsl_matrix_set(A,i,p,new_aip);
-		}
-	for(int i=0;i<q+1;i++){
-		double new_aiq=s*gsl_matrix_get(A,i,p)+c*gsl_matrix_get(A,i,q);
-		gsl_matrix_set(A,i,q,new_aiq);
-		}
-}
+void timesJ_op(gsl_matrix* A, int p, int q, double theta);
+void Jtimes_op(gsl_matrix* A, int p, int q, double theta);
 
-
-void Jtimes_op(gsl_matrix* A, int p, int q, double theta){
-	double c=cos(theta),s=sin(theta);
-	for(int j=p;j<A->size2;j++){
-		double new_apj= c*gsl_matrix_get(A,p,j)+s*gsl_matrix_get(A,q,j);
-		gsl_matrix_set(A,p,j,new_apj);
-		}
-	for(int j=q;j<A->size2;j++){
-		double new_aqj=-s*gsl_matrix_get(A,p,j)+c*gsl_matrix_get(A,q,j);
-		gsl_matrix_set(A,q,j,new_aqj);
-		}
-}
-
-
-void jacobi_diag_op(gsl_matrix* A , gsl_matrix* V){
-		int changed;
-		gsl_matrix_set_identity(V);
-		do{
-			changed=0;
-			for(int p=0;p<A->size1-1;p++){
-				for(int q=p+1;q<A->size2;q++){
-				double apq=gsl_matrix_get(A,p,q);
-				double app=gsl_matrix_get(A,p,p);
-				double aqq=gsl_matrix_get(A,q,q);
-				double theta=0.5*atan2(2*apq,aqq-app);
-				double c=cos(theta),s=sin(theta);
-				double new_app=c*c*app-2*s*c*apq+s*s*aqq;
-				double new_aqq=s*s*app+2*s*c*apq+c*c*aqq;
-					if(new_app!=app || new_aqq!=aqq){         // Hvis C ikke kan se forskel på det nye og gamle diagonal element skal den ikke rotere igen, ellers skal den opdatere
-						changed=1;
-						timesJ_op(A,p,q, theta);
-						Jtimes_op(A,p,q,-theta);
-						timesJ(V,p,q,theta);
-						matrix_print("A midtvejs",A);
-					}
-				}
-			}
-		}while(changed!=0);
-}
-
-
-
+void jacobi_diag_op(gsl_matrix* A , gsl_matrix* V);
 
 
 			// ----- Her kommer Main ----- //
