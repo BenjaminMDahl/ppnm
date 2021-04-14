@@ -41,28 +41,39 @@ void GS_solve(gsl_matrix* Q, gsl_matrix* R, gsl_vector* b, gsl_vector* x);
 void GS_inverse(gsl_matrix* Q, gsl_matrix* R, gsl_matrix* I);
 
 int main(){
-/* jeg prøvede at bruge dette til integratinos homework
-	gsl_matrix* Q=gsl_matrix_alloc(3,4);
-	double a1=(double) 1/6, a2=(double) 2/6, a3=(double) 4/6, a4=(double) 5/6;
-	gsl_matrix_set(Q,0,0,1);
-	gsl_matrix_set(Q,0,1,1);
-	gsl_matrix_set(Q,0,2,1);
-	gsl_matrix_set(Q,0,3,1);
-	gsl_matrix_set(Q,1,0,a1);
-	gsl_matrix_set(Q,1,1,a2);
-	gsl_matrix_set(Q,1,2,a3);
-	gsl_matrix_set(Q,1,3,a4);
-	gsl_matrix_set(Q,2,0,a1*a1);
-	gsl_matrix_set(Q,2,1,a2*a2);
-	gsl_matrix_set(Q,2,2,a3*a3);
-	gsl_matrix_set(Q,2,3,a4*a4);
+
+/*
+// jeg prøvede at bruge dette til integratinos homework
+	gsl_matrix* Q=gsl_matrix_alloc(4,4);
+
+	double a1=(double) cos(M_PI/6);
+	double a2=(double) cos(2*M_PI/6);
+	double a3=(double) cos(4*M_PI/6);
+	double a4=(double) cos(5*M_PI/6);
+	gsl_matrix_set(Q,0,0,sin(M_PI/6));
+	gsl_matrix_set(Q,0,1,sin(2*M_PI/6));
+	gsl_matrix_set(Q,0,2,sin(4*M_PI/6));
+	gsl_matrix_set(Q,0,3,sin(5*M_PI/6));
+	gsl_matrix_set(Q,1,0,sin(M_PI/6)*a1);
+	gsl_matrix_set(Q,1,1,sin(2*M_PI/6)*a2);
+	gsl_matrix_set(Q,1,2,sin(4*M_PI/6)*a3);
+	gsl_matrix_set(Q,1,3,sin(5*M_PI/6)*a4);
+	gsl_matrix_set(Q,2,0,sin(M_PI/6)*a1*a1);
+	gsl_matrix_set(Q,2,1,sin(2*M_PI/6)*a2*a2);
+	gsl_matrix_set(Q,2,2,sin(4*M_PI/6)*a3*a3);
+	gsl_matrix_set(Q,2,3,sin(5*M_PI/6)*a4*a4);
+	gsl_matrix_set(Q,3,0,sin(M_PI/6)*a1*a1*a1);
+	gsl_matrix_set(Q,3,1,sin(2*M_PI/6)*a2*a2*a2);
+	gsl_matrix_set(Q,3,2,sin(4*M_PI/6)*a3*a3*a3);
+	gsl_matrix_set(Q,3,3,sin(5*M_PI/6)*a4*a4*a4);
 
 	gsl_matrix* Rq=gsl_matrix_alloc(4,4);
-	gsl_vector* bq=gsl_vector_alloc(3);
-	double b2=(double) 1/2, b3=(double) 1/3, b4=(double) 1/4;
-	gsl_vector_set(bq,0,1);
+	gsl_vector* bq=gsl_vector_alloc(4);
+	double b2=(double) 0, b3=(double) 2/3, b4=(double) 0;
+	gsl_vector_set(bq,0,2);
 	gsl_vector_set(bq,1,b2);
 	gsl_vector_set(bq,2,b3);
+	gsl_vector_set(bq,3,b4);
 
 	gsl_vector* xq=gsl_vector_alloc(4);
 	matrix_print("Tjekker om matricen er rigtig",Q);
@@ -71,7 +82,9 @@ int main(){
 	GS_decomp(Q,Rq);
 	GS_solve(Q,Rq,bq,xq);
 	vector_print("Og så tjekker vi resultatet",xq);
+
 */
+
 	//Opgave A del 1) Gram-Schmidt orthogonalization//
 
 	printf("Opgave A del 1)\n\n");
@@ -228,5 +241,7 @@ gsl_matrix_free(res);
 	gsl_matrix_free(Dcopy);
 	gsl_matrix_free(rD);
 	gsl_vector_free(T);
+
+
 return 0;}
 // hvis du glemmer at free et alloc space er det ikke katastrofe inden for en main function, fordi den gør det selv ved exit af main functionen
