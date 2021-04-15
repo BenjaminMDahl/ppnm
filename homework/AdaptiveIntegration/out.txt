@@ -1,0 +1,35 @@
+Mit numeriske integral af sqrt(x) fra 0 til 1 giver
+   0.666681
+Det analytiske svar er
+
+   0.666667
+Mit numeriske integral af 4*sqrt(1-x^2) fra 0 til 1 giver
+ 3.1415928363913226
+Når man bruger CC transformation på det oversteånde får man 
+ 3.1415926230799123 
+Fra GSL får man
+ 3.1415926535897922 
+Det analytiske svar er
+ 3.1415926535897931
+
+Det ses at når de alle er underlagt samme tolerance krav, kan GSL få op til 15 cifre rigtigt,
+ mens mine operationer højst giver 8 cifre og kun 7 når man ikke bruger CC transformation.
+
+Til sidst ses der hvor mange evalueringer der skulle laves for min metode med og uden CC transformation.
+Uden transformation skulle der 113 evalueringer til, og med skulle der 151 evalueringer til
+int^1_0(1/sqrt(x))dx= 
+    1.99996
+Når man bruger CC transformation på det oversteånde får man 
+    1.99999 
+Det analytiske svar er
+          2
+
+Uden transformation skulle der 4285 evalueringer til, og med skulle der 7 evalueringer til
+int^1_0(log(x)/sqrt(x))dx= 
+   -3.99992
+Når man bruger CC transformation på det oversteånde får man 
+   -3.99987 
+Det analytiske svar er
+         -4
+
+Uden transformation skulle der 4301 evalueringer til, og med skulle der 47 evalueringer til
