@@ -9,7 +9,7 @@ default: out.txt
 out.txt: main
 	./$< > $@
 
-main: main.c TestFunctions.c integrater.c
+main: main.c TestFunctions.c integrater.c gsl_fun.c
 
 
 
