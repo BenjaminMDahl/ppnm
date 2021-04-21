@@ -3,7 +3,7 @@
 #include<complex.h>
 
 int main(){
-	double pi=3;
+	double pi=M_PI;
 	double g=tgamma(5);
 	double b=y0(0.5);
 	complex z1=csqrt(-2);

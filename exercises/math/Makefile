@@ -5,8 +5,10 @@ LDLIBS = -lm
 default: out.txt
 	cat  out.txt
 
-out.txt: math math2
+out.txt: math
 	./math > out.txt
-	./math2 >> out.txt
 
-math: math.c
+
+.PHONEY: clean
+clean:
+	$(RM) *.txt math
