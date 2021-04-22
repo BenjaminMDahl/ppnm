@@ -7,10 +7,17 @@ double complex plainMC(int dim,double f(int dim,double* x),double* a,double* b,i
 double complex quasiMC(int dim, double f(int,double*), double* a,double* b,int N);
 
 
-double fun_opgaveformulering(int dim, double* x){
+
+double f(int dim,double* x){
+double value=exp((x[0]+x[1])*(x[0]+x[1]));
+return value;
+	}
+
+/*
+double f(int dim, double* x){
 double value=(double) 1/(1-cos(x[0])*cos(x[1])*cos(x[2]))*1/(M_PI*M_PI*M_PI);
 return value;
-}
+}*/
 
 
 int main(){
@@ -20,7 +27,7 @@ int N=10000;
 double a[]={0,0,0}, b[]={M_PI,M_PI,M_PI};
 
 for(int n=500;n<N;n+=5){
-printf("%i %6g %6g\n",n,cimag(plainMC(3,fun_opgaveformulering,a,b,n)),cimag(quasiMC(3,fun_opgaveformulering,a,b,n)));
+printf("%i %6g %6g\n",n,cimag(plainMC(2,f,a,b,n)),cimag(quasiMC(2,f,a,b,n)));
 
 }
 
