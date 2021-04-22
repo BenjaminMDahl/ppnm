@@ -26,7 +26,7 @@ printf("#index 0: N   PlainMonteCarlo error     QuasiMonteCarlo error\n");
 int N=10000;
 double a[]={0,0,0}, b[]={M_PI,M_PI,M_PI};
 
-for(int n=500;n<N;n+=5){
+for(int n=1000;n<N;n+=25){
 printf("%i %6g %6g\n",n,cimag(plainMC(2,f,a,b,n)),cimag(quasiMC(2,f,a,b,n)));
 
 }
