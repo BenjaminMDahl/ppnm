@@ -13,9 +13,15 @@ comparison.png: data.txt
 	set xlabel "N";\
 	set ylabel "error";\
 	set title "Quasi vs plain";\
+	a=1; b=-0.5; f(x)=a*x**b ;\
+	c=1; d=-1.0; g(x)=c*x**d ;\
+	fit f(x) "$<" index 0 using 1:2 via a,b;\
+	fit g(x) "$<" index 0 using 1:3 via c,d;\
 	plot \
 	"$<" index 0 using 1:2 with points pointtype 2 title "Error from plainMC" \
 	,"$<" index 0 using 1:3 with points pointtype 3 title "Error from QuasiMC"\
+	,f(x) with lines title "f(x)" \
+	,g(x) with lines title "g(x)" \
 	' | pyxplot
 
 
