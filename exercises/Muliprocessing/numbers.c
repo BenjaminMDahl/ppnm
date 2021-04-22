@@ -2,21 +2,22 @@
 #include<stdlib.h>
 #include<math.h>
 #include<omp.h>
-
+#include<time.h>
 
 int main(){
-	int n=1000;
+	int n=5000;
 
 	double x[n], y[n];
+	unsigned int seed = time(NULL);
 #pragma omp parallel sections
 	{
 	#pragma omp section
 		{
-		for (int i=0; i <n; i++) x[i]= (double)rand() / (double)RAND_MAX;
+		for (int i=0; i <n; i++) x[i]= (double)rand_r(&seed) / (double)RAND_MAX;
 		}
 	#pragma omp section
 		{
-		for (int i=0; i <n; i++) y[i]= (double)rand() / (double)RAND_MAX;
+		for (int i=0; i <n; i++) y[i]= (double)rand_r(&seed) / (double)RAND_MAX;
 		}
 	}
 
@@ -34,7 +35,7 @@ int main(){
 
 	FILE * Pi;
 	Pi = fopen ("file.txt", "w+");
-	fprintf(Pi,"Pi=%g\n",pi);
+	fprintf(Pi,"Vi får på denne måde Pi=%g\n",pi);
 	fclose(Pi);
 
 

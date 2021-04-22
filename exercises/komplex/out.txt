@@ -1,8 +1,9 @@
-testing komplex_add...
+tester komplex_add:
 a= (1,2)
 b= (3,4)
-a+b should   =  (4,6)
-a+b actually =  (4,6)
-now testing komplex_sub...
-b-a should   =  (2,2)
-b-a actually =  (2,2)
+a+b burde være   =  (4,6)
+a+b vi får =  (4,6)
+
+tester komplex_sub(samme a og b som før):
+b-a burde være   =  (2,2)
+b-a vi får =  (2,2)

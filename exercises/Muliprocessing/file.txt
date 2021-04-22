@@ -1,1 +1,1 @@
-Pi=3.08
+Vi får på denne måde Pi=3.1264

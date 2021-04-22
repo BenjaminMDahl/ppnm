@@ -1,7 +1,21 @@
+Via funktionerne fra math.h og complex.h har vi udregnet følgende størrelser:
+
 gamma(5)=24
 bessel(0.5)=-0.444519
 sqrt(-2)=0+i1.41421
 exp(i*pi)=-1+i1.22465e-16
 exp(i)=0.540302+i0.841471
-i^e=0+i0
-i^i=1+i0
+i^e=-0.42822+i-0.903675
+i^i=0.20788+i0
+
+ Vi holder dette op imod, hvad man får hvis man bruger wolframalpha til at udregne det samme
+
+gamma(5)=24
+bessel(0.5)=0.93847
+sqrt(-2)=i1.4142136
+exp(i*pi)=-1
+exp(i)=0.540302+i0.841471
+i^e=-0.42822-0,90367
+i^i=0.2078796
+
+ Det ses at svarene er ret ens.
