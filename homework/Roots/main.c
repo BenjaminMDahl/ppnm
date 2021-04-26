@@ -15,13 +15,18 @@ void vector_print(char s[], gsl_vector* v){
 
 void newton(void f(gsl_vector* x,gsl_vector* fx), gsl_vector* x, double eps);
 
+
 void test_f1(gsl_vector* x,gsl_vector* f);
 
 void test_f2(gsl_vector* x_vec,gsl_vector* f);
 
 void test_f3(gsl_vector* x_vec,gsl_vector* f);
 
+void test_diff(gsl_vector* x,gsl_vector* f);
+
 int main(){
+
+		////Opgave A Newtons metode////
 printf("OPGAVE A\n\n");
 
 //1 dimensionel test//
@@ -62,6 +67,17 @@ vector_print("Vi starter ud med (x,y)=",x_op);
 newton(test_f3,x_op,eps);
 
 vector_print("Vi får svaret=",x_op);
+// Der skal kommenteres her og finds flere punkter
+
+
+		////Opgave B Kvantemekanik////
+printf("Opgave B Kvantemekanik\n\n");
+printf("Vi vil nu forsøge at løse et fysisk problem, vi vil nemlig prøve at bestemme den laveste energi tilstand af et brint atom\n");
+gsl_vector* x_diff=gsl_vector_alloc(1);
+gsl_vector_set(x_diff,0,1);
+
+newton(test_diff,x_diff,eps);
+
 
 return 0;
 }
