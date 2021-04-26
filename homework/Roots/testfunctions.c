@@ -61,5 +61,5 @@ gsl_vector* ya=gsl_vector_alloc(f->size);
 gsl_vector_set(ya,0,a-a*a);
 double energy=gsl_vector_get(x,0);
 
-OdeDriver(diff,a,b,ya,f,h,acc,eps,"kvant.txt");//problemet er at diff i ode ikke kan tage et 4. argument i form af energien
+OdeDriver(diff,a,b,ya,f,h,acc,eps,"kvant.txt");//problemet er at diff i ode ikke kan tage et 4. argument i form af energien, som skal kunne variere.
 }
