@@ -1,0 +1,31 @@
+OPGAVE A
+
+Vi har startet med en simpel test for f(x)=x^2 og vores start x er 
+         1 
+
+Her bør vi få vores svar til x=0 og vi ser at vi får=
+0.000892552 
+
+Det er ikke et vildt præcist resultat, men koden gør som den skal. Dette er ved en epsilon=1e-06.
+
+Den næste test er hvor f(x,y,z)=(x+z,y+z,z+x+y), og vi starter med (x,y,z)=(-0.9,1.2,0.1)
+      -4.9 
+         5 
+       0.1 
+
+Vi får svaret=
+-1.63602e-12 
+1.67244e-12 
+3.18773e-14 
+
+Den laver en 0 vektor, hvilket er en passende løsning
+
+Som en sidste del af opgave A prøver vi vores kode på gradienten af funktionen fra opgave formuleringen som er:
+gradient(f(x,y))=(-2(1-x)-400x(y-x^2) , 200(y-x^2))Vi starter ud med (x,y)=
+       0.1 
+       0.1 
+
+Vi får svaret=
+   1.00011 
+   1.00021 
+
