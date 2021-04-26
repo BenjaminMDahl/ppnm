@@ -21,7 +21,8 @@ Vi får svaret=
 Den laver en 0 vektor, hvilket er en passende løsning
 
 Som en sidste del af opgave A prøver vi vores kode på gradienten af funktionen fra opgave formuleringen som er:
-gradient(f(x,y))=(-2(1-x)-400x(y-x^2) , 200(y-x^2))Vi starter ud med (x,y)=
+gradient(f(x,y))=(-2(1-x)-400x(y-x^2) , 200(y-x^2))
+Vi starter ud med (x,y)=
        0.1 
        0.1 
 

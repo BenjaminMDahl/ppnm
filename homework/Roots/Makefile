@@ -9,7 +9,7 @@ default: out.txt
 out.txt: main
 	./$< > $@
 
-main: main.c linsolve.c
+main: main.c linsolve.c newton.c testfunctions.c
 
 line.png: out.txt
 	echo '\
