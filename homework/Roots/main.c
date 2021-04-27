@@ -71,13 +71,17 @@ vector_print("Vi får svaret=",x_op);
 
 
 		////Opgave B Kvantemekanik////
+
 printf("Opgave B Kvantemekanik\n\n");
 printf("Vi vil nu forsøge at løse et fysisk problem, vi vil nemlig prøve at bestemme den laveste energi tilstand af et brint atom\n");
 gsl_vector* x_diff=gsl_vector_alloc(1);
-gsl_vector_set(x_diff,0,1);
+gsl_vector_set(x_diff,0,0);
 
 newton(test_diff,x_diff,eps);
 
+vector_print("Vi får svaret=",x_diff);
+printf("og det analytiske svar er -1/2 så vi er meget tilfredse\n");
+printf("På figur kvant.png, findes der et plot af vores løsning og den teoretiske f0(r)=r*exp(-r).\n");
 
 return 0;
 }

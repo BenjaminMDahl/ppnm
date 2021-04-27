@@ -49,17 +49,22 @@ int OdeDriver(	void f(double,gsl_vector*,gsl_vector*), 		// right-hand-side of d
 
 
 
-
+static double E; //Energy
 void diff(double r,gsl_vector* u,gsl_vector* dudr){
-	double u1=-2*(gsl_vector_get(u,0)*energy+gsl_vector_get(u,0)/r);
-	gsl_vector_set(dudr,0,u1);
+	gsl_vector_set(dudr,0,gsl_vector_get(u,1));
+	gsl_vector_set(dudr,1,2*(-1/r-E)*gsl_vector_get(u,0));
 }
 
 void test_diff(gsl_vector* x,gsl_vector* f){
-double a=0.00001,b=8,acc=0.00001,eps=0.00001,h=0.01;
-gsl_vector* ya=gsl_vector_alloc(f->size);
-gsl_vector_set(ya,0,a-a*a);
-double energy=gsl_vector_get(x,0);
+	E=gsl_vector_get(x,0);
+	double a=0.00001,b=8,acc=0.00001,eps=0.00001,h=0.01;
 
-OdeDriver(diff,a,b,ya,f,h,acc,eps,"kvant.txt");//problemet er at diff i ode ikke kan tage et 4. argument i form af energien, som skal kunne variere.
+	gsl_vector* ya=gsl_vector_alloc(2);
+	gsl_vector* yb=gsl_vector_alloc(2);
+	gsl_vector_set(ya,0,a-a*a);
+	gsl_vector_set(ya,1,1-2*a);
+
+	OdeDriver(diff,a,b,ya,yb,h,acc,eps,"kvant.txt");//problemet er at diff i ode ikke kan tage et 4. argument i form af energien, som skal kunne variere.
+	gsl_vector_set(f,0,gsl_vector_get(yb,0));
+	gsl_vector_free(ya);gsl_vector_free(yb);
 }
