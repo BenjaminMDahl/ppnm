@@ -3,7 +3,7 @@ CFLAGS += $(shell /usr/bin/gsl-config --cflags)
 LDLIBS += $(shell /usr/bin/gsl-config --libs)
 
 
-default: out.txt line.png
+default: out.txt kvant.png
 
 
 out.txt: main
@@ -16,7 +16,7 @@ main: main.c linsolve.c newton.c testfunctions.c ODE.c
 
 
 
-line.png: kvant.txt exact.txt
+kvant.png: kvant.txt exact.txt
 	echo '\
 	set term png;\
 	set output "$@";\
