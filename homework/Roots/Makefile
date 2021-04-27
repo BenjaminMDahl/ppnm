@@ -9,9 +9,14 @@ default: out.txt line.png
 out.txt: main
 	./$< > $@
 
+exact.txt: exact
+	./$< > $@
+
 main: main.c linsolve.c newton.c testfunctions.c ODE.c
 
-line.png: kvant.txt
+
+
+line.png: kvant.txt exact.txt
 	echo '\
 	set term png;\
 	set output "$@";\
@@ -21,7 +26,8 @@ line.png: kvant.txt
 	set ylabel "f(r)";\
 	set title "Hydrogen";\
 	plot \
-	"$<" using 1:2 with lines color blue title "line from ODE" \
+	"$<" using 1:2 with lines color blue title "line from ODE"\
+	,"exact.txt" using 1:2 with lines color red title "exact line"\
 	' | pyxplot
 
 
