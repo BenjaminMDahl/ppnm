@@ -22,13 +22,21 @@ Den laver en 0 vektor, hvilket er en passende løsning
 
 Som en sidste del af opgave A prøver vi vores kode på gradienten af funktionen fra opgave formuleringen som er:
 gradient(f(x,y))=(-2(1-x)-400x(y-x^2) , 200(y-x^2))
-Vi starter ud med (x,y)=
-       0.1 
-       0.1 
-
-Vi får svaret=
+Vi får fra (0.1,0.1) punktet
    1.00011 
    1.00021 
+
+Vi får fra (2,2) punktet
+   1.00008 
+   1.00017 
+
+Vi får fra (-3,-1) punktet
+  0.999834 
+  0.999668 
+
+Vi får fra (5,-5) punktet
+   1.00006 
+   1.00011 
 
 Opgave B Kvantemekanik
 

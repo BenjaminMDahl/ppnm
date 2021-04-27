@@ -58,15 +58,35 @@ printf("Den laver en 0 vektor, hvilket er en passende løsning\n\n");
 printf("Som en sidste del af opgave A prøver vi vores kode på gradienten af funktionen fra opgave formuleringen som er:\n");
 printf("gradient(f(x,y))=(-2(1-x)-400x(y-x^2) , 200(y-x^2))\n");
 
-gsl_vector* x_op=gsl_vector_alloc(2);
-gsl_vector_set(x_op,0,0.1);
-gsl_vector_set(x_op,1,0.1);
+//gæt 1
+gsl_vector* x_op1=gsl_vector_alloc(2);
+gsl_vector_set(x_op1,0,0.1);
+gsl_vector_set(x_op1,1,0.1);
+//gæt 2
+gsl_vector* x_op2=gsl_vector_alloc(2);
+gsl_vector_set(x_op2,0,2);
+gsl_vector_set(x_op2,1,2);
+//gæt 3
+gsl_vector* x_op3=gsl_vector_alloc(2);
+gsl_vector_set(x_op3,0,-3);
+gsl_vector_set(x_op3,1,-1);
+//gæt 4
+gsl_vector* x_op4=gsl_vector_alloc(2);
+gsl_vector_set(x_op4,0,5);
+gsl_vector_set(x_op4,1,-5);
 
-vector_print("Vi starter ud med (x,y)=",x_op);
+newton(test_f3,x_op1,eps);
+newton(test_f3,x_op2,eps);
+newton(test_f3,x_op3,eps);
+newton(test_f3,x_op4,eps);
 
-newton(test_f3,x_op,eps);
+vector_print("Vi får fra (0.1,0.1) punktet",x_op1);
+vector_print("Vi får fra (2,2) punktet",x_op2);
+vector_print("Vi får fra (-3,-1) punktet",x_op3);
+vector_print("Vi får fra (5,-5) punktet",x_op4);
 
-vector_print("Vi får svaret=",x_op);
+
+
 // Der skal kommenteres her og finds flere punkter
 
 
