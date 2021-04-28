@@ -1,0 +1,18 @@
+Minimum for f(x,y)=x^2-x+y^2-y
+       0.5 
+       0.5 
+
+På så mange skridt = 3
+
+Det minimum jeg finder for Rosenbrock's valley function er:
+3.57786e+13 
+7.51344e+10 
+
+Det blev gjort på 7 skridt
+
+Det minimum jeg finder for Himmelblau's function, er:
+-9.80797e+55 
+1.18286e+24 
+
+Det blev gjort på 11 skridt
+
