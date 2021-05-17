@@ -19,14 +19,14 @@ Det blev gjort på 49 skridt
 OPGAVE B Berit-Wigner
 
 Vi prøver nu at fitte til Berit Wigner, hvor vores start gæt er
-       120 
-      0.02 
-         2 
+       124 
+      0.01 
+         1 
 
 Det minimum jeg finder for Berit Wigner er følgende(Hvor vi har mass,width,A)
-   126.106 
-  0.303585 
-   3.69535 
+   125.843 
+-0.000527272 
+   3.34021 
 
 Dette blev opnået på 1000 skridt
 Vi har fået oplyst i opgaven at CERN fandt den til 125.3(6), så vi er meget tilfredse med dette resultat
