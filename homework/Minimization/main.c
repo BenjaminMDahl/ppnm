@@ -54,7 +54,7 @@ printf("Det blev gjort på %i skridt\n\n",stepsH);
 printf("OPGAVE B Berit-Wigner\n\n");
 //Berit-Wigner
 gsl_vector* B=gsl_vector_calloc(3);
-gsl_vector_set(B,0,124);gsl_vector_set(B,1,0.01);gsl_vector_set(B,2,1);
+gsl_vector_set(B,0,124);gsl_vector_set(B,1,0.01);gsl_vector_set(B,2,0.01);
 vector_print("Vi prøver nu at fitte til Berit Wigner, hvor vores start gæt er",B);
 stepsB=qnewton(deviation_function,B,0.00001);
 vector_print("Det minimum jeg finder for Berit Wigner er følgende(Hvor vi har mass,width,A)",B);
