@@ -3,15 +3,15 @@
 #include<gsl/gsl_vector.h>
 #include"network.h"
 
-double activation_function(double x){return x*exp(-x*x);} // Gaussian
-double function_to_fit(double x){return sin(x)*sin(x)/x;}
+double activation_function(double x){return x*exp(-x*x);} // Gaussian wavelet
+double function_to_fit(double x){return cos(5*x-1)*exp(-x*x);}
 int main(){
 	int n=4;
 	ann* network=ann_alloc(n,activation_function);
 
 	//Laver tabulated values baseret på function to fit
-	double a=-8,b=8;
-	int N=30;
+	double a=-1,b=1;
+	int N=20;
 	gsl_vector* vx=gsl_vector_alloc(N);
 	gsl_vector* vy=gsl_vector_alloc(N);
 
