@@ -56,9 +56,11 @@ int qnewton(
 		fz=F(z);
 //		double sTg; gsl_blas_ddot(step,grad,&sTg);
 		if(fz<fx)break;
-		if(lambda<delta)break;
-		lambda/=2;}
-	gsl_vector_scale(step,lambda);
+		if(lambda<delta){
+			gsl_matrix_set_identity(B);
+			break;}
+		lambda/=2;
+		gsl_vector_scale(step,lambda);}
 
 	//Vi danner nu størrelserne fra ligning (11) og (12) fra kapitlet
 	numeric_gradient(F,z,gz);

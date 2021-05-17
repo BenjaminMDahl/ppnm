@@ -5,14 +5,30 @@ Minimum for f(x,y)=x^2-x+y^2-y
 På så mange skridt = 3
 
 Det minimum jeg finder for Rosenbrock's valley function er:
-3.57786e+13 
-7.51344e+10 
+  0.586452 
+  0.331187 
 
-Det blev gjort på 7 skridt
+Det blev gjort på 1000 skridt
 
 Det minimum jeg finder for Himmelblau's function, er:
--9.80797e+55 
-1.18286e+24 
+         3 
+         2 
 
-Det blev gjort på 11 skridt
+Det blev gjort på 49 skridt
+
+OPGAVE B Berit-Wigner
+
+Vi prøver nu at fitte til Berit Wigner, hvor vores start gæt er
+       120 
+      0.02 
+         2 
+
+Det minimum jeg finder for Berit Wigner er følgende(Hvor vi har mass,width,A)
+   126.106 
+  0.303585 
+   3.69535 
+
+Dette blev opnået på 1000 skridt
+Vi har fået oplyst i opgaven at CERN fandt den til 125.3(6), så vi er meget tilfredse med dette resultat
+Som en sidste ting har vi prøvet at bruge vores minimerings fit til at lave plottet BreitWigner.png, sammen med CERN data,en og resultatet er meget tilfredsstillende
 
