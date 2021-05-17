@@ -11,7 +11,7 @@ fit.png: out.txt Makefile
 	echo '\
 	set term png;\
 	set output "$@";\
-	set key top;\
+	set key top left;\
 	set fontsize 0.5;\
 	set xlabel "x";\
 	set ylabel "f(x)";\
