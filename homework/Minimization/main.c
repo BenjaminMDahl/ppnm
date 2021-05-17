@@ -65,7 +65,7 @@ printf("Som en sidste ting har vi prøvet at bruge vores minimerings fit til at 
 //printer data til plotning
 FILE *plot;
 plot = fopen("plot.txt","w");
-for(double e=95;e<170;e+=2)fprintf(plot,"%6g %6g\n",e,Breit_Wigner(e,B));
+for(double e=95;e<170;e++)fprintf(plot,"%6g %6g\n",e,Breit_Wigner(e,B));
 fclose(plot);
 
 return 0;
