@@ -11,7 +11,7 @@ int main(){
 
 	//Laver tabulated values baseret på function to fit
 	double a=0.001,b=11;
-	int N=20;
+	int N=50;
 	gsl_vector* vx=gsl_vector_alloc(N);
 	gsl_vector* vy=gsl_vector_alloc(N);
 
