@@ -10,8 +10,8 @@ int main(){
 	ann* network=ann_alloc(n,activation_function);
 
 	//Laver tabulated values baseret på function to fit
-	double a=-1,b=4;
-	int N=30;
+	double a=-1,b=3;
+	int N=25;
 	gsl_vector* vx=gsl_vector_alloc(N);
 	gsl_vector* vy=gsl_vector_alloc(N);
 
