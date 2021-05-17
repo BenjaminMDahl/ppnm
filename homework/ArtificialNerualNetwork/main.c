@@ -4,13 +4,13 @@
 #include"network.h"
 
 double activation_function(double x){return exp(-x*x);} // Gaussian
-double function_to_fit(double x){return cos(x)*cos(x)/x;}
+double function_to_fit(double x){return sin(x)*sin(x)/x;}
 int main(){
 	int n=4;
 	ann* network=ann_alloc(n,activation_function);
 
 	//Laver tabulated values baseret på function to fit
-	double a=0.001,b=11;
+	double a=-4,b=4;
 	int N=50;
 	gsl_vector* vx=gsl_vector_alloc(N);
 	gsl_vector* vy=gsl_vector_alloc(N);
