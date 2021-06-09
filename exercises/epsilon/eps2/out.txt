@@ -1,0 +1,9 @@
+sum up float=15.4037
+sum down float=18.8079
+
+ The difference comes from starting by summing small numbers up to big numbers lets the small numbers contribute where the other way around cuts off the small numbers in the end do to how float makes approximations of numbers
+the sum should not converges since it is the harmonic series however do to how floats a approximated i think it does here
+
+double sum up=20.9662
+double sum down=18.8079
+Again we shold get the same result, but do to round of errors we don't

@@ -1,0 +1,11 @@
+Vi prøver med a=4.5 b=3 tau=5 eps=10. 
+Vi forventer her at se et 0, da a+b=1.5 som ikke er lig hverken tau eller eps/2
+svaret er 0 som forventet
+
+Vi prøver nu med a=3 b=2 tau=1 eps=3. 
+Her forventer vi et 1 da a-b=tau
+svaret er 1 som forventet
+
+Vi prøver nu med a=1 b=0.5 tau=4 eps=0.666667. 
+Her forventer vi et 1 da a-b=eps/2
+svaret er 1 som forventet
