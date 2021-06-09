@@ -34,8 +34,9 @@ int main(){
 		}
 
 	FILE * Pi;
-	Pi = fopen ("file.txt", "w+");
-	fprintf(Pi,"Vi får på denne måde Pi=%g\n",pi);
+	Pi = fopen ("out.txt", "w+");
+	fprintf(Pi,"Vi har brugt Monte Carlo metoden hvor muliprocessing anvendes\n");
+	fprintf(Pi,"Vi får med denne metode Pi=%g\n",pi);
 	fclose(Pi);
 
 

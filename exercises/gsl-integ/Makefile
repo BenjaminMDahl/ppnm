@@ -21,7 +21,7 @@ myintegration.png: out.main.txt Makefile wolf.txt
 	set title "int log(x)/sqrt(x)";\
 	plot \
 	 "$<" using 1:2 with line title "GSL integral log(x)/sqrt(x)"\
-	,"wolf.txt" using 1:2 with points title "Tabulated data based on calculations from Wolframalpha.com"\
+	,"wolf.txt" using 1:2 with points title "Calculations from Wolframalpha.com"\
 	' | tee tmp.gpi | pyxplot
 
 
