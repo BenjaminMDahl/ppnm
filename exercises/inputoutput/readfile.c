@@ -6,9 +6,10 @@ int main(){
 	FILE* out=fopen("opg3.out.txt","w");
 	FILE* input=fopen("til3.txt","r");
 	while (fscanf(input, "%lg", & x ) == 1 ){
-		fprintf(out,"x= %lg, sin(x)=%lg, cos(x)=%lg \n", x,sin(x),cos(x));
+		fprintf(out,"x= %3lg, sin(x)=%10lg, cos(x)=%10lg \n", x,sin(x),cos(x));
         }
 	fclose(input);
 	fclose(out);
+	printf("\n");
 return 0;
 }

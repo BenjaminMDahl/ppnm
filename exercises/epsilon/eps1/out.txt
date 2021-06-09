@@ -1,24 +1,41 @@
-my max int = 2147483647
- From while loop
-my max int = 2147483647
- From for loop
-my max int = 2147483647
- From do while loop
-my min int = -2147483648
- From while loop
-my min int = -2147483648
- From for loop
-my min int = -2147483648
- From do while loop
+From while loop
+ my max int = 2147483647
+
+From for loop
+ my max int = 2147483647
+
+From do while loop
+ my max int = 2147483647
+
+From while loop
+ my min int = -2147483648
+
+From for loop
+ my min int = -2147483648
+
+From do while loop
+ my min int = -2147483648
+
 float difference=1.19209e-07
+
 value from float.h 1.19209e-07
+
 double difference=2.22045e-16
+
 value from float.h 2.22045e-16
+
 long double difference1.0842e-19
+
 value from float.h 1.0842e-19
+
 from loop float differnce=1.19209e-07
+
 from loop double differnce=2.22045e-16
+
 from loop long double differnce=1.0842e-19
-from dowhile float difference=1.19209e-07
+
+from do while float difference=1.19209e-07
+
 from dowhile double difference=2.22045e-16
+
 from dowhile float difference=1.0842e-19

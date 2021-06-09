@@ -7,7 +7,10 @@ all: out.txt
 
 out.txt: main
 	./$< > $@
+
 main: main.o komplex.o
-main.o komplex.o : komplex.h
+
+main.o komplex.o: komplex.h
+
 clean:
 	$(RM) main main.o komplex.o out.txt

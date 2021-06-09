@@ -7,11 +7,9 @@ default: out.txt
 
 out.txt: main
 	./main > out.txt
-main: main.o
-	$(CC) -o main main.o $(LDLIBS)
 
-main.o: main.c
-	$(CC) $(CFLAGS) -c main.c
+main: main.o fun.o
+
 
 clean:
-	$(RM) main main.o out.txt
+	$(RM) main *.o out.txt

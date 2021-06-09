@@ -7,8 +7,9 @@ int main(){
 	int items;
 	while(items!=EOF){
 		items = scanf("%lg",&x); // from stdin into "x"
-		printf("x=%lg sin(x)=%lg, cos(x)=%lg \n",x,sin(x),cos(x));
+		printf("x=%3lg sin(x)=%10lg, cos(x)=%10lg \n",x,sin(x),cos(x));
 	}
+	printf("\n");
 return 0;
 }
 

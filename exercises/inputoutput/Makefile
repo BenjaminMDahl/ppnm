@@ -17,4 +17,4 @@ opg3.out.txt:readfile
 
 .PHONEY:clean
 clean:
-	$(RM) opg* input* out* stdin cmdline
+	$(RM) opg* input* out* stdin cmdline readfile

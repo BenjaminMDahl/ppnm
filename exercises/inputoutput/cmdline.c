@@ -8,9 +8,10 @@ int main(int argc, char** argv){
 	else{
 		for(int i=1;i<argc;i++){
 			double x = atof(argv[i]);
-			printf("x=%2g sin(x)=%7g cos(x)=%7g \n",x,sin(x),cos(x));
+			printf("x=%3g sin(x)=%10g cos(x)=%10g \n",x,sin(x),cos(x));
 		}
 	}
+	printf("\n");
 return 0;
 }
 

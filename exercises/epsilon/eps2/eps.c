@@ -19,7 +19,7 @@ for(int i=int_max;i>=1;i--){
 
 printf("sum down float=%g\n",sum_down_float);
 printf("\n The difference comes from starting by summing small numbers up to big numbers lets the small numbers contribute where the other way around cuts off the small numbers in the end do to how float makes approximations of numbers\n");
-printf("\n the sum should not converges since it is the harmonic series however do to how floats a approximated i think it does here\n");
+printf("the sum should not converges since it is the harmonic series however do to how floats a approximated i think it does here\n\n");
 
 
 double double_sum_up=0.0;
@@ -35,6 +35,8 @@ for(int i=int_max;i>=1;i--){
 }
 
 printf("double sum down=%lg\n",double_sum_down);
+
+printf("Again we shold get the same result, but do to round of errors we don't");
 
 return 0;
 }
