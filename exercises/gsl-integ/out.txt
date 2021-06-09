@@ -1,0 +1,2 @@
+Vi får integral(log(x)/sqrt(x),0,1)=   -4
+Vi har plottet resultatet af dette sammen med værdier fra WolframAlpha på myintegration.png

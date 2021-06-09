@@ -5,12 +5,12 @@ CC = gcc
 
 .PHONEY:default
 
-default: out.main.txt myintegration.png
+default: data.txt myintegration.png
 
-out.main.txt:main
+data.txt:main
 	./$< > $@
 
-myintegration.png: out.main.txt Makefile wolf.txt
+myintegration.png: data.txt Makefile wolf.txt
 	echo '\
 	set terminal png;\
 	set output "$@";\
@@ -27,5 +27,5 @@ myintegration.png: out.main.txt Makefile wolf.txt
 
 .PHONEY:clean
 clean:
-	$(RM) out* main myintegration.png tmp.gpi
+	$(RM) out* data* main myintegration.png tmp.gpi
 

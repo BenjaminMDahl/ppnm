@@ -37,5 +37,10 @@ int main(){
 	for(double x=0.01;x<=1;x+=1.0/30)
 		printf("%10g %10g\n",x,myfun(x));
 
+	FILE * integral;
+	integral = fopen ("out.txt", "w+");
+	fprintf(integral,"Vi får integral(log(x)/sqrt(x),0,1)=%5g\n",myfun(1));
+	fprintf(integral,"Vi har plottet resultatet af dette sammen med værdier fra WolframAlpha på myintegration.png");
+	fclose(integral);
 return 0;
 }

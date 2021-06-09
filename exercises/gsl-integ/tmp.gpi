@@ -7,6 +7,6 @@ set xlabel "Upper integration limit";\
 set ylabel "integration value";\
 set title "int log(x)/sqrt(x)";\
 plot \
- "out.main.txt" using 1:2 with line title "GSL integral log(x)/sqrt(x)"\
+ "data.txt" using 1:2 with line title "GSL integral log(x)/sqrt(x)"\
 ,"wolf.txt" using 1:2 with points title "Calculations from Wolframalpha.com"\
 
