@@ -8,6 +8,7 @@ figure.png: points.txt Makefile cir.data
 	echo '\
 	set terminal png;\
 	set output "$@";\
+	set key outside;\
 	set tics out;\
 	set xlabel "x";\
 	set ylabel "y";\

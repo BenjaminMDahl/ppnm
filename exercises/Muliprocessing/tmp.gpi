@@ -1,6 +1,7 @@
 \
 set terminal png;\
 set output "figure.png";\
+set key outside;\
 set tics out;\
 set xlabel "x";\
 set ylabel "y";\
