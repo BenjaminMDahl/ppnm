@@ -22,7 +22,7 @@ e^x=\sum_{n=0}^\infty \frac{x^n}{n!}
 It can also be written as the limit of the following sequence
 
 	\begin{equation}\label{eq:sequence}
-e^x=\lim_{n\rightarrow\infty \left(1+x/n \right)^n}
+e^x=\lim_{n\rightarrow\infty} \left(1+x/n \right)^n
 	\end{equation}
 
 \section{The code}
@@ -32,7 +32,7 @@ if(x$>$1./8)return pow(ex(x/2),2);\\
 return 1+x*(1+x/2*(1+x/3*(1+x/4*(1+x/5*(1+x/6*(1+x/7*(1+x/8*(1+x/9*(1+x/10)))))))));\\
 }\\
 
-The code first checks if its argument is negative, because if it is, it will call itself again with a new argument, so it will end up returning a value on the form $\frac{1}{ex(-x)}$, which is mathematically identical. Then it checks if the argument is of a certain size, since this approach works best for small arguments, if it is above 1/8 we half the argument through another mathematical identity.
+The above code first checks if its argument is negative, because if it is, it will call itself again with a new argument, so it will end up returning a value on the form $\frac{1}{ex(-x)}$, which is mathematically identical. Then it checks if the argument is of a certain size, since this approach works best for small arguments, if it is above 1/8 we half the argument through another mathematical identity.
 When all this is checked and dealt with it finally tries to calculate $e^x$ based on the first 10 values of the taylor series written in an convoluted version to optimize the compilation speed.
 
 
@@ -40,7 +40,7 @@ When all this is checked and dealt with it finally tries to calculate $e^x$ base
 To test the method we have plotted it on figure \ref{fig:exp} together with the exp function from math.h, and the results are very neat.
 
 	\begin{figure}
-\includegraphics{exp-pyxplot.pdf}
+\includegraphics[scale=2.0]{exp-pyxplot.pdf}
 \caption{Excercise function vs math.h exp.}
 \label{fig:exp}
 	\end{figure}
