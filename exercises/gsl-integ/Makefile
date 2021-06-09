@@ -10,7 +10,7 @@ default: data.txt myintegration.png
 data.txt:main
 	./$< > $@
 
-myintegration.png: data.txt Makefile wolf.txt
+myintegration.png: data.txt Makefile Wolf.txt
 	echo '\
 	set terminal png;\
 	set output "$@";\
@@ -21,7 +21,7 @@ myintegration.png: data.txt Makefile wolf.txt
 	set title "int log(x)/sqrt(x)";\
 	plot \
 	 "$<" using 1:2 with line title "GSL integral log(x)/sqrt(x)"\
-	,"wolf.txt" using 1:2 with points pointtype 3 title "Calculations from Wolframalpha.com"\
+	,"Wolf.txt" using 1:2 with points pointtype 3 title "Calculations from Wolframalpha.com"\
 	' | tee tmp.gpi | pyxplot
 
 
