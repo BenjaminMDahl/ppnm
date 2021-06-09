@@ -34,7 +34,7 @@ return result;
 
 int main(){
 	//Gemmer for forskelige b for at kunne plotte
-	for(double x=0.1;x<=1;x+=1.0/30)
+	for(double x=0.01;x<=1;x+=1.0/30)
 		printf("%10g %10g\n",x,myfun(x));
 
 return 0;
