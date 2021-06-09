@@ -7,6 +7,6 @@ set xlabel "x";\
 set ylabel "y";\
 set title "Monte Carlo";\
 plot \
-"points.txt" using 1:2 with points pointtype 1 pointsize 0.1\
-,"cir.data" using 1:2 with line\
+"points.txt" using 1:2 with points pointtype 1 pointsize 0.1 title "Random points"\
+,"cir.data" using 1:2 with line title "Quadrand"\
 

@@ -1,2 +1,2 @@
 Vi har brugt Monte Carlo metoden hvor muliprocessing anvendes
-Vi får med denne metode Pi=3.1248
+Vi får med denne metode Pi=3.1272
