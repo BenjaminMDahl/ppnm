@@ -8,7 +8,16 @@
 void vector_print(char s[], gsl_vector* v){
 	printf("%s\n",s);
 	for(int i=0;i< v->size ;i++)printf("%10g \n",gsl_vector_get(v,i));
+	printf("\n");
 	}
+
+void matrix_print(char s[], gsl_matrix* A){
+	printf("%s\n",s);
+	for(int i=0;i< A->size1 ;i++){							// Note til selv size1=vertical, size2=horisontal
+		for(int j=0;j< A->size2 ;j++)printf("%10g ",gsl_matrix_get(A,i,j));
+		printf("\n");}
+	printf("\n");
+}
 
 int main(){
 	int n=3;
@@ -34,8 +43,11 @@ int main(){
 		}
 	gsl_linalg_HH_solve(Acopy,b,x);	 	//Ax=b
 	gsl_blas_dgemv(CblasNoTrans, 1 , A, x, 0 , y);
+	matrix_print("The matrix we work with is:",A);
 	vector_print("Our b vector:",b);
-	vector_print("Check: A*x should be equal b, where x comes from HH_solve:",y);
+	vector_print("From gsl_linalg_HH_solve we get x to:",x);
+	vector_print("We check that A*x=b by using gsl_blas_dgemv on A and x",y);
+	printf("We see we get the wanted result since A*x=b\n");
 
 gsl_matrix_free(A);
 gsl_matrix_free(Acopy);

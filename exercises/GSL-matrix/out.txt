@@ -1,8 +1,21 @@
+The matrix we work with is:
+      6.13       -2.9       5.86 
+      8.08      -6.31      -3.89 
+     -4.36          1       0.19 
+
 Our b vector:
       6.23 
       5.37 
       2.29 
-Check: A*x should be equal b, where x comes from HH_solve:
+
+From gsl_linalg_HH_solve we get x to:
+   -1.1379 
+  -2.83303 
+  0.851459 
+
+We check that A*x=b by using gsl_blas_dgemv on A and x
       6.23 
       5.37 
       2.29 
+
+We see we get the wanted result since A*x=b
