@@ -11,25 +11,29 @@ return f;
 }
 
 double myfun(double z){
-gsl_integration_workspace * w
-    = gsl_integration_workspace_alloc (1000);
-  double b=z;
-  double result, error;
-  double alpha = 1.0;
+	gsl_integration_workspace * w = gsl_integration_workspace_alloc (1000); //Gør plads i hukommelsen til GSL integration
 
-  gsl_function F;
-  F.function = &f;
-  F.params = &alpha;
+	//Gør de relevante doubles klar//
+	double b=z;
+ 	double result, error;
+ 	double alpha = 1.0;
 
+	//Laves funktionen f til en GSL_funktion med de relevante parametere(alpha)//
+ 	gsl_function F;
+ 	F.function = &f;
+ 	F.params = &alpha;
 
-  gsl_integration_qags (&F, 0, b, 0, 1e-7, 1000,
-                        w, &result, &error);
+	// Bruger QAGS rotunien til at udregne integralet, svaret gemmes i result.
+ 	gsl_integration_qags (&F, 0, b, 0, 1e-7, 1000,w, &result, &error);
 
-  gsl_integration_workspace_free (w);
-  return result;
+	// Befrirer hukommelsen brugt
+ 	gsl_integration_workspace_free (w);
+
+return result;
 }
 
 int main(){
+	//Gemmer for forskelige b for at kunne plotte
 	for(double x=0.1;x<=1;x+=1.0/30)
 		printf("%10g %10g\n",x,myfun(x));
 
