@@ -15,6 +15,7 @@ myintegration.png: data.txt Makefile Wolf.txt
 	set terminal png;\
 	set output "$@";\
 	set key top left;\
+	set fontsize 0.5;\
 	set tics out;\
 	set xlabel "Upper integration limit";\
 	set ylabel "integration value";\
