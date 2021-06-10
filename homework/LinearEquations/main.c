@@ -1,4 +1,3 @@
-#include<stdio.h>
 #include<time.h>
 #include<math.h>
 #include<gsl/gsl_vector.h>
@@ -7,6 +6,7 @@
 #include<gsl/gsl_linalg.h>
 #include<assert.h>
 #define RND (double)rand()/RAND_MAX
+#include"solver.h"
 
 void vector_print(char s[], gsl_vector* v){
 	printf("%s\n",s);
@@ -15,9 +15,15 @@ void vector_print(char s[], gsl_vector* v){
 }
 
 void matrix_print(char s[], gsl_matrix* A){
+	int n=A->size1, m=A->size2;
+	for(int i=0;i<n;i++){
+		for(int j=0; j<m;j++){
+			if(fabs(gsl_matrix_get(A,i,j))<10e-7)gsl_matrix_set(A,i,j,0);
+		}
+	}
 	printf("%s\n",s);
-	for(int i=0;i< A->size1 ;i++){							// Note til selv size1=vertical, size2=horisontal
-		for(int j=0;j< A->size2 ;j++)printf("%10g ",gsl_matrix_get(A,i,j));
+	for(int i=0;i< n ;i++){							// Note til selv size1=vertical, size2=horisontal
+		for(int j=0;j< m ;j++)printf("%10g ",gsl_matrix_get(A,i,j));
 		printf("\n");}
 	printf("\n");
 }
@@ -30,15 +36,6 @@ void make_random_matrix(gsl_matrix* A){
 			gsl_matrix_set(A,i,j,Aij);
 			}
 }
-
-void GS_decomp(gsl_matrix* A, gsl_matrix* R);
-
-void backsub(gsl_matrix* R, gsl_vector* c);
-
-void GS_solve(gsl_matrix* Q, gsl_matrix* R, gsl_vector* b, gsl_vector* x);
-
-
-void GS_inverse(gsl_matrix* Q, gsl_matrix* R, gsl_matrix* I);
 
 int main(){
 
@@ -87,10 +84,10 @@ int main(){
 
 	//Opgave A del 1) Gram-Schmidt orthogonalization//
 
-	printf("Opgave A del 1)\n\n");
+	printf("OPGAVE A del 1 Gram-Schmidt)\n\n");
 
 	//Data laves
-	int n=5, m=3; assert(n>=m);
+	int n=10, m=5; assert(n>=m);
 	gsl_matrix* A=gsl_matrix_alloc(n,m);
 	gsl_matrix* A_pro=gsl_matrix_alloc(n,m);
 	gsl_matrix* QtQ=gsl_matrix_alloc(m,m);
@@ -105,8 +102,7 @@ int main(){
 	gsl_blas_dgemm(CblasTrans,CblasNoTrans, 1,A ,A,0, QtQ);
 
 	matrix_print("Vi printer A så vi har den til sammenligning",Acopy);
-	printf("pause\n");
-	matrix_print("Q som er den nye A",A);
+	matrix_print("Q som er blevet gemt i A",A);
 	matrix_print("Det ses at R er upper triangular",R);
 	matrix_print("Det ses at Q^(T)Q giver idenditet",QtQ);
 	matrix_print("Det tjekkes om QR=A, som var den første matrix der blev printet",A_pro);
@@ -120,10 +116,10 @@ gsl_matrix_free(A_pro);
 
 
 	//Opgave A del 2 ligning løsning//
-	printf("Opgave A del 2)\n\n");
+	printf("OPGAVE A del 2 lignings løsning)\n\n");
 
 	//Data laves
-	int N=5;
+	int N=10;
 	gsl_matrix* B=gsl_matrix_alloc(N,N);
 	gsl_matrix* Bcopy=gsl_matrix_alloc(N,N);
 	gsl_matrix* Rb=gsl_matrix_alloc(N,N);
@@ -141,10 +137,12 @@ gsl_matrix_free(A_pro);
 	GS_solve(B,Rb,b,x);
 	gsl_blas_dgemv(CblasNoTrans,1,Bcopy,x,0,y);
 
-	printf("Tjekker om b og Ax er ens\n");
-	vector_print("b var fra starten af",b);
-	vector_print("A*x giver",y);
-	printf("Det ses at de to er ens\n");
+
+	matrix_print("Vi ønsker at løse for Ax=b hvor A er:",Bcopy);
+	vector_print("og b er:",b);
+	vector_print("Når vi har brugt vores rotiner GS_decomp og GS_solve på A og gemt resultatet i x får vi x til",x);
+	vector_print("Vi tjekker om alt gør som det skal, ved at gange A med x og ser om det giver b",y);
+	printf("Det ses at de to er ens\n\n\n");
 
 // Vi rydder op
 gsl_matrix_free(B);
@@ -156,10 +154,10 @@ gsl_vector_free(x);
 
 
 	//Opgave B invers//
-	printf("Opgave B)\n\n");
+	printf("OPGAVE B Matrix invers)\n\n\n");
 
 	//Laver data
-	N=4;
+	N=5;
 	gsl_matrix* C=gsl_matrix_alloc(N,N);
 	gsl_matrix* I=gsl_matrix_alloc(N,N);
 	gsl_matrix* Ccopy=gsl_matrix_alloc(N,N);
@@ -177,8 +175,8 @@ gsl_vector_free(x);
 	matrix_print("Her er dens udregnede invers",I);
 	matrix_print("Her ses at A*B giver identitets matricen",res);
 	gsl_blas_dgemm(CblasNoTrans,CblasNoTrans,1,I,Ccopy,0, res);
-	matrix_print("Det samme fås for B*A så B=A^(-1)",res);
-
+	matrix_print("Det samme fås for B*A",res);
+	printf("Vi konkluderer altså, at vores invers routine med Gram_Schmidt virker og at B=A^(-1)\n\n\n");
 // Vi rydder op
 gsl_matrix_free(C);
 gsl_matrix_free(Ccopy);
@@ -188,7 +186,7 @@ gsl_matrix_free(res);
 
 
 	//Opgave C time
-	printf("Opgave C)\n\n");
+	printf("OPGAVE C Sammenligning med GSL)\n\n");
 
 
 	int N_small=100, N_large=500;
@@ -210,7 +208,7 @@ gsl_matrix_free(res);
 	cpu_time_used_lillen = ((double) (end - start)) / CLOCKS_PER_SEC;
 
 	printf("tiden det tog for at decompose en n=100 sqaure matrix=\n");
-	printf("%10g\n",cpu_time_used_lillen);
+	printf("%10g\n\n",cpu_time_used_lillen);
 
 	start = clock();
 	GS_decomp(D,rD);
@@ -218,20 +216,20 @@ gsl_matrix_free(res);
 	cpu_time_used_stortn = ((double) (end - start)) / CLOCKS_PER_SEC;
 
 	printf("tiden det tog for at decompose en n=500 sqaure matrix=\n");
-	printf("%10g\n",cpu_time_used_stortn);
+	printf("%10g\n\n",cpu_time_used_stortn);
 	printf("Tidsforskellen for tid(n=500)/tid(n=100)=\n");
-	printf("%10g\n",cpu_time_used_stortn/cpu_time_used_lillen);
-	printf("Det ses at når n bliver 5 gange større er tiden blevet ca 5^3=125 gange større som forventet\n");
+	printf("%10g\n\n",cpu_time_used_stortn/cpu_time_used_lillen);
+	printf("Det ses at når n bliver 5 gange større er tiden blevet ca 5^3=125 gange større som forventet.\n\n");
 
 	start = clock();
 	gsl_linalg_QR_decomp(Dcopy,T);
 	end = clock();
 	cpu_time_used_stortn_gsl = ((double) (end - start)) / CLOCKS_PER_SEC;
 
-	printf("tiden det tog for at decompose en n=500 sqaure matrix med GSL=\n");
-	printf("%10g\n",cpu_time_used_stortn_gsl);
+	printf("Tiden det tog for at decompose en n=500 sqaure matrix med GSL=\n");
+	printf("%10g\n\n",cpu_time_used_stortn_gsl);
 	printf("Tidsforskellen for minkode/GSL\n");
-	printf("%10g\n",cpu_time_used_stortn/cpu_time_used_stortn_gsl);
+	printf("%10g\n\n",cpu_time_used_stortn/cpu_time_used_stortn_gsl);
 	printf("Det ses at GSL's metode er noget hurtigere end min");
 
 
@@ -244,4 +242,3 @@ gsl_matrix_free(res);
 
 
 return 0;}
-// hvis du glemmer at free et alloc space er det ikke katastrofe inden for en main function, fordi den gør det selv ved exit af main functionen
