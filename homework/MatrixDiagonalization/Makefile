@@ -15,11 +15,11 @@ eigenfunctions.png: out.txt
 	set ylabel "Energy";\
 	set title "Eigenfunctions";\
 	plot \
-	"$<" index 1 using 1:2 with points color red title "Wavefunction numerical k=1" \
-	,"$<" index 1 using 1:3 with points color blue title "Wavefunction numerical k=2" \
+#	"$<" index 1 using 1:2 with points color red title "Wavefunction numerical k=1" \
+	"$<" index 1 using 1:3 with points color blue title "Wavefunction numerical k=2" \
 	,"$<" index 1 using 1:4 with points color green title "Wavefunction numerical k=3" \
 	,"$<" index 1 using 1:5 with points color purple title "Wavefunction numerical k=4" \
-	,"$<" index 1 using 1:6 with lines color red title "Wavefunction analytical k=1" \
+#	,"$<" index 1 using 1:6 with lines color red title "Wavefunction analytical k=1" \
 	,"$<" index 1 using 1:7 with lines color blue title "Wavefunction analytical k=2" \
 	,"$<" index 1 using 1:8 with lines color green title "Wavefunction analytical k=3" \
 	,"$<" index 1 using 1:9 with lines color purple title "Wavefunction analytical k=4" \
