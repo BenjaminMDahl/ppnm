@@ -9,7 +9,7 @@ eigenfunctions.png: out.txt
 	echo '\
 	set term png;\
 	set output "$@";\
-	set key top;\
+	set key outside;\
 	set fontsize 0.5;\
 	set xlabel "x";\
 	set ylabel "Energy";\
