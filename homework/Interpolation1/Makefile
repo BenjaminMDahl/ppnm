@@ -9,11 +9,15 @@ default:out.main.txt out.quadratic.txt gsl.txt LinearSpline.png CubicSpline.png 
 out.main.txt: main
 	./$< > $@
 
-main: main.c
+main: main.o Splines.o
+
+main.o Splines.o quadratic: Splines.h
 
 
 out.quadratic.txt: quadratic
 	./$< > $@
+
+quadratic: quadratic.o Splines.o
 
 gsl.txt: gsl
 	./$< > $@
@@ -77,4 +81,4 @@ CubicSpline.png:  out.main.txt Makefile gsl.txt
 
 .PHONEY:clean
 clean:
-	$(RM) *txt main gsl *png quadratic
+	$(RM) *txt main gsl *png quadratic *.o
