@@ -11,22 +11,17 @@ void vector_print(char s[], gsl_vector* v);
 
 void matrix_print(char s[], gsl_matrix* A);
 
-
 void make_rand_sym_matrix(gsl_matrix* A);
 
 // Fra opgaveformulering//
 void timesJ(gsl_matrix* A, int p, int q, double theta);
-
-
 void Jtimes(gsl_matrix* A, int p, int q, double theta);
-
-
 void jacobi_diag(gsl_matrix* A , gsl_matrix* V);
+
 //Optimeret udgave af overstående//
 
 void timesJ_op(gsl_matrix* A, int p, int q, double theta);
 void Jtimes_op(gsl_matrix* A, int p, int q, double theta);
-
 void jacobi_diag_op(gsl_matrix* A , gsl_matrix* V);
 
 
@@ -34,10 +29,11 @@ void jacobi_diag_op(gsl_matrix* A , gsl_matrix* V);
 
 int main(){
 
-printf("#index0:stof der ikke skal plottes\n");
+printf("#index0:stof der ikke skal plottes\n\n");
+printf("OPGAVE A\n\n");
 // Data laves
 
-int n=4;
+int n=8;
 gsl_matrix* A=gsl_matrix_alloc(n,n);
 gsl_matrix* Acopy=gsl_matrix_alloc(n,n);
 gsl_matrix* V=gsl_matrix_alloc(n,n);
@@ -57,14 +53,18 @@ matrix_print("Min A efter Jacobi algorithmen, hvilket skulles svare til D",A);
 matrix_print("Min V matrice med egenvektorer",V);
 gsl_blas_dgemm(CblasTrans,CblasNoTrans,1,V,Acopy,0, res1);
 gsl_blas_dgemm(CblasNoTrans,CblasNoTrans,1,res1,V,0, res12);
-matrix_print("Vi udregner V^(T)AV og ser at det give vores D igen:",res12);
+matrix_print("Vi udregner V^(T)AV med gsl_blas og ser at det give vores D igen:",res12);
 gsl_blas_dgemm(CblasNoTrans,CblasNoTrans,1,V,A,0, res2);
 gsl_blas_dgemm(CblasNoTrans,CblasTrans,1,res2,V,0, res22);
 matrix_print("Vi udregner VDV^(T) og ser at vi får A igen",res22);
 gsl_blas_dgemm(CblasTrans,CblasNoTrans,1,V,V,0,res3);
 matrix_print("Vi udregner V^(T)V og ser at vi får en identitets matrice ud",res3);
+printf("Vi konkluderer at vores matrix diagonalisations rountine fungerer som tiltænkt.\n\n");
 
 // Opgave B
+printf("OPGAVE B\n\n");
+printf("Vi forsøger nu at bruge vores routine på et typisk kvante fysik problem, nemlig en partikel i en boks\n");
+
 int N=20;
 double s=1.0/(N+1);
 gsl_matrix* H = gsl_matrix_alloc(N,N);
@@ -78,7 +78,7 @@ for(int i=0;i<N-1;i++){
 gsl_matrix_set(H,n-1,n-1,-2);
 gsl_matrix_scale(H,-1/s/s);
 
-matrix_print("Min H:",H);
+matrix_print("Min Hamilton(H):",H);
 jacobi_diag(H,V_h);
 matrix_print("H efter jacobi",H);
 matrix_print("Mit V som er eigenfunktioner:",V_h);
@@ -87,9 +87,12 @@ for (int k=0; k < N/3; k++){
 	double exact = M_PI*M_PI*(k+1)*(k+1);
 	double calculated = gsl_matrix_get(H,k+1,k+1);
    	printf("%i %g %g\n",k,calculated,exact);}
+printf("\n");
+printf("Et plot af nogle af de lavt liggende energi eigenfunktionerne kan ses sammen med de analytiske på eigenfunctions.png\n\n");
 
 	// Opgave C Comparison//
-printf("\n Nu opgave C hvor vi undersøger tiden af vores operationer\n");
+printf("OPGAVE C\n\n");
+printf("Nu undersøges tiden af vores operationer\n");
 gsl_matrix* a_10=gsl_matrix_alloc(25,25);
 gsl_matrix* v_10=gsl_matrix_alloc(25,25);
 make_rand_sym_matrix(a_10);
@@ -130,7 +133,7 @@ printf("Det ses at forskellen er næsten 1000, hvilket er at forvente, hvis der 
 
 printf("Nu sammenligner vi vores rotine med GSL. For den samme n=250 matrice tog den %6g i CPU tid.\n",cpu_time_used_gsl);
 printf("Tiden i forhold til hinanden hvor vi har MinMetode/GSL giver %5g\n",cpu_time_used_100/cpu_time_used_gsl);
-printf("Det ses at GSL stadig er hurtigere, så vi prøver nu at optimere vores kode, ved kun at opdatere den øvre halvdel af matricen vi rotere\n");
+printf("Det ses at GSL er noget hurtigere,\n");
 
 /*
 

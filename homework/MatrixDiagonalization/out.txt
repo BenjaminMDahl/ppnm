@@ -1,41 +1,73 @@
 #index0:stof der ikke skal plottes
+
+OPGAVE A
+
 Min symmetriske tilfældige matrice
-  0.840188   0.394383   0.783099    0.79844 
-  0.394383   0.911647   0.197551   0.335223 
-  0.783099   0.197551    0.76823   0.277775 
-   0.79844   0.335223   0.277775    0.55397 
+  0.840188   0.394383   0.783099    0.79844   0.911647   0.197551   0.335223    0.76823 
+  0.394383   0.277775    0.55397   0.477397   0.628871   0.364784   0.513401    0.95223 
+  0.783099    0.55397   0.916195   0.635712   0.717297   0.141603   0.606969  0.0163006 
+   0.79844   0.477397   0.635712   0.242887   0.137232   0.804177   0.156679   0.400944 
+  0.911647   0.628871   0.717297   0.137232    0.12979   0.108809   0.998925   0.218257 
+  0.197551   0.364784   0.141603   0.804177   0.108809   0.512932   0.839112    0.61264 
+  0.335223   0.513401   0.606969   0.156679   0.998925   0.839112   0.296032   0.637552 
+   0.76823    0.95223  0.0163006   0.400944   0.218257    0.61264   0.637552   0.524287 
 
 Min A efter Jacobi algorithmen, hvilket skulles svare til D
- -0.240749          0          0          0 
-         0   0.351774          0          0 
-         0          0   0.729058          0 
-         0          0          0    2.23395 
+   -1.2283          0          0          0          0          0          0          0 
+         0  -0.939383          0          0          0          0          0          0 
+         0          0  -0.537476          0          0          0          0          0 
+         0          0          0  0.0383854          0          0          0          0 
+         0          0          0          0   0.487775          0          0          0 
+         0          0          0          0          0   0.579752          0          0 
+         0          0          0          0          0          0    1.14613          0 
+         0          0          0          0          0          0          0     4.1932 
 
 Min V matrice med egenvektorer
-  0.715267   -0.18211   0.208256   0.641762 
--0.00937725   0.303217  -0.873804   0.380049 
- -0.394519   0.648313   0.438564   0.481359 
- -0.576766   -0.67423  -0.027515   0.460433 
+ -0.339677   0.268574  0.0620133   0.462449   0.352248   0.458269   0.275867   0.429641 
+ -0.319518   0.272702  -0.456665  -0.634653    0.23661  -0.116131  -0.144954   0.348902 
+  0.115932   0.108697    0.44792  -0.393412  -0.388358  -0.040083   0.569037   0.378295 
+ 0.0568327  -0.588892  -0.356576 -0.0679772  -0.358401   0.535785 -0.0787713   0.310625 
+  0.604733  -0.015531  -0.439595   0.266392    0.17907  -0.378293   0.277463   0.343062 
+  0.143622   0.533924 0.00123673   0.237358  -0.529569  0.0029939  -0.522538    0.29062 
+ -0.497192  -0.411756   0.143379   0.257252  -0.121403  -0.580248  -0.119281   0.361755 
+  0.363771  -0.200084   0.496015  -0.174586    0.46197  0.0896058  -0.456748   0.347941 
 
-Vi udregner V^(T)AV og ser at det give vores D igen:
- -0.240749          0          0          0 
-         0   0.351774          0          0 
-         0          0   0.729058          0 
-         0          0          0    2.23395 
+Vi udregner V^(T)AV med gsl_blas og ser at det give vores D igen:
+   -1.2283          0          0          0          0          0          0          0 
+         0  -0.939383          0          0          0          0          0          0 
+         0          0  -0.537476          0          0          0          0          0 
+         0          0          0  0.0383854          0          0          0          0 
+         0          0          0          0   0.487775          0          0          0 
+         0          0          0          0          0   0.579752          0          0 
+         0          0          0          0          0          0    1.14613          0 
+         0          0          0          0          0          0          0     4.1932 
 
 Vi udregner VDV^(T) og ser at vi får A igen
-  0.840188   0.394383   0.783099    0.79844 
-  0.394383   0.911647   0.197551   0.335223 
-  0.783099   0.197551    0.76823   0.277775 
-   0.79844   0.335223   0.277775    0.55397 
+  0.840188   0.394383   0.783099    0.79844   0.911647   0.197551   0.335223    0.76823 
+  0.394383   0.277775    0.55397   0.477397   0.628871   0.364784   0.513401    0.95223 
+  0.783099    0.55397   0.916195   0.635712   0.717297   0.141603   0.606969  0.0163006 
+   0.79844   0.477397   0.635712   0.242887   0.137232   0.804177   0.156679   0.400944 
+  0.911647   0.628871   0.717297   0.137232    0.12979   0.108809   0.998925   0.218257 
+  0.197551   0.364784   0.141603   0.804177   0.108809   0.512932   0.839112    0.61264 
+  0.335223   0.513401   0.606969   0.156679   0.998925   0.839112   0.296032   0.637552 
+   0.76823    0.95223  0.0163006   0.400944   0.218257    0.61264   0.637552   0.524287 
 
 Vi udregner V^(T)V og ser at vi får en identitets matrice ud
-         1          0          0          0 
-         0          1          0          0 
-         0          0          1          0 
-         0          0          0          1 
+         1          0          0          0          0          0          0          0 
+         0          1          0          0          0          0          0          0 
+         0          0          1          0          0          0          0          0 
+         0          0          0          1          0          0          0          0 
+         0          0          0          0          1          0          0          0 
+         0          0          0          0          0          1          0          0 
+         0          0          0          0          0          0          1          0 
+         0          0          0          0          0          0          0          1 
 
-Min H:
+Vi konkluderer at vores matrix diagonalisations rountine fungerer som tiltænkt.
+
+OPGAVE B
+
+Vi forsøger nu at bruge vores routine på et typisk kvante fysik problem, nemlig en partikel i en boks
+Min Hamilton(H):
        882       -441          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0 
       -441        882       -441          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0 
          0       -441        882       -441          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0 
@@ -109,15 +141,19 @@ k: calculated vs exact (hbar^2/2mL^2=1)
 4 274.277 246.74
 5 382.362 355.306
 
- Nu opgave C hvor vi undersøger tiden af vores operationer
+Et plot af nogle af de lav energi eigenfunktionerne kan ses sammen med de analytiske på eigenfunctions.png
+
+OPGAVE C
+
+Nu undersøges tiden af vores operationer
 Vi undersøger tiden det tager for vores routine at køre, først for n=100 så n=1000
-Det tog 0.001973 i CPU tid at køre jacobi diag for n=25
-Det tog 2.07599 i CPU tid at køre jacobi diag for n=250
-Tiden delt med hinanden giver 1052.2
+Det tog 0.001939 i CPU tid at køre jacobi diag for n=25
+Det tog 2.28189 i CPU tid at køre jacobi diag for n=250
+Tiden delt med hinanden giver 1176.84
 Det ses at forskellen er næsten 1000, hvilket er at forvente, hvis der bruges N^3 operatrioner
 
-Nu sammenligner vi vores rotine med GSL. For den samme n=250 matrice tog den 0.02201 i CPU tid.
-Tiden i forhold til hinanden hvor vi har MinMetode/GSL giver 94.3202
+Nu sammenligner vi vores rotine med GSL. For den samme n=250 matrice tog den 0.022636 i CPU tid.
+Tiden i forhold til hinanden hvor vi har MinMetode/GSL giver 100.808
 Det ses at GSL stadig er hurtigere, så vi prøver nu at optimere vores kode, ved kun at opdatere den øvre halvdel af matricen vi rotere
 
 

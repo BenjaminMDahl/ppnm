@@ -9,18 +9,11 @@
 
 
 void vector_print(char s[], gsl_vector* v);
-
 void matrix_print(char s[], gsl_matrix* A);
-
 void GS_decomp(gsl_matrix* A, gsl_matrix* R);
-
 void backsub(gsl_matrix* R, gsl_vector* c);
-
 void GS_solve(gsl_matrix* Q, gsl_matrix* R, gsl_vector* b, gsl_vector* x);
-
-
 void GS_inverse(gsl_matrix* Q, gsl_matrix* R, gsl_matrix* I);
-
 void least_square(int n, int m, double* x,double* y, double* dy,double f(int,double),gsl_vector* c,gsl_matrix* dc);
 
 
