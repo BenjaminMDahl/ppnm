@@ -159,7 +159,7 @@ printf("\n\n");
 printf("#index1: numerical vs analytical(Til plotning)\n");
  	for(int i=0;i<N;i++){
 	double k=(i+1.0)/(N+1);
-	printf("%6g %6g %6g %6g %6g %6g %6g %6g %6g\n",k, gsl_matrix_get(V_h,i,0), gsl_matrix_get(V_h,i,1)+1.5, gsl_matrix_get(V_h,i,2)+3,gsl_matrix_get(V_h,i,3)+4.5, sqrt(1/M_PI)*sin(k/2),sqrt(1/M_PI)*sin(k*M_PI)+1.5,-sqrt(1/M_PI)*sin(k*2*M_PI)+3,-sqrt(1/M_PI)*cos(3*k*M_PI)+4.5);
+	printf("%6g %6g %6g %6g %6g %6g %6g %6g %6g\n",k, gsl_matrix_get(V_h,i,0), gsl_matrix_get(V_h,i,1)+1.5, gsl_matrix_get(V_h,i,2)+3,gsl_matrix_get(V_h,i,3)+4.5, sqrt(1/M_PI)*sin(k/2),sqrt(1/M_PI)*sin(k*M_PI)+1.5,-sqrt(1/M_PI)*sin(k*2*M_PI)+3,sqrt(2)*sin(3*k*M_PI)+4.5);
 	}
 
 
