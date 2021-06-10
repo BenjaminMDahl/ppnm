@@ -9,4 +9,4 @@ main: main.o solver.o
 
 .PHONEY:clean
 clean:
-	$(RM) *txt main
+	$(RM) *txt main *.o

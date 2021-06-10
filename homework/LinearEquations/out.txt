@@ -137,23 +137,23 @@ Det samme fås for B*A
 Vi konkluderer altså, at vores invers routine med Gram_Schmidt virker og at B=A^(-1)
 
 
-OPGAVE C sammenligning med GSL)
+OPGAVE C Sammenligning med GSL)
 
 tiden det tog for at decompose en n=100 sqaure matrix=
-  0.006003
+  0.006038
 
 tiden det tog for at decompose en n=500 sqaure matrix=
-  0.782399
+  0.773397
 
 Tidsforskellen for tid(n=500)/tid(n=100)=
-   130.335
+   128.088
 
 Det ses at når n bliver 5 gange større er tiden blevet ca 5^3=125 gange større som forventet.
 
 Tiden det tog for at decompose en n=500 sqaure matrix med GSL=
-  0.099235
+  0.100201
 
 Tidsforskellen for minkode/GSL
-    7.8843
+   7.71846
 
 Det ses at GSL's metode er noget hurtigere end min
