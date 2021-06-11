@@ -6,6 +6,12 @@
 double activation_function(double x){return x*exp(-x*x);} // Gaussian wavelet
 double function_to_fit(double x){return cos(x/2)*x*x;}
 int main(){
+	// Intro
+	printf("#index 0: Intro\n");
+	printf("Vi har i denne opgave lavet et kunstigt neuralt netværk, som kan forudsige funktionsværdier,\n baseret på nogle tabelværdier for den givne funtkion.\n");
+	printf("Vi har testet den på funktionen cos(x/2)*x*x og vores activations funktion er en Gaussian wavelet(x*exp(-x*x)).\n");
+	printf("Data'ene både de analytiske og dem fra netværket findes i txt filen her, og er plottet på fit.png\n\n\n");
+
 	int n=4;
 	ann* network=ann_alloc(n,activation_function);
 
