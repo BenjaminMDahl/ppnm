@@ -40,7 +40,7 @@ int qnewton(
 	gsl_matrix_set_identity(B);
 	numeric_gradient(F,x,grad);
 	double fx=F(x),fz;
-	while(steps<1000){
+	while(steps<2000){
 	steps++;
 	gsl_blas_dgemv(CblasNoTrans,-1,B,grad,0,step);  //Svarer til ligning 6 i kapitlet om minimization and optimization
 

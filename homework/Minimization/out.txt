@@ -1,20 +1,25 @@
-Minimum for f(x,y)=x^2-x+y^2-y
+OPGAVE A Minimization)
+
+Vi starter med at teste vores rountine ved at finde minimum for f(x,y)=x^2-x+y^2-y.
+ Vi finder det til:
        0.5 
        0.5 
 
-På så mange skridt = 3
+Dette passer meget godt med det forventede. Det blev fundet på 3 skridt = 3
 
-Det minimum jeg finder for Rosenbrock's valley function er:
-  0.586452 
-  0.331187 
+Vi prøver med noget lidt svære. Vi undersøger Rosenbrock's valley funktionen.
+ Til denne finder vi minimum ved:
+  0.999997 
+  0.999995 
 
-Det blev gjort på 1000 skridt
+Dette er tæt på (1,1), hvilket er det forventede for denne udgave af RosenBbrock's valley funktion(a=1 og b=100).
+ Det blev gjort med startgæt (x,y)=(1,0) og på 2000 skridt
 
-Det minimum jeg finder for Himmelblau's function, er:
+Vi prøver nu for Himmelblau's funktion. Her findes minimum ved er:
          3 
          2 
 
-Det blev gjort på 49 skridt
+Dette passer godt med et af de forventede(Der burde være fire). Det var med et start gæt på (x,y)=(3,0) og blev gjort på 49 skridt
 
 OPGAVE B Berit-Wigner
 
@@ -28,7 +33,7 @@ Det minimum jeg finder for Berit Wigner er følgende(Hvor vi har mass,width,A)
 0.00977566 
    1.79271 
 
-Dette blev opnået på 1000 skridt
+Dette blev opnået på 2000 skridt
 Vi har fået oplyst i opgaven at CERN fandt den til 125.3(6), så vi er meget tilfredse med dette resultat
 Som en sidste ting har vi prøvet at bruge vores minimerings fit til at lave plottet BreitWigner.png, sammen med CERN data,en og resultatet er meget tilfredsstillende
 

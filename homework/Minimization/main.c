@@ -31,24 +31,26 @@ gsl_vector* x=gsl_vector_calloc(2);
 
 steps=qnewton(fun,x,0.0005);
 
-vector_print("Minimum for f(x,y)=x^2-x+y^2-y",x);
-printf("På så mange skridt = %i\n\n",steps);
+printf("OPGAVE A Minimization)\n\n");
+vector_print("Vi starter med at teste vores rountine ved at finde minimum for f(x,y)=x^2-x+y^2-y.\n Vi finder det til:",x);
+printf("Dette passer meget godt med det forventede. Det blev fundet på 3 skridt = %i\n\n",steps);
 
 
 //Rosenbrock
 gsl_vector* R=gsl_vector_calloc(2);
-gsl_vector_set(R,0,-0.9);
-gsl_vector_set(R,1,0.9);
+gsl_vector_set(R,0,1);
+gsl_vector_set(R,1,0);
 
 stepsR=qnewton(Rosenbrock,R,0);
-vector_print("Det minimum jeg finder for Rosenbrock's valley function er:",R);
-printf("Det blev gjort på %i skridt\n\n",stepsR);
+vector_print("Vi prøver med noget lidt svære. Vi undersøger Rosenbrock's valley funktionen.\n Til denne finder vi minimum ved:",R);
+printf("Dette er tæt på (1,1), hvilket er det forventede for denne udgave af RosenBbrock's valley funktion(a=1 og b=100).\n Det blev gjort med startgæt (x,y)=(1,0) og på %i skridt\n\n",stepsR);
+
 //Himmelblau
 gsl_vector* H=gsl_vector_calloc(2);
-gsl_vector_set(H,0,3.0);gsl_vector_set(H,0,0);
+gsl_vector_set(H,0,3);gsl_vector_set(H,0,0);
 stepsH=qnewton(Himmelblau,H,0.0001);
-vector_print("Det minimum jeg finder for Himmelblau's function, er:",H);
-printf("Det blev gjort på %i skridt\n\n",stepsH);
+vector_print("Vi prøver nu for Himmelblau's funktion. Her findes minimum ved er:",H);
+printf("Dette passer godt med et af de forventede(Der burde være fire). Det var med et start gæt på (x,y)=(3,0) og blev gjort på %i skridt\n\n",stepsH);
 
 //Opgave B//
 printf("OPGAVE B Berit-Wigner\n\n");
