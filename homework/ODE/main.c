@@ -43,7 +43,6 @@ void odecos(double t,gsl_vector* y, gsl_vector* dydt);
 // konstant
 void line(double t,gsl_vector* y, gsl_vector* dydt);
 
-
 void epidemic(double t,gsl_vector* y, gsl_vector* dydt);
 
 int main(){

@@ -29,3 +29,5 @@ void epidemic(double t,gsl_vector* y, gsl_vector* dydt){
 	gsl_vector_set(dydt,1,y1);		//dI/dt=(I*S)/(N*T_c)-I/T_r
 	gsl_vector_set(dydt,2,y2);								//dR/dt=I/T_r
 }
+
+

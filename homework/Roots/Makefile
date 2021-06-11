@@ -27,11 +27,11 @@ kvant.png: kvant.txt exact.txt
 	set title "Hydrogen";\
 	plot \
 	"$<" using 1:2 with lines color blue title "line from ODE"\
-	,"exact.txt" using 1:2 with lines color red title "exact line"\
+	,"exact.txt" using 1:2 with lines linetype 7 color red title "exact line"\
 	' | pyxplot
 
 
 
 .PHONEY:clean
 clean:
-	$(RM) *txt main *png
+	$(RM) *txt main *png exact

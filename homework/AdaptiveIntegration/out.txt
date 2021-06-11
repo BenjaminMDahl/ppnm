@@ -1,8 +1,15 @@
+OPGAVE A integrationen afprøves)
+
 Mit numeriske integral af sqrt(x) fra 0 til 1 giver
    0.666681
 Det analytiske svar er
-
    0.666667
+
+OPGAVE B Sammenligning)
+
+I denne del sammenlininger vi vores integration med GSL og med og uden Clenshaw-Curtis variable transformation.
+Denne sammenligning sammenligner, hvor mange betydende cifre man får rigtigt, og på hvor få operationer
+
 Mit numeriske integral af 4*sqrt(1-x^2) fra 0 til 1 giver
  3.1415928363913226
 Når man bruger CC transformation på det oversteånde får man 
@@ -14,22 +21,22 @@ Det analytiske svar er
 
 Det ses at når de alle er underlagt samme tolerance krav, kan GSL få op til 15 cifre rigtigt,
  mens mine operationer højst giver 8 cifre og kun 7 når man ikke bruger CC transformation.
+Mht. antal transformationer skulle der 113 evalueringer til uden brug af CC transformationen, og med transformationen skulle der 151 evalueringer til. Så Transformationen hjælper en del.
 
-Til sidst ses der hvor mange evalueringer der skulle laves for min metode med og uden CC transformation.
-Uden transformation skulle der 113 evalueringer til, og med skulle der 151 evalueringer til
-int^1_0(1/sqrt(x))dx= 
+Vi undersøger dette igen, men et nyt integral
+Vi prøver int^1_0(1/sqrt(x))dx og får det til:
     1.99996
-Når man bruger CC transformation på det oversteånde får man 
+Når man bruger CC transformation på det oversteånde får man:
     1.99999 
-Det analytiske svar er
+Det analytiske svar er:
           2
-
 Uden transformation skulle der 4285 evalueringer til, og med skulle der 7 evalueringer til
+
+Vi forsøger med et sidste integral
 int^1_0(log(x)/sqrt(x))dx= 
    -3.99992
 Når man bruger CC transformation på det oversteånde får man 
    -3.99987 
 Det analytiske svar er
          -4
-
 Uden transformation skulle der 4301 evalueringer til, og med skulle der 47 evalueringer til

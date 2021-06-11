@@ -7,8 +7,7 @@ Her bør vi få vores svar til x=0 og vi ser at vi får=
 0.000892552 
 
 Det er ikke et vildt præcist resultat, men koden gør som den skal. Dette er ved en epsilon=1e-06.
-
-Den næste test er hvor f(x,y,z)=(x+z,y+z,z+x+y), og vi starter med (x,y,z)=(-0.9,1.2,0.1)
+Den næste test er hvor f(x,y,z)=(x+z,y+z,z+x+y), og vi starter med (x,y,z)=
       -4.9 
          5 
        0.1 
@@ -38,9 +37,10 @@ Vi får fra (5,-5) punktet
    1.00006 
    1.00011 
 
-Opgave B Kvantemekanik
+OPGAVE B Kvantemekanik
 
 Vi vil nu forsøge at løse et fysisk problem, vi vil nemlig prøve at bestemme den laveste energi tilstand af et brint atom
+Dette gøres ved at finde rødder til funktionen M(E)=F_E(rmax) for F_E(rmax) bestemmes med vores ODE solver fra tidligere homework(Se opgave besvarlsen for mere forklaring)
 Vi får svaret=
  -0.499975 
 

@@ -17,11 +17,8 @@ void newton(void f(gsl_vector* x,gsl_vector* fx), gsl_vector* x, double eps);
 
 
 void test_f1(gsl_vector* x,gsl_vector* f);
-
 void test_f2(gsl_vector* x_vec,gsl_vector* f);
-
 void test_f3(gsl_vector* x_vec,gsl_vector* f);
-
 void test_diff(gsl_vector* x,gsl_vector* f);
 
 int main(){
@@ -38,7 +35,7 @@ double eps=0.000001;
 newton(test_f1,x_test_1dim,eps);
 
 vector_print("Her bør vi få vores svar til x=0 og vi ser at vi får=",x_test_1dim);
-printf("Det er ikke et vildt præcist resultat, men koden gør som den skal. Dette er ved en epsilon=%g.\n\n",eps);
+printf("Det er ikke et vildt præcist resultat, men koden gør som den skal. Dette er ved en epsilon=%g.\n",eps);
 
 
 // 3 dimensionel test//
@@ -46,7 +43,7 @@ gsl_vector* x_test_2dim=gsl_vector_alloc(3);
 gsl_vector_set(x_test_2dim,0,-4.9);
 gsl_vector_set(x_test_2dim,1,5);
 gsl_vector_set(x_test_2dim,2,0.1);
-vector_print("Den næste test er hvor f(x,y,z)=(x+z,y+z,z+x+y), og vi starter med (x,y,z)=(-0.9,1.2,0.1)",x_test_2dim);
+vector_print("Den næste test er hvor f(x,y,z)=(x+z,y+z,z+x+y), og vi starter med (x,y,z)=",x_test_2dim);
 
 newton(test_f2,x_test_2dim,eps);
 
@@ -92,8 +89,9 @@ vector_print("Vi får fra (5,-5) punktet",x_op4);
 
 		////Opgave B Kvantemekanik////
 
-printf("Opgave B Kvantemekanik\n\n");
+printf("OPGAVE B Kvantemekanik\n\n");
 printf("Vi vil nu forsøge at løse et fysisk problem, vi vil nemlig prøve at bestemme den laveste energi tilstand af et brint atom\n");
+printf("Dette gøres ved at finde rødder til funktionen M(E)=F_E(rmax) for F_E(rmax) bestemmes med vores ODE solver fra tidligere homework(Se opgave besvarlsen for mere forklaring)\n");
 gsl_vector* x_diff=gsl_vector_alloc(1);
 gsl_vector_set(x_diff,0,0);
 
