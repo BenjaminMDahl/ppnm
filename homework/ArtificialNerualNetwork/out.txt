@@ -3,6 +3,8 @@ Vi har i denne opgave lavet et kunstigt neuralt netværk, som kan forudsige funk
  baseret på nogle tabelværdier for den givne funtkion.
 Vi har testet den på funktionen cos(x/2)*x*x og vores activations funktion er en Gaussian wavelet(x*exp(-x*x)).
 Data'ene både de analytiske og dem fra netværket findes i txt filen her, og er plottet på fit.png
+Resultatet er fint undtagn ved grænserne af den tabulerede data, men dette er ikke vildt overraskende,
+ da det jo er her, netværket får mindst input at lærer på.
 
 
 #index 1: data points
