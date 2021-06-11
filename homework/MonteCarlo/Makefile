@@ -18,7 +18,7 @@ comparison.png: data.txt
 	fit f(x) "$<" index 0 using 1:2 via a,b;\
 	fit g(x) "$<" index 0 using 1:3 via c,d;\
 	plot \
-	"$<" index 0 using 1:2 with points pointtype 2 title "Error from plainMC" \
+	"$<" index 0 using 1:2 with points pointtype 2 pointsize 1 title "Error from plainMC" \
 	,"$<" index 0 using 1:3 with points pointtype 3 title "Error from QuasiMC"\
 	,f(x) with lines title "f(x)" \
 	,g(x) with lines title "g(x)" \

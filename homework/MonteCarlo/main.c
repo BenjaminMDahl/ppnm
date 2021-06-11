@@ -53,7 +53,7 @@ double complex test2=plainMC(dim2,fun_e,a2,b2,1000000);
 printf("Testen er nu exp(x+y)^2, fra 0 til 1 langs begge kanter, så svaret bør være 4,8992\n");
 printf("Test forsøg resultat=%f\n",creal(test2));
 printf("Test forsøg fejl=%f\n",cimag(test2));
-printf("Det passer ikke lige så godt, men stadig godt. Her var brugt 1000000 punkter. (et 0 mere end før)\n\n");
+printf("Det passer ikke lige så godt, men stadig godt, da dette er et svært integral. Her var brugt 1000000 punkter. (et 0 mere end før)\n\n");
 
 
 //Test 3 funktionen fra opgave formuleringen
@@ -76,11 +76,12 @@ double complex quasi_test=quasiMC(dim3,fun_opgaveformulering,a3,b3,1000000);
 
 printf("Vi bruger nu vores quasi monte carlo simulering som bygger på Van Der Corput og Haltons metoder,\n");
 printf("til at udregne det samme integral som det sidste i opgave A, hvor der her udnyttes N=1000000.\n");
-printf("Her for vi følgende resultat=%f\n",creal(quasi_test));
+printf("Her får vi følgende resultat=%f\n",creal(quasi_test));
 printf("med følgende fejl=%f\n",cimag(quasi_test));
 printf("Det ses at fejlen er blevet meget mindre end før\n\n");
 
-printf("som en sidste ting i denne besvarelse, har vi prøvet at gøre som i dit eksempel og løst for x^2+y^2<R^2=1\n Resultatet af dette kan findes i montecarlo.png\n");
+printf("som en sidste ting i denne besvarelse, har vi prøvet at gøre som i dit eksempel og løst for x^2+y^2<R^2=1\n Resultatet af dette kan findes i comparison.png\n");
+printf("Dette er for at sammenligne de to metoder, og se hvordan fejlene fra dem, aftager som funktion af N. Det ses at Quasi klarer sig noget bedre end de plain Montecarlo\n");
 
 return 0;
 }

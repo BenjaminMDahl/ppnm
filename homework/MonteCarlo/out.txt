@@ -8,7 +8,7 @@ Det passer fint med det analytiske hvor vi brugte 100000 punkter
 Testen er nu exp(x+y)^2, fra 0 til 1 langs begge kanter, så svaret bør være 4,8992
 Test forsøg resultat=4.894808
 Test forsøg fejl=0.005955
-Det passer ikke lige så godt, men stadig godt. Her var brugt 1000000 punkter. (et 0 mere end før)
+Det passer ikke lige så godt, men stadig godt, da dette er et svært integral. Her var brugt 1000000 punkter. (et 0 mere end før)
 
 Testen er nu fra opgaveformuleringen, fra 0 til pi langs alle 3 kanter, så svaret bør være omkring 1,3932039297
 Test forsøg resultat=1.391502
@@ -19,9 +19,10 @@ Opgave B
 
 Vi bruger nu vores quasi monte carlo simulering som bygger på Van Der Corput og Haltons metoder,
 til at udregne det samme integral som det sidste i opgave A, hvor der her udnyttes N=1000000.
-Her for vi følgende resultat=1.381219
+Her får vi følgende resultat=1.381219
 med følgende fejl=0.000424
 Det ses at fejlen er blevet meget mindre end før
 
 som en sidste ting i denne besvarelse, har vi prøvet at gøre som i dit eksempel og løst for x^2+y^2<R^2=1
- Resultatet af dette kan findes i montecarlo.png
+ Resultatet af dette kan findes i comparison.png
+Dette er for at sammenligne de to metoder, og se hvordan fejlene fra dem, aftager som funktion af N. Det ses at Quasi klarer sig noget bedre end de plain Montecarlo
