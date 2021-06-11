@@ -81,7 +81,7 @@ printf("med følgende fejl=%f\n",cimag(quasi_test));
 printf("Det ses at fejlen er blevet meget mindre end før\n\n");
 
 printf("som en sidste ting i denne besvarelse, har vi prøvet at gøre som i dit eksempel og løst for x^2+y^2<R^2=1\n Resultatet af dette kan findes i comparison.png\n");
-printf("Dette er for at sammenligne de to metoder, og se hvordan fejlene fra dem, aftager som funktion af N. Det ses at Quasi klarer sig noget bedre end de plain Montecarlo\n");
+printf("Dette er for at sammenligne de to metoder, og se hvordan fejlene fra dem, aftager som funktion af N.\n Det ses at Quasi klarer sig noget bedre end de plain Montecarlo\n");
 
 return 0;
 }
