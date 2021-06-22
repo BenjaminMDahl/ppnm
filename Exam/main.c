@@ -5,6 +5,7 @@
 #include<gsl/gsl_matrix.h>
 #include<gsl/gsl_blas.h>
 #include<gsl/gsl_linalg.h>
+#include<gsl/gsl_sort_vector.h>
 #include<assert.h>
 #define RND (double)rand()/RAND_MAX
 
@@ -14,83 +15,150 @@ void vector_print(char s[], gsl_vector* v);
 
 void newton(void f(gsl_vector* x,gsl_vector* fx), gsl_vector* x, double eps);
 
-//gsl_matrix* D, gsl_vector* u, int p,
-
-void secular_equation_solve(gsl_matrix* D,gsl_vector* u, int p ,gsl_vector* x, double eps){
-
+void secular_equation_solve(gsl_vector* D,gsl_vector* u, int p ,gsl_vector* x, double eps){
+	gsl_vector* Dcopy=gsl_vector_alloc(D->size);
+	gsl_vector_memcpy(Dcopy,D);
+	gsl_sort_vector(Dcopy);
+	double a,xi,di,dI,gi; gsl_blas_ddot(u,u,&a); //u^T*u
 	void ses(gsl_vector* v, gsl_vector* f){
 		double x=gsl_vector_get(v,0);
-		double S=x-gsl_matrix_get(D,p,p);
+		double S=x-gsl_vector_get(D,p);
 		for(int k=0;k<p;k++){
-			double dk=gsl_matrix_get(D,k,k);
+			double dk=gsl_vector_get(D,k);
 			double uk=gsl_vector_get(u,k);
 			S=S+uk*uk/(dk-x);}
 		for(int k=p+1;k<u->size;k++){
-			double dk=gsl_matrix_get(D,k,k);
+			double dk=gsl_vector_get(D,k);
 			double uk=gsl_vector_get(u,k);
 			S=S+uk*uk/(dk-x);}
 		gsl_vector_set(f,0,S);}
 
 
-	newton(ses,x,eps);
+	gsl_vector* g=gsl_vector_alloc(1);
+	//Den første indgang er lidt specil
+	di=gsl_vector_get(Dcopy,0)-fabs(a);
+	dI=gsl_vector_get(Dcopy,0);
+	gi=di+(dI-di)/2;
+	while(1){
+	gsl_vector_set(g,0,gi);
+	newton(ses,g,eps);
+	xi=gsl_vector_get(g,0);
+	if(di <=xi && xi <=dI){
+			gsl_vector_set(x,0,xi);
+			break;
+		}
+		else if(xi<di) gi=di+(gi-di)/2;
+		else gi=dI-(dI-gi)/2;}
+
+
+	// så de næste mange med undtagelse af den sidste
+	for(int i=0;i<p;i++){
+	di=gsl_vector_get(Dcopy,i);
+	dI=gsl_vector_get(Dcopy,i+1);
+	gi=di+(dI-di)/2;
+	while(1){
+		gsl_vector_set(g,0,gi);
+		printf("Gæt: \n %g \n",gi);
+		newton(ses,g,eps);
+		xi=gsl_vector_get(g,0);
+		if(di <=xi && xi <=dI){
+			gsl_vector_set(x,i+1,xi);
+			break;
+		}
+		else if(xi<di) gi=di+(gi-di)/2;
+		else gi=dI-(dI-gi)/2;}
+	}
+
+	for(int i=p+1;i<x->size-1;i++){
+	di=gsl_vector_get(Dcopy,i);
+	dI=gsl_vector_get(Dcopy,i+1);
+	gi=di+(dI-di)/2;
+	while(1){
+		gsl_vector_set(g,0,gi);
+		printf("Gæt: \n %g \n",gi);
+		newton(ses,g,eps);
+		xi=gsl_vector_get(g,0);
+		if(di <=xi && xi <=dI){
+			gsl_vector_set(x,i,xi);
+			break;
+		}
+		else if(xi<di) gi=di+(gi-di)/2;
+		else gi=dI-(dI-gi)/2;}
+	}
+
+	// Den sidste
+	di=gsl_vector_get(Dcopy,Dcopy->size-1);
+	dI=gsl_vector_get(Dcopy,Dcopy->size-1)+fabs(a);
+	gi=di+(dI-di)/2;
+	while(1){
+	gsl_vector_set(g,0,gi);
+	newton(ses,g,eps);
+	xi=gsl_vector_get(g,0);
+	if(di <=xi && xi <=dI){
+			gsl_vector_set(x,x->size-1,xi);
+			break;
+		}
+		else if(xi<di) gi=di+(gi-di)/2;
+		else gi=dI-(dI-gi)/2;}
+
 }
 
 
 int main(){
-clock_t start, end;
-double time_5,time_10,time_100,time_1000;
 
+clock_t start, end;
+//double time_5,time_10,time_100,time_1000;
+double time_5;
 
 int n=5;
-gsl_matrix* D=gsl_matrix_alloc(n,n);
+gsl_vector* D=gsl_vector_alloc(n);
 gsl_vector* u=gsl_vector_alloc(n);
-int p=1; //Overvej lige noget index her
-double tal[]={1,2,3,4,5,6,7,8,9,10};
+int p=0; //Overvej lige noget index her
+double tal[]={1,1,3,4,5,6,7,8,9,10};
 
 for(int i=0;i<n;i++){
-	gsl_matrix_set(D,i,i,tal[i]);
+	gsl_vector_set(D,i,tal[i]);
 	gsl_vector_set(u,i,tal[i]);}
+//gsl_vector_scale(u,1/sqrt(55));
+//gsl_matrix_scale(D,1/sqrt(55));
 
 
-gsl_vector* x=gsl_vector_alloc(1);
-
-double a[]={1.5,2.5,3.5,4.5,5.5};
+gsl_vector* x=gsl_vector_alloc(n);
 
 start = clock();
-for(int i=0;i<5;i++){
-	gsl_vector_set(x,0,a[i]);
-	secular_equation_solve(D,u,p,x,0.0001);
-//	vector_print("res er",x);
-	}
+
+	secular_equation_solve(D,u,p,x,0.0000001);
+	vector_print("res er",x);
+
 end = clock();
 time_5= ((double) (end - start)) / CLOCKS_PER_SEC;
-
+printf("det tog: \n %g \n",time_5);
 
 // Prøver igen
-
+/*
 int m=10;
-gsl_matrix* d=gsl_matrix_alloc(m,m);
+gsl_vector* d=gsl_vector_alloc(m);
 gsl_vector* U=gsl_vector_alloc(m);
+gsl_vector* xb=gsl_vector_alloc(m);
 int P=1; //Overvej lige noget index her
 
 for(int i=0;i<m;i++){
-	gsl_matrix_set(d,i,i,RND);
-	gsl_vector_set(U,i,RND);}
+	gsl_vector_set(d,i,tal[i]);
+	gsl_vector_set(U,i,tal[i]);}
+
+//double b[]={1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5};
+
+//start = clock();
 
 
-double b[]={1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5};
+secular_equation_solve(d,U,P,xb,0.0001);
+vector_print("res er",xb);
 
-start = clock();
-for(int i=0;i<10;i++){
-	gsl_vector_set(x,0,b[i]);
-	secular_equation_solve(d,U,P,x,0.0001);
-	vector_print("res er",x);
-	}
-end = clock();
-time_10= ((double) (end - start)) / CLOCKS_PER_SEC;
+//end = clock();
+//time_10= ((double) (end - start)) / CLOCKS_PER_SEC;
+*/
 
-
-
+/*
 // Prøver igen
 
 int l=100;
@@ -138,6 +206,6 @@ time_1000= ((double) (end - start)) / CLOCKS_PER_SEC;
 
 // Tid
 printf("Tid1000/tid100 :\n %g \n",time_1000/time_100);
-
+*/
 return 0;
 }
