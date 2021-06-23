@@ -9,7 +9,7 @@ default: out.txt
 out.txt: main
 	./$< > $@
 
-main: main.c solver.c Eigenfinder.c
+main: main.c solver.c Eigenfinderdefault.c Eigenfinderguess.c
 
 
 

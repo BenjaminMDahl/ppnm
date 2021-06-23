@@ -13,6 +13,22 @@ void vector_print(char s[], gsl_vector* v){
 	printf("\n");
 }
 
+void matrix_print(char s[], gsl_matrix* A){
+	int n=A->size1, m=A->size2;
+	for(int i=0;i<n;i++){
+		for(int j=0; j<m;j++){
+			if(fabs(gsl_matrix_get(A,i,j))<10e-7)gsl_matrix_set(A,i,j,0);
+		}
+	}
+	printf("%s\n",s);
+	for(int i=0;i< n ;i++){							// Note til selv size1=vertical, size2=horisontal
+		for(int j=0;j< m ;j++)printf("%10g ",gsl_matrix_get(A,i,j));
+		printf("\n");}
+	printf("\n");
+}
+
+
+
 void GS_decomp(gsl_matrix* A, gsl_matrix* R){
 	int i,j,k;
 	//Vi laver A om til Q og Danner R //
