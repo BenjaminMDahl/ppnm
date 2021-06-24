@@ -35,7 +35,7 @@ effektivitet.png: data.txt Makefile
 	echo '\
 	set term png;\
 	set output "$@";\
-	set key top;\
+	set key outside;\
 	set fontsize 0.4;\
 	set grid;\
 	set xlabel "m";\
