@@ -26,6 +26,7 @@ return S;
 
 
 int main(){
+printf("Index 0: Besvarelse\n");
 printf("DEL 1: TESTNING AF FUNDE EGENVÆRDIER\n");
 printf("Først testes vores funktioner på to matricer, hvor resultaterne holdes op i mod GSL's gsl_eigen_symm funktion\n\n");
 
@@ -105,7 +106,7 @@ for(int i=0;i<n;i++){
 
 	secular_equation_GSL(Db,ub,p,xb,0.00001);
 	vector_print("Og til sidst får vi igen det ønskede med vores GSL rutine",xb);
-	printf("Alle var igen med en eps=0.00001\n\n");
+	printf("Alle var igen med en eps=0.00001\n\n\n");
 
 //Tidstagning
 /*
@@ -188,7 +189,7 @@ for(int i=0;i<x->size;i++){
 	double fi=plot_data(xi);
 	printf("%10g %10g\n",xi,fi);
 }
-printf("\n");
+printf("\n\n");
 //Derefter til kurve
 printf("#index 2:x_i    f(x_i)\n");
 for(double i=-2;i<15;i=i+0.11){

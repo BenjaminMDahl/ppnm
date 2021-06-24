@@ -1,3 +1,4 @@
+Index 0: Besvarelse
 DEL 1: TESTNING AF FUNDE EGENVÆRDIER
 Først testes vores funktioner på to matricer, hvor resultaterne holdes op i mod GSL's gsl_eigen_symm funktion
 
@@ -209,12 +210,14 @@ Og til sidst får vi igen det ønskede med vores GSL rutine
 
 Alle var igen med en eps=0.00001
 
+
 #index 1:lambda_i     f(lambda_i)
  -0.747973 -0.00104553
    1.11573  -0.018284
    2.34278 -0.00835034
    4.42771  -0.235308
    13.8582 -0.00216044
+
 
 #index 2:x_i    f(x_i)
         -2   -3.42857
