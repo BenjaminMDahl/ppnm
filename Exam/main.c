@@ -18,6 +18,13 @@ void secular_equation_GSL(gsl_vector* D,gsl_vector* u, int p ,gsl_vector* x, dou
 void secular_equation_guess(gsl_vector* D,gsl_vector* u, int p ,gsl_vector* x, double eps);
 
 
+// til at lave data til plotning af første matrice//
+double plot_data(double x){
+	double S=x-9+1/(1-x)+4/(2-x)+16/(4-x)+25/(5-x);
+return S;
+}
+
+
 int main(){
 printf("DEL 1: TESTNING AF FUNDE EGENVÆRDIER\n");
 printf("Først testes vores funktioner på to matricer, hvor resultaterne holdes op i mod GSL's gsl_eigen_symm funktion\n\n");
@@ -139,7 +146,7 @@ printf("De to delt med hinanden giver: \n %g. \n",t10/t1);
 printf("Så en stigning på 10 i n gør det hele ca 100 gange langsommere, hvilket antyder at vi når i mål på O(n^2) operationer");*/
 
 
-
+/*
 int L=1000;
 gsl_vector* D1001=gsl_vector_alloc(L);
 gsl_vector* u1001=gsl_vector_alloc(L);
@@ -170,9 +177,27 @@ for(int i=0;i<=100;i=i+5){
 	if(isnan(gsl_vector_get(x1100,j)))eig100++;
 	}
 	printf("%4i %4i %4i %4i\n",i,L-eig1,L-eig5,L-eig100);
-	}
+	}*/
 
 
+//Til plotning
+//Først vores fit
+printf("#index 1:lambda_i     f(lambda_i)\n");
+for(int i=0;i<x->size;i++){
+	double xi=gsl_vector_get(x,i);
+	double fi=plot_data(xi);
+	printf("%10g %10g\n",xi,fi);
+}
+printf("\n");
+//Derefter til kurve
+printf("#index 2:x_i    f(x_i)\n");
+for(double i=-2;i<15;i=i+0.11){
+	double fi=plot_data(i);
+	printf("%10g %10g\n",i,fi);
+}
+
+
+//Oprydning
 gsl_eigen_symm_free(w);
 return 0;
 }
