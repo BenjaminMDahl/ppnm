@@ -3,7 +3,7 @@ CFLAGS += $(shell /usr/bin/gsl-config --cflags)
 LDLIBS += $(shell /usr/bin/gsl-config --libs)
 
 
-default: out.txt data.txt test.png
+default: out.txt data.txt test.png effektivitet.png
 
 
 out.txt: main
@@ -45,20 +45,6 @@ effektivitet.png: data.txt Makefile
 	"$<" index 2 using 1:2 with lines title "For D og u med indgange mellem [0,1]" \
 	,"$<" index 2 using 1:3 with lines title "For D og u med indgange mellem [0,5]"\
 	,"$<" index 2 using 1:4 with lines title "For D og u med indgange mellem [0,100]"\
-	' | pyxplottest.png: data.txt Makefile
-	echo '\
-	set term png;\
-	set output "$@";\
-	set key top;\
-	set axis x;\
-	set fontsize 0.4;\
-	set grid;\
-	set xlabel "x";\
-	set ylabel "f(x)";\
-	set title "Krakteristiske polynomoum med funde egenvaerdier";\
-	plot \
-	"$<" index 0 using 1:2 with points title "Egenvaerdier" \
-	,"$<" index 1 using 1:2 with lines color blue title "Karakteristiske polynomium"\
 	' | pyxplot
 
 
