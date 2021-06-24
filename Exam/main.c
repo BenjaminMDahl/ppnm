@@ -8,7 +8,7 @@
 #include<gsl/gsl_sort_vector.h>
 #include<gsl/gsl_eigen.h>
 #include<assert.h>
-#define RND (double)rand()/RAND_MAX*10
+#define RND (double)rand()/RAND_MAX
 
 void make_rnd_vector(gsl_vector* v);
 void vector_print(char s[], gsl_vector* v);
@@ -26,7 +26,6 @@ return S;
 
 
 int main(){
-printf("Index 0: Besvarelse\n");
 printf("DEL 1: TESTNING AF FUNDE EGENVÆRDIER\n");
 printf("Først testes vores funktioner på to matricer, hvor resultaterne holdes op i mod GSL's gsl_eigen_symm funktion\n\n");
 
@@ -180,22 +179,6 @@ for(int i=0;i<=100;i=i+5){
 	printf("%4i %4i %4i %4i\n",i,L-eig1,L-eig5,L-eig100);
 	}*/
 
-
-//Til plotning
-//Først vores fit
-printf("#index 1:lambda_i     f(lambda_i)\n");
-for(int i=0;i<x->size;i++){
-	double xi=gsl_vector_get(x,i);
-	double fi=plot_data(xi);
-	printf("%10g %10g\n",xi,fi);
-}
-printf("\n\n");
-//Derefter til kurve
-printf("#index 2:x_i    f(x_i)\n");
-for(double i=-2;i<15;i=i+0.11){
-	double fi=plot_data(i);
-	printf("%10g %10g\n",i,fi);
-}
 
 
 //Oprydning
