@@ -1,70 +1,232 @@
-Dette er den vi arbejder med
-         1          0          1          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0 
-         0          2          2          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0 
-         1          2          9          4          5          6          7          8          9         10          1          2          3          4          5          6          7          8          9 
-         0          0          4          4          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0 
-         0          0          5          0          5          0          0          0          0          0          0          0          0          0          0          0          0          0          0 
-         0          0          6          0          0          6          0          0          0          0          0          0          0          0          0          0          0          0          0 
-         0          0          7          0          0          0          7          0          0          0          0          0          0          0          0          0          0          0          0 
-         0          0          8          0          0          0          0          8          0          0          0          0          0          0          0          0          0          0          0 
-         0          0          9          0          0          0          0          0          9          0          0          0          0          0          0          0          0          0          0 
-         0          0         10          0          0          0          0          0          0         10          0          0          0          0          0          0          0          0          0 
-         0          0          1          0          0          0          0          0          0          0          1          0          0          0          0          0          0          0          0 
-         0          0          2          0          0          0          0          0          0          0          0          2          0          0          0          0          0          0          0 
-         0          0          3          0          0          0          0          0          0          0          0          0          3          0          0          0          0          0          0 
-         0          0          4          0          0          0          0          0          0          0          0          0          0          4          0          0          0          0          0 
-         0          0          5          0          0          0          0          0          0          0          0          0          0          0          5          0          0          0          0 
-         0          0          6          0          0          0          0          0          0          0          0          0          0          0          0          6          0          0          0 
-         0          0          7          0          0          0          0          0          0          0          0          0          0          0          0          0          7          0          0 
-         0          0          8          0          0          0          0          0          0          0          0          0          0          0          0          0          0          8          0 
-         0          0          9          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0          9 
+DEL 1: TESTNING AF FUNDE EGENVÆRDIER
+Først testes vores funktioner på to matricer, hvor resultaterne holdes op i mod GSL's gsl_eigen_symm funktion
 
-res er
-  -17.4969 
+Vi starter med at kigge på en simpel matrice(n=5 og ingen ens indgange) som denne
+         1          0          1          0          0 
+         0          2          2          0          0 
+         1          2          9          4          5 
+         0          0          4          4          0 
+         0          0          5          0          5 
+
+Vi har startet med at bruge gsl_eigen_symm på denne, for at se hvad vi forventer at finde
+ -0.747659 
+   1.11594 
+   2.34296 
+   4.42914 
+   13.8596 
+
+Med følgende start gæt
+       -20 
+       1.1 
+       2.2 
+       4.4 
+        20 
+
+Får vi fra guess
+ -0.747659 
+   1.11594 
+   2.34296 
+   4.42914 
+   13.8596 
+
+Hvilket er meget tilfredsstillende.
+
+Med vores default routine med m=0 får vi
+ -0.747657 
+   1.11594 
+   2.34296 
+   4.42914 
+   13.8596 
+
+Hvilket også er meget tilfredsstillende.
+
+Og til sidst får vi igen det ønskede med vores GSL routione
+ -0.747973 
+   1.11573 
+   2.34278 
+   4.42771 
+   13.8582 
+
+Alle var med en eps=0.00001
+
+Vi prøver nu med n=20 og hvor alle indgange er der to gange.
+         1          0          0          0          0          1          0          0          0          0          0          0          0          0          0          0          0          0          0          0 
+         0          2          0          0          0          2          0          0          0          0          0          0          0          0          0          0          0          0          0          0 
+         0          0          3          0          0          3          0          0          0          0          0          0          0          0          0          0          0          0          0          0 
+         0          0          0          4          0          4          0          0          0          0          0          0          0          0          0          0          0          0          0          0 
+         0          0          0          0          5          5          0          0          0          0          0          0          0          0          0          0          0          0          0          0 
+         1          2          3          4          5         18          7          8          9         10          1          2          3          4          5          6          7          8          9         10 
+         0          0          0          0          0          7          7          0          0          0          0          0          0          0          0          0          0          0          0          0 
+         0          0          0          0          0          8          0          8          0          0          0          0          0          0          0          0          0          0          0          0 
+         0          0          0          0          0          9          0          0          9          0          0          0          0          0          0          0          0          0          0          0 
+         0          0          0          0          0         10          0          0          0         10          0          0          0          0          0          0          0          0          0          0 
+         0          0          0          0          0          1          0          0          0          0          1          0          0          0          0          0          0          0          0          0 
+         0          0          0          0          0          2          0          0          0          0          0          2          0          0          0          0          0          0          0          0 
+         0          0          0          0          0          3          0          0          0          0          0          0          3          0          0          0          0          0          0          0 
+         0          0          0          0          0          4          0          0          0          0          0          0          0          4          0          0          0          0          0          0 
+         0          0          0          0          0          5          0          0          0          0          0          0          0          0          5          0          0          0          0          0 
+         0          0          0          0          0          6          0          0          0          0          0          0          0          0          0          6          0          0          0          0 
+         0          0          0          0          0          7          0          0          0          0          0          0          0          0          0          0          7          0          0          0 
+         0          0          0          0          0          8          0          0          0          0          0          0          0          0          0          0          0          8          0          0 
+         0          0          0          0          0          9          0          0          0          0          0          0          0          0          0          0          0          0          9          0 
+         0          0          0          0          0         10          0          0          0          0          0          0          0          0          0          0          0          0          0         10 
+
+Vi starter igen med at bruge gsl_eigen_symm på denne, for at se hvad vi forventer at finde
+  -14.6997 
+         1 
+   1.01851 
+         2 
+   2.05976 
+         3 
+   3.11254 
+         4 
+   4.17493 
+         5 
+   5.26466 
+   6.16456 
+         7 
+   7.33681 
+         8 
+   8.43422 
+         9 
+   9.55653 
+        10 
+   40.5772 
+
+Med følgende start gæt
+       -20 
+     1.001 
+       1.1 
+     2.001 
+       2.2 
+     3.001 
+       3.3 
+     4.001 
+      4.25 
+     5.001 
+       5.3 
+       6.2 
+     7.001 
+      7.45 
+     8.001 
+       8.5 
+     9.001 
+       9.5 
+    10.001 
+        45 
+
+Får vi fra guess
+  -14.6997 
+  0.999657 
+   1.01883 
+   1.99991 
+   2.05977 
+   2.99996 
+   3.11257 
+   3.99998 
+   4.17494 
+   4.99999 
+   5.26466 
+   6.16456 
+   6.99999 
+   7.33682 
+         8 
+   8.43423 
+   9.00001 
+   9.55655 
+        10 
+   40.5772 
+
+Igen et meget tilfredsstillende resultat, men det er også et godt gæt, og man ser de steder, hvor vi netop har dobbelt indgange,
+at denne metode ikke retunere svaret lige så præcist som de andre metoder
+
+Med vores default routine med m=0 får vi
+  -14.6997 
+         1 
+   1.01851 
+         2 
+       nan 
+         3 
+   3.11254 
+         4 
+   4.17494 
+         5 
+   5.26467 
+   6.16456 
+         7 
+   7.33681 
+         8 
+   8.43422 
+         9 
+   9.55653 
+        10 
+   40.5772 
+
+Her misser vi en enkelt egenværdi, hvilket ikke er overraskende, da den er meget tæt på grænsen (2.05976 i forhold til 2).
+Prøve vi dog igen med m=1, hvilket svarer til at gætte igen, ser vi, at vi finder alle egenværdier
+  -14.6997 
+         1 
+   1.01851 
+         2 
+   2.05976 
+         3 
+   3.11254 
+         4 
+   4.17494 
+         5 
+   5.26467 
+   6.16456 
+         7 
+   7.33681 
+         8 
+   8.43422 
+         9 
+   9.55653 
+        10 
+   40.5772 
+
+Og til sidst får vi igen det ønskede med vores GSL rutine
+  -14.6964 
          1 
    1.01808 
          2 
-   2.06154 
-   3.05569 
+   2.05959 
+         3 
+   3.11232 
          4 
-   4.15822 
+   4.17384 
          5 
-   5.22462 
-         6 
-   6.29883 
+   5.26368 
+   6.16604 
          7 
-   7.38084 
+   7.33788 
          8 
-   8.48823 
+   8.43356 
          9 
-   9.73035 
-   34.0731 
+   9.55852 
+        10 
+   40.5785 
 
-Fra GSL får vi
-  -17.5005 
-         1 
-   1.01842 
-         2 
-   2.06158 
-   3.05558 
-         4 
-   4.15989 
-         5 
-   5.22586 
-         6 
-   6.29796 
-         7 
-   7.38123 
-         8 
-   8.48774 
-         9 
-   9.72929 
-    34.083 
+Alle var igen med en eps=0.00001
 
-Det tog for n=200 så lang tid: 
- 0.003491 
-, og for n=2000 så lang tid: 
- 0.336753 
- de to delt med hinanden giver: 
- 96.4632 
- Så en stigning på 10 i n gør det hele ca 100 gange langsommere, hvilket antyder at vi når i mål på O(n^2) operationer
+   0  418  620  669
+   5  665  887  937
+  10  735  913  976
+  15  764  923  980
+  20  786  929  983
+  25  798  938  983
+  30  809  945  989
+  35  823  940  992
+  40  834  941  991
+  45  837  953  993
+  50  846  951  993
+  55  851  951  993
+  60  851  954  995
+  65  860  954  993
+  70  861  959  994
+  75  860  959  995
+  80  868  958  993
+  85  875  956  994
+  90  879  958  994
+  95  887  959  993
+ 100  885  960  995

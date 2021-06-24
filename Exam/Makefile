@@ -9,11 +9,12 @@ default: out.txt
 out.txt: main
 	./$< > $@
 
-main: main.c solver.c Eigenfinderdefault.c Eigenfinderguess.c EigenfinderGSL.c
+main: main.o HomeworkTools.c Eigenfinderdefault.o Eigenfinderguess.o EigenfinderGSL.o VectorTools.o
+
 
 
 
 
 .PHONEY:clean
 clean:
-	$(RM) out.txt main *png
+	$(RM) out.txt main *png *.o

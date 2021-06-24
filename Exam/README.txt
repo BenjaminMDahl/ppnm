@@ -70,10 +70,10 @@ I denne mappe findes følgende filer:
 	Eigenfinderguess.c Eigenfinderdefault.c EigenfinderGSL.c
 	Disse indeholder de overstående metoder.
 
-	homeworkTools.c
+	HomeworkTools.c
 	Denne indeholder newton metoden fra homework @ og andre relevante funktioner fra andre Homeworks som newton bruger fx en Gram-Schmiht-solver
 
-	Vectortools.c
+	VectorTools.c
 	Indeholder diverse funktioner til at printe vektorer/matricer og danne tilfældige vektorer
 
 	main.c
