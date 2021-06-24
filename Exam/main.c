@@ -105,10 +105,11 @@ for(int i=0;i<n;i++){
 
 	secular_equation_GSL(Db,ub,p,xb,0.00001);
 	vector_print("Og til sidst får vi igen det ønskede med vores GSL rutine",xb);
-	printf("Alle var igen med en eps=0.00001\n\n\n");
+	printf("Alle var igen med en eps=0.00001\n\n");
+	printf("Et plot af første test kan ses på test.png.\n\n\n");
 
 //Tidstagning
-/*
+
 printf("DEL 2: TIDSTAGNING SOM TEST AF ANTAL OPERATIONER\n");
 printf("Vi prøver her at laver tilfældige dannes D og u'er af henholdvis n=1000 og n=10000, og tager tid på vores rutine.\n");
 printf("Dette er for at opbevise os om at vi bruger O(n^2) operationer, da en stigning i n på 10 burde så medfører en stigning i tid på 100.\n");
@@ -143,41 +144,12 @@ t10 = ((double) (stop - start)) / CLOCKS_PER_SEC;
 printf("Det tog for n=%i så lang tid at nå i mål: \n %g s. \n",n,t1);
 printf("For n=%i tog det så lang tid: \n %g s. \n",n*10,t10);
 printf("De to delt med hinanden giver: \n %g. \n",t10/t1);
-printf("Så en stigning på 10 i n gør det hele ca 100 gange langsommere, hvilket antyder at vi når i mål på O(n^2) operationer");*/
+printf("Så en stigning på 10 i n gør det hele ca 100 gange langsommere, hvilket antyder at vi når i mål på O(n^2) operationer\n");
 
-
-/*
-int L=1000;
-gsl_vector* D1001=gsl_vector_alloc(L);
-gsl_vector* u1001=gsl_vector_alloc(L);
-gsl_vector* x1001=gsl_vector_alloc(L);
-gsl_vector* D1005=gsl_vector_alloc(L);
-gsl_vector* u1005=gsl_vector_alloc(L);
-gsl_vector* x1005=gsl_vector_alloc(L);
-gsl_vector* D1100=gsl_vector_alloc(L);
-gsl_vector* u1100=gsl_vector_alloc(L);
-gsl_vector* x1100=gsl_vector_alloc(L);
-
-for(int i=0;i<L;i++){
-	gsl_vector_set(D1001,i,RND);
-	gsl_vector_set(u1001,i,RND);
-	gsl_vector_set(D1005,i,RND*5);
-	gsl_vector_set(u1005,i,RND*5);
-	gsl_vector_set(D1100,i,RND*100);
-	gsl_vector_set(u1100,i,RND*100);}
-
-for(int i=0;i<=100;i=i+5){
-	int eig1=0;int eig5=0;int eig100=0;
-	secular_equation_default(D1001,u1001,25,x1001,0.0001,i);
-	secular_equation_default(D1005,u1005,25,x1005,0.0001,i);
-	secular_equation_default(D1100,u1100,25,x1100,0.0001,i);
-	for(int j=0;j<L;j++){
-	if(isnan(gsl_vector_get(x1001,j)))eig1++;
-	if(isnan(gsl_vector_get(x1005,j)))eig5++;
-	if(isnan(gsl_vector_get(x1100,j)))eig100++;
-	}
-	printf("%4i %4i %4i %4i\n",i,L-eig1,L-eig5,L-eig100);
-	}*/
+printf("Som en sidste ting har vi undersøgt effektivitetten af default metoden, både i forhold til følsomheden over for\n");
+printf("størrelsen af intervaller, og som funktion af m. Resultatet kan ses på figur effektivitet.png, hvor der er dannet\n");
+printf("tre tilfældige matricer mellem større og større intervaler, og hvor m stiger løbende. Det ses effektivitetten stiger\n");
+printf("og at metoden fungere bedst for storre intervaller. Matricerne der testes på er af størrelse n=1000\n");
 
 
 

@@ -77,9 +77,19 @@ I denne mappe findes følgende filer:
 	Indeholder diverse funktioner til at printe vektorer/matricer og danne tilfældige vektorer
 
 	main.c
-	Står for at bruge og teste de forskellige funktioner og danne outputet til out.txt
+	Står for at bruge og teste de forskellige funktioner, hvor outputtet ses i out.txt
+
+	plotter.c
+	Står for at danne den rå data til plotsne(png filerne) som gemmes i data.txt
+
+	data.txt
+	Data til plots(png filerne)
 
 	out.txt
 	Her findes tests og resultater af de forskellige funktioner og dataene bag png'erne i denne mappe.
 
-	@.png
+	test.png
+	Et plot af et karakteristiske polynomium med funde egenværdier
+
+	effektivitet.png
+	Et plot af hvordan Eigenfinderdefault afhænger af m og er følsom overfor størrelsen af intervallerne som dannes ud fra D.

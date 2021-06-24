@@ -209,4 +209,22 @@ Og til sidst får vi igen det ønskede med vores GSL rutine
 
 Alle var igen med en eps=0.00001
 
+Et plot af første test kan ses på test.png.
 
+
+DEL 2: TIDSTAGNING SOM TEST AF ANTAL OPERATIONER
+Vi prøver her at laver tilfældige dannes D og u'er af henholdvis n=1000 og n=10000, og tager tid på vores rutine.
+Dette er for at opbevise os om at vi bruger O(n^2) operationer, da en stigning i n på 10 burde så medfører en stigning i tid på 100.
+Vi undersøger kun vores default metode, med m=0 da denne også svarer til vores guess metode, dog måske lidt langsomere pga. sorteringen af D's indgange
+
+Det tog for n=1000 så lang tid at nå i mål: 
+ 0.080935 s. 
+For n=10000 tog det så lang tid: 
+ 8.81338 s. 
+De to delt med hinanden giver: 
+ 108.895. 
+Så en stigning på 10 i n gør det hele ca 100 gange langsommere, hvilket antyder at vi når i mål på O(n^2) operationer
+Som en sidste ting har vi undersøgt effektivitetten af default metoden, både i forhold til følsomheden over for
+størrelsen af intervaller, og som funktion af m. Resultatet kan ses på figur effektivitet.png, hvor der er dannet
+tre tilfældige matricer mellem større og større intervaler, og hvor m stiger løbende. Det ses effektivitetten stiger
+og at metoden fungere bedst for storre intervaller. Matricerne der testes på er af størrelse n=1000

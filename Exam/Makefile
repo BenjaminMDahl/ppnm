@@ -20,8 +20,8 @@ test.png: data.txt Makefile
 	echo '\
 	set term png;\
 	set output "$@";\
-	set key top;\
-	set fontsize 0.4;\
+	set key outside;\
+	set fontsize 0.5;\
 	set grid;\
 	set xlabel "x";\
 	set ylabel "f(x)";\
@@ -36,7 +36,7 @@ effektivitet.png: data.txt Makefile
 	set term png;\
 	set output "$@";\
 	set key outside;\
-	set fontsize 0.4;\
+	set fontsize 0.5;\
 	set grid;\
 	set xlabel "m";\
 	set ylabel "Antal fundne egenvaerdier ud af 1000";\
