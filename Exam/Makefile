@@ -21,6 +21,35 @@ test.png: data.txt Makefile
 	set term png;\
 	set output "$@";\
 	set key top;\
+	set fontsize 0.4;\
+	set grid;\
+	set xlabel "x";\
+	set ylabel "f(x)";\
+	set title "Krakteristiske polynomoum med funde egenvaerdier";\
+	plot \
+	"$<" index 0 using 1:2 with points title "Egenvaerdier" \
+	,"$<" index 1 using 1:2 with lines color blue title "Karakteristiske polynomium"\
+	' | pyxplot
+
+effektivitet.png: data.txt Makefile
+	echo '\
+	set term png;\
+	set output "$@";\
+	set key top;\
+	set fontsize 0.4;\
+	set grid;\
+	set xlabel "m";\
+	set ylabel "Antal fundne egenvaerdier";\
+	set title "Effektivitetten af default metoden som funktion af m";\
+	plot \
+	"$<" index 2 using 1:2 with lines title "For D og u med indgange mellem [0,1]" \
+	,"$<" index 2 using 1:3 with lines title "For D og u med indgange mellem [0,5]"\
+	,"$<" index 2 using 1:4 with lines title "For D og u med indgange mellem [0,100]"\
+	' | pyxplottest.png: data.txt Makefile
+	echo '\
+	set term png;\
+	set output "$@";\
+	set key top;\
 	set axis x;\
 	set fontsize 0.4;\
 	set grid;\
