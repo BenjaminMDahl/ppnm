@@ -12,11 +12,17 @@ void newton(void f(gsl_vector* x,gsl_vector* fx), gsl_vector* x, double eps);
 
 void secular_equation_guess(gsl_vector* D,gsl_vector* u, int p ,gsl_vector* x, double eps){
 	assert(D->size>1); // Vi arbejder kun med matricer ikke skalar
-	gsl_vector_scale(x,1.000001); //Dette er for at undgå at dividere med 0, da hvis nogle af gættene svarer til en indgang i d får vi et 0 i en nævner
+	// Vi starter med at opdateret D, så hvis den p'te indgang i u ikke er 0, updateres D og u sættes lig 0.
+	double dstart=gsl_vector_get(D,p);
+	double ustart=gsl_vector_get(u,p);
+	gsl_vector_set(D,p,dstart+2*ustart);
+	gsl_vector_set(u,p,0);
+
+//	gsl_vector_scale(x,1.000001); //Dette er for at undgå at dividere med 0, da hvis nogle af gættene svarer til en indgang i d får vi et 0 i en nævner
 	gsl_sort_vector(x);
-	gsl_vector* Dcopy=gsl_vector_alloc(D->size);
-	gsl_vector_memcpy(Dcopy,D);
-	gsl_sort_vector(Dcopy);
+//	gsl_vector* Dcopy=gsl_vector_alloc(D->size);
+//	gsl_vector_memcpy(Dcopy,D);
+//	gsl_sort_vector(Dcopy);
 
 	void Se(gsl_vector* v, gsl_vector* f){
 		double x=gsl_vector_get(v,0);
@@ -56,9 +62,9 @@ void secular_equation_guess(gsl_vector* D,gsl_vector* u, int p ,gsl_vector* x, d
 		gsl_vector_set(g,0,xi);
 		newton(Se,g,eps);
 		xi=gsl_vector_get(g,0);
-		gsl_vector_set(x,x->size-1,xi);*/
+		gsl_vector_set(x,x->size-1,xi); */
 
-	gsl_vector_free(Dcopy);
+//	gsl_vector_free(Dcopy);
 	gsl_vector_free(g);
 
 }

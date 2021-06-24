@@ -29,8 +29,7 @@ void secular_equation_default(gsl_vector* D,gsl_vector* u, int p ,gsl_vector* x,
 	while(pnew<=Dcopy->size){
 	if(gsl_vector_get(Dcopy,pnew)==xp)break;
 	pnew++;}
-	printf("HER %i\n",pnew);
-	printf("xp=%g\n",xp);
+
 	// Erklære de relevante doubles og laver funktionen Se som ud fra D og u danner den relevante Secular Equation(4.30 fra bogen)
 	double a,xi,di,dI,gi;
 	int I;

@@ -101,7 +101,9 @@ void newton(void f(gsl_vector* x,gsl_vector* fx), gsl_vector* x, double eps){
 	gsl_vector* y=gsl_vector_calloc(n);
 
 	// Herunder dannes jacobianen jævnført ligning (7) i kapitlet om nonlinear equations og min GS_solver kaldes på den
+	int Nmax=0;
 	while(1){
+		Nmax++;
 		f(x,fx);
 		for(int i=0;i<n;i++){
 			double xi=gsl_vector_get(x,i);
@@ -135,6 +137,7 @@ void newton(void f(gsl_vector* x,gsl_vector* fx), gsl_vector* x, double eps){
 		if(gsl_blas_dnrm2(xstep)<dx) break;
 //	printf("value norm=%g\n",gsl_blas_dnrm2(fx));
 		if(gsl_blas_dnrm2(fx)<eps) break;
+		if(Nmax>1000) break;
 	}
 	gsl_matrix_free(J);gsl_matrix_free(R);
 	gsl_vector_free(fx);gsl_vector_free(dfx);gsl_vector_free(y);gsl_vector_free(fy);
