@@ -141,6 +141,7 @@ secular_equation_default(D10,u10,5,x10,0.0001,0);
 stop = clock();
 t10 = ((double) (stop - start)) / CLOCKS_PER_SEC;
 
+printf("DEL 3: m-AFHÆNGIGHED FOR DEFAULT METODEN\n");
 printf("Det tog for n=%i så lang tid at nå i mål: \n %g s. \n",n,t1);
 printf("For n=%i tog det så lang tid: \n %g s. \n",n*10,t10);
 printf("De to delt med hinanden giver: \n %g. \n",t10/t1);

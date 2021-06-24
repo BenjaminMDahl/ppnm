@@ -217,12 +217,13 @@ Vi prøver her at laver tilfældige dannes D og u'er af henholdvis n=1000 og n=1
 Dette er for at opbevise os om at vi bruger O(n^2) operationer, da en stigning i n på 10 burde så medfører en stigning i tid på 100.
 Vi undersøger kun vores default metode, med m=0 da denne også svarer til vores guess metode, dog måske lidt langsomere pga. sorteringen af D's indgange
 
+DEL 3: m-AFHÆNGIGHED FOR DEFAULT METODEN
 Det tog for n=1000 så lang tid at nå i mål: 
- 0.080935 s. 
+ 0.085254 s. 
 For n=10000 tog det så lang tid: 
- 8.81338 s. 
+ 8.25399 s. 
 De to delt med hinanden giver: 
- 108.895. 
+ 96.8165. 
 Så en stigning på 10 i n gør det hele ca 100 gange langsommere, hvilket antyder at vi når i mål på O(n^2) operationer
 Som en sidste ting har vi undersøgt effektivitetten af default metoden, både i forhold til følsomheden over for
 størrelsen af intervaller, og som funktion af m. Resultatet kan ses på figur effektivitet.png, hvor der er dannet
