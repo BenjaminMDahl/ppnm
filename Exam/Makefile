@@ -25,7 +25,7 @@ test.png: data.txt Makefile
 	set grid;\
 	set xlabel "x";\
 	set ylabel "f(x)";\
-	set title "Krakteristiske polynomoum med funde egenvaerdier";\
+	set title "Karakteristiske polynomoum med funde egenvaerdier";\
 	plot \
 	"$<" index 0 using 1:2 with points title "Egenvaerdier" \
 	,"$<" index 1 using 1:2 with lines color blue title "Karakteristiske polynomium"\

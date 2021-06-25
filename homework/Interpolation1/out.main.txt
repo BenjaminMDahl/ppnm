@@ -1,3 +1,9 @@
+#index -1: Stof der ikke skal plottes
+Vi har lavet en lineær-, kvadrtisk- og kubisk-spline som alle prøver at fitte til en sinus kurve med henholdvis
+afledte og integrerede funktioner. Resultaterne kan ses på diverse png filer og den rå data kommer herunder
+Der er også lavet en sammenligning med GSL. Dannelsen af splinesne er stærkt indspireret af bogens koder.
+
+ 
 #index 0: data from sin(x)(x, sin(x),cos(x),-cos(x)+k=1)
 0 0 1 0
 0.2 0.198669 0.980067 0.0199334

@@ -20,6 +20,9 @@ int main(){
 	z[i-1]=(double)(5*i+100)/(101);
 	}
 
+
+
+
 	// y=1
 	double f_z_qua_1[N-1], F_z_qua_1[N-1], df_dz_qua_1[N-1];
 	qspline* q_spline_y1=qspline_alloc(n,x,y1);

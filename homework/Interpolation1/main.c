@@ -5,6 +5,13 @@
 #include"Splines.h"
 
 int main(){
+	printf("#index -1: Stof der ikke skal plottes\n");
+	printf("Vi har lavet en lineær-, kvadrtisk- og kubisk-spline som alle prøver at fitte til en sinus kurve med henholdvis\n");
+	printf("afledte og integrerede funktioner. Resultaterne kan ses på diverse png filer og den rå data kommer herunder\n");
+	printf("Der er også lavet en sammenligning med GSL. Dannelsen af splinesne er stærkt indspireret af bogens koder.\n");
+
+	printf("\n \n");
+
 
 	// Laver data
 	int n=32;
