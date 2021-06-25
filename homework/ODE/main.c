@@ -107,7 +107,7 @@ int main(){
 
 
 	printf("\n \n OPGAVE C Newtonian gravitational three-body problem\n \n");
-	printf("Som den c har vi prøvet at løse en tre legeme system, hvor man får en meget pæn løsning, hvis man bruger de rigtige start betingelser.\n");
+	printf("Som en løsning til C har vi prøvet at løse en tre legeme system, hvor man får en meget pæn løsning, hvis man bruger de rigtige start betingelser.\n");
 	printf("Udførslen er indspireret af eksemplet på hjemmesiden og tager startværdierne fra https: en.wikipedia.org/wiki/Three-body_problem#cite_note-11\n");
 	printf("Resultatet af dette kan findes på Threebody.png, og er meget nydeligt.\n");
 

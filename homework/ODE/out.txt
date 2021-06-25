@@ -50,6 +50,6 @@ Så længe den string man kalder odedriver med slutter på txt vil den også bli
  
  OPGAVE C Newtonian gravitational three-body problem
  
-Som den c har vi prøvet at løse en tre legeme system, hvor man får en meget pæn løsning, hvis man bruger de rigtige start betingelser.
+Som en løsning til C har vi prøvet at løse en tre legeme system, hvor man får en meget pæn løsning, hvis man bruger de rigtige start betingelser.
 Udførslen er indspireret af eksemplet på hjemmesiden og tager startværdierne fra https: en.wikipedia.org/wiki/Three-body_problem#cite_note-11
 Resultatet af dette kan findes på Threebody.png, og er meget nydeligt.
