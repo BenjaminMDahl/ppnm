@@ -11,19 +11,15 @@
 void newton(void f(gsl_vector* x,gsl_vector* fx), gsl_vector* x, double eps);
 
 void secular_equation_guess(gsl_vector* D,gsl_vector* u, int p ,gsl_vector* x, double eps){
-	assert(D->size>1); // Vi arbejder kun med matricer ikke skalar
-	// Vi starter med at opdateret D, så hvis den p'te indgang i u ikke er 0, updateres D og u sættes lig 0.
-	double dstart=gsl_vector_get(D,p);
-	double ustart=gsl_vector_get(u,p);
-	gsl_vector_set(D,p,dstart+2*ustart);
-	gsl_vector_set(u,p,0);
+assert(D->size>1); // Vi arbejder kun med matricer ikke skalar
 
-//	gsl_vector_scale(x,1.000001); //Dette er for at undgå at dividere med 0, da hvis nogle af gættene svarer til en indgang i d får vi et 0 i en nævner
-	gsl_sort_vector(x);
-//	gsl_vector* Dcopy=gsl_vector_alloc(D->size);
-//	gsl_vector_memcpy(Dcopy,D);
-//	gsl_sort_vector(Dcopy);
+	// Vi starter med at opdatere D, så hvis den p'te indgang i u ikke er 0, updateres D og u sættes lig 0.
+double dstart=gsl_vector_get(D,p);
+double ustart=gsl_vector_get(u,p);
+gsl_vector_set(D,p,dstart+2*ustart);
+gsl_vector_set(u,p,0);
 
+	// Det karakteristiske polynomium dannes
 	void Se(gsl_vector* v, gsl_vector* f){
 		double x=gsl_vector_get(v,0);
 		double S=x-gsl_vector_get(D,p);
@@ -42,30 +38,14 @@ void secular_equation_guess(gsl_vector* D,gsl_vector* u, int p ,gsl_vector* x, d
 
 
 	// Da vi bruger vores newton metode lavet i kurset, skal alt leveres i vektorer, da metoden er lavet til at kunne klare problemer af højere dimension.
-	gsl_vector* g=gsl_vector_alloc(1);
-	for(int i=0;i<x->size;i++){
-//		if(gsl_vector_get(Dcopy,i)==gsl_vector_get(Dcopy,i+1))gsl_vector_set(x,i+1,gsl_vector_get(Dcopy,i));
-//		else{
-			double xi=gsl_vector_get(x,i);
-			gsl_vector_set(g,0,xi);
-			newton(Se,g,eps);
-			xi=gsl_vector_get(g,0);
-			gsl_vector_set(x,i,xi);}
-//	}
-	//Finder den første og sidste egenværdi uden at tjekke for om ens værdier i D.
-/*		double xi=gsl_vector_get(x,0);
+gsl_vector* g=gsl_vector_alloc(1);
+for(int i=0;i<x->size;i++){
+		double xi=gsl_vector_get(x,i);
 		gsl_vector_set(g,0,xi);
 		newton(Se,g,eps);
 		xi=gsl_vector_get(g,0);
-		gsl_vector_set(x,0,xi);
-		xi=gsl_vector_get(x,x->size-1);
-		gsl_vector_set(g,0,xi);
-		newton(Se,g,eps);
-		xi=gsl_vector_get(g,0);
-		gsl_vector_set(x,x->size-1,xi); */
+		gsl_vector_set(x,i,xi);}
 
-//	gsl_vector_free(Dcopy);
-	gsl_vector_free(g);
-
+gsl_vector_free(g);
 }
 

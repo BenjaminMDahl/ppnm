@@ -95,7 +95,7 @@ void newton(void f(gsl_vector* x,gsl_vector* fx), gsl_vector* x, double eps){
 		gsl_vector_scale(fx,-1);//-f(x)
 		GS_solve(J,R,fx,xstep);
 
-		// Her tjekkes om det funde x er tilfredsstillende
+		// Her tjekkes om det fundne x er tilfredsstillende
 		double s=2;
 		gsl_vector_memcpy(y,x);
 		while(1){
@@ -104,16 +104,11 @@ void newton(void f(gsl_vector* x,gsl_vector* fx), gsl_vector* x, double eps){
 			gsl_vector_add(y,xstep);
 			gsl_vector_scale(xstep,1/s);
 			f(y,fy);
-//		printf("fy=%g\n",gsl_blas_dnrm2(fy));
-//		printf("faktorfx=%g\n",(1-s/2)*gsl_blas_dnrm2(fx));
 			if(gsl_blas_dnrm2(fy)<(1-s/2)*gsl_blas_dnrm2(fx))break;
-//		printf("s=%g\n",s);
 			if(s<0.01)break;
 		}
 		gsl_vector_memcpy(x,y);gsl_vector_memcpy(fx,fy);
-//	printf("step norm=%g\n",gsl_blas_dnrm2(xstep));
 		if(gsl_blas_dnrm2(xstep)<dx) break;
-//	printf("value norm=%g\n",gsl_blas_dnrm2(fx));
 		if(gsl_blas_dnrm2(fx)<eps) break;
 		if(Nmax>1000) break;
 	}

@@ -49,7 +49,9 @@ for(double i=-2;i<15;i=i+0.11){
 	printf("%10g %10g\n",i,fi);}
 printf("\n\n");
 
-	////plotning af effektivitetten af default som funktion af m////
+gsl_vector_free(D);gsl_vector_free(u);gsl_vector_free(x);
+
+	////plotning af effektiviteten af default som funktion af m for tre matricer med n=1000 og større og større indgange.////
 
 printf("#index 3: Data for default effektivitet som funktion af m\n");
 int L=1000;
@@ -75,11 +77,16 @@ for(int i=0;i<=100;i=i+5){
 	secular_equation_default(D1005,u1005,25,x1005,0.0001,i);
 	secular_equation_default(D1100,u1100,25,x1100,0.0001,i);
 	for(int j=0;j<L;j++){
-	if(isnan(gsl_vector_get(x1001,j)))eig1++;
-	if(isnan(gsl_vector_get(x1005,j)))eig5++;
-	if(isnan(gsl_vector_get(x1100,j)))eig100++;
-	}
+		if(isnan(gsl_vector_get(x1001,j)))eig1++;
+		if(isnan(gsl_vector_get(x1005,j)))eig5++;
+		if(isnan(gsl_vector_get(x1100,j)))eig100++;}
 	printf("%4i %4i %4i %4i\n",i,L-eig1,L-eig5,L-eig100);
 	}
+
+
+gsl_vector_free(D1001);gsl_vector_free(u1001);gsl_vector_free(x1001);
+gsl_vector_free(D1005);gsl_vector_free(u1005);gsl_vector_free(x1005);
+gsl_vector_free(D1100);gsl_vector_free(u1100);gsl_vector_free(x1100);
+
 return 0;
 }
