@@ -110,9 +110,9 @@ int main(){
 	gsl_vector* X=gsl_vector_alloc(12);
 	gsl_vector* dXdt=gsl_vector_alloc(12);
 	//Fylder startsituationen ud baseret på at M1=M2=M3=G=1 og så passer det med https://en.wikipedia.org/wiki/Three-body_problem#cite_note-11
-	gsl_vector_set(X,0,-0.97000436); gsl_vector_set(X,1,10.24308753);
+	gsl_vector_set(X,0,-0.97000436); gsl_vector_set(X,1,0.24308753);
 	gsl_vector_set(X,2,0.0); gsl_vector_set(X,3,0.0);
-	gsl_vector_set(X,4,0.97000436); gsl_vector_set(X,5,-10.24308753);
+	gsl_vector_set(X,4,0.97000436); gsl_vector_set(X,5,-0.24308753);
 	gsl_vector_set(X,6,0.4662036850); gsl_vector_set(X,7,0.4323657300);
 	gsl_vector_set(X,8,-0.93240737); gsl_vector_set(X,9,-0.86473146);
 	gsl_vector_set(X,10,0.4662036850); gsl_vector_set(X,11,0.4323657300);
