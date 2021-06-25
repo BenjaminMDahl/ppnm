@@ -58,14 +58,14 @@ Threebody.png: Threebody.txt
 	echo '\
 	set term png;\
 	set output "$@";\
-	set key top;\
-	set fontsize 0.5;\
+	set key outside;\
+	set fontsize 0.6;\
 	set xlabel "x";\
 	set ylabel "y";\
 	set title "Threebody system";\
 	plot \
-	 "$<" using 2:3 with lines title "Body 1"\
-	,"$<" using 4:5 with lines title "Body 2"\
+	 "$<" using 2:3 with points title "Body 1"\
+	,"$<" using 4:5 with points title "Body 2"\
 	,"$<" using 6:7 with lines title "Body 3"\
 	' | pyxplot
 
