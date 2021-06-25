@@ -44,7 +44,7 @@ for(int i=0;i<x->size;i++){
 printf("\n\n");
 //Derefter data til at lave det karakteristiske polynomium
 printf("#index 2:x_i    f(x_i)\n");
-for(double i=-2;i<15;i=i+0.11){
+for(double i=-2;i<15;i=i+0.034){
 	double fi=plot_data(i);
 	printf("%10g %10g\n",i,fi);}
 printf("\n\n");

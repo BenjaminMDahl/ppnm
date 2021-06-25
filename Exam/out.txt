@@ -217,11 +217,11 @@ Dette er for at overbevise os om, at vi bruger O(n^2) operationer, da en stignin
 Vi undersøger kun vores default metode, med m=0 da denne også svarer til vores guess metode, dog måske lidt langsommere pga. sorteringen af D's indgange
 
 Det tog for n=1000 så lang tid at nå i mål: 
- 0.081408 s. 
+ 0.080952 s. 
 For n=10000 tog det så lang tid: 
- 8.01553 s. 
+ 8.03737 s. 
 De to delt med hinanden giver: 
- 98.4612. 
+ 99.2856. 
 Så en stigning på 10 i n gør det hele ca. 100 gange langsommere, hvilket antyder at vi når i mål på O(n^2) operationer
 
 DEL 3: m-AFHÆNGIGHED FOR DEFAULT METODEN

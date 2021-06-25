@@ -40,7 +40,7 @@ effektivitet.png: data.txt Makefile
 	set grid;\
 	set xlabel "m";\
 	set ylabel "Antal fundne egenvaerdier ud af 1000";\
-	set title "Effektivitetten af default metoden som funktion af m";\
+	set title "Effektiviteten af default metoden som funktion af m";\
 	plot \
 	"$<" index 2 using 1:2 with lines title "For D og u med indgange mellem [0,1]" \
 	,"$<" index 2 using 1:3 with lines title "For D og u med indgange mellem [0,5]"\
