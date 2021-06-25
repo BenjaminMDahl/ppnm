@@ -43,7 +43,12 @@ void odecos(double t,gsl_vector* y, gsl_vector* dydt);
 // konstant
 void line(double t,gsl_vector* y, gsl_vector* dydt);
 
+// fra opgave beskrivelse
 void epidemic(double t,gsl_vector* y, gsl_vector* dydt);
+
+//
+void threebody(double t,gsl_vector* y, gsl_vector* dydt);
+
 
 int main(){
 
@@ -99,6 +104,20 @@ int main(){
 	printf("Denne string er navnet på den fil odedriver danner og gemme vejen i direkte på disken, der er 3 af disse filer en for\n");
 	printf("den lige linje, en for cos og en for epidemic. det er også disse filer der er brugt til at danne png'erne i Makefile.\n");
 	printf("Så længe den string man kalder odedriver med slutter på txt vil den også blive slettet igen med min clean function i Makefile.\n");
+
+
+	printf("\n \n OPGAVE C Newtonian gravitational three-body problem\n \n");
+	gsl_vector* X=gsl_vector_alloc(12);
+	gsl_vector* dXdt=gsl_vector_alloc(12);
+	//Fylder startsituationen ud baseret på at M1=M2=M3=G=1 og så passer det med https://en.wikipedia.org/wiki/Three-body_problem#cite_note-11
+	gsl_vector_set(X,0,-0.97000436); gsl_vector_set(X,1,10.24308753);
+	gsl_vector_set(X,2,0.0); gsl_vector_set(X,3,0.0);
+	gsl_vector_set(X,4,0.97000436); gsl_vector_set(X,5,-10.24308753);
+	gsl_vector_set(X,6,0.4662036850); gsl_vector_set(X,7,0.4323657300);
+	gsl_vector_set(X,8,-0.93240737); gsl_vector_set(X,9,-0.86473146);
+	gsl_vector_set(X,10,0.4662036850); gsl_vector_set(X,11,0.4323657300);
+
+	int knewton=OdeDriver(threebody,0,6,X,dXdt,0.1,acce,epse,"Threebody.txt");
 
 return 0;
 }
