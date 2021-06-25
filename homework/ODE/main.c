@@ -107,6 +107,10 @@ int main(){
 
 
 	printf("\n \n OPGAVE C Newtonian gravitational three-body problem\n \n");
+	printf("Som den c har vi prøvet at løse en tre legeme system, hvor man får en meget pæn løsning, hvis man bruger de rigtige start betingelser.\n");
+	printf("Udførslen er indspireret af eksemplet på hjemmesiden og tager startværdierne fra https: en.wikipedia.org/wiki/Three-body_problem#cite_note-11\n");
+	printf("Resultatet af dette kan findes på Threebody.png, og er meget nydeligt.\n");
+
 	gsl_vector* X=gsl_vector_alloc(12);
 	gsl_vector* dXdt=gsl_vector_alloc(12);
 	//Fylder startsituationen ud baseret på at M1=M2=M3=G=1 og så passer det med https://en.wikipedia.org/wiki/Three-body_problem#cite_note-11
@@ -117,7 +121,7 @@ int main(){
 	gsl_vector_set(X,8,-0.93240737); gsl_vector_set(X,9,-0.86473146);
 	gsl_vector_set(X,10,0.4662036850); gsl_vector_set(X,11,0.4323657300);
 
-	int knewton=OdeDriver(threebody,0,6,X,dXdt,0.1,0.0001,0.0001,"Threebody.txt");
+	OdeDriver(threebody,0,6,X,dXdt,0.1,0.0001,0.0001,"Threebody.txt");
 
 return 0;
 }
