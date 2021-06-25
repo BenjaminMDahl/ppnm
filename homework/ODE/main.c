@@ -121,7 +121,7 @@ int main(){
 	gsl_vector_set(X,8,-0.93240737); gsl_vector_set(X,9,-0.86473146);
 	gsl_vector_set(X,10,0.4662036850); gsl_vector_set(X,11,0.4323657300);
 
-	OdeDriver(threebody,0,6,X,dXdt,0.1,0.001,0.001,"Threebody.txt");
+	OdeDriver(threebody,0,8,X,dXdt,0.1,0.001,0.001,"Threebody.txt");
 
 return 0;
 }
