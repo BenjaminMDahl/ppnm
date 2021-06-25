@@ -64,7 +64,7 @@ Threebody.png: Threebody.txt
 	set ylabel "y";\
 	set title "Threebody system";\
 	plot \
-	 "$<" using 2:3 with points title "Body 1"\
+	 "$<" using 2:3 with points pointsize 0.5 title "Body 1"\
 	,"$<" using 4:5 with points title "Body 2"\
 	,"$<" using 6:7 with lines title "Body 3"\
 	' | pyxplot
