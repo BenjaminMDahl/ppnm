@@ -31,9 +31,9 @@ data.txt: cirkel
 out.txt: main
 	./main > out.txt
 
-main: main.c montecarlo.c
+main: main.o montecarlo.o
 
-cirkel: cirkel.c montecarlo.c
+cirkel: cirkel.o montecarlo.o
 
 .PHONEY:clean
 clean:

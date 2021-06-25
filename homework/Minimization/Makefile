@@ -22,7 +22,7 @@ BreitWigner.png: plot.txt data.txt
 	,"data.txt" using 1:2 with points color red title "data from CERN" \
 	' | pyxplot
 
-main: main.c newton.c testfunctions.c
+main: main.o newton.o testfunctions.o
 
 .PHONEY:clean
 clean:

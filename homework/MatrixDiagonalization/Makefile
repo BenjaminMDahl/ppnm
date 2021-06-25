@@ -26,7 +26,7 @@ eigenfunctions.png: out.txt
 out.txt:main
 	./$< > $@
 
-main: main.c print.c jacobi.c
+main: main.o print.o jacobi.o
 
 .PHONEY:clean
 clean:

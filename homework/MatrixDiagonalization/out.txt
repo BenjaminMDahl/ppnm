@@ -147,13 +147,13 @@ OPGAVE C
 
 Nu undersøges tiden af vores operationer
 Vi undersøger tiden det tager for vores routine at køre, først for n=100 så n=1000
-Det tog 0.002625 i CPU tid at køre jacobi diag for n=25
-Det tog 2.26363 i CPU tid at køre jacobi diag for n=250
-Tiden delt med hinanden giver 862.335
+Det tog 0.001949 i CPU tid at køre jacobi diag for n=25
+Det tog 2.25618 i CPU tid at køre jacobi diag for n=250
+Tiden delt med hinanden giver 1157.61
 Det ses at forskellen er næsten 1000, hvilket er at forvente, hvis der bruges N^3 operatrioner
 
-Nu sammenligner vi vores rotine med GSL. For den samme n=250 matrice tog den 0.023387 i CPU tid.
-Tiden i forhold til hinanden hvor vi har MinMetode/GSL giver 96.7901
+Nu sammenligner vi vores rotine med GSL. For den samme n=250 matrice tog den 0.022537 i CPU tid.
+Tiden i forhold til hinanden hvor vi har MinMetode/GSL giver 100.11
 Det ses at GSL er noget hurtigere,
 
 

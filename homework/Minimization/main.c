@@ -26,14 +26,14 @@ double deviation_function(gsl_vector*);
 
 
 int main(){
-int steps,stepsR,stepsH,stepsB;
+int steps,stepsR,stepsB;
 gsl_vector* x=gsl_vector_calloc(2);
 
 steps=qnewton(fun,x,0.0005);
 
 printf("OPGAVE A Minimization)\n\n");
 vector_print("Vi starter med at teste vores rountine ved at finde minimum for f(x,y)=x^2-x+y^2-y.\n Vi finder det til:",x);
-printf("Dette passer meget godt med det forventede. Det blev fundet på 3 skridt = %i\n\n",steps);
+printf("Det passer godt med det forventede. Det blev fundet på 3 skridt = %i\n\n",steps);
 
 
 //Rosenbrock
@@ -46,11 +46,27 @@ vector_print("Vi prøver med noget lidt svære. Vi undersøger Rosenbrock's vall
 printf("Dette er tæt på (1,1), hvilket er det forventede for denne udgave af RosenBbrock's valley funktion(a=1 og b=100).\n Det blev gjort med startgæt (x,y)=(1,0) og på %i skridt\n\n",stepsR);
 
 //Himmelblau
-gsl_vector* H=gsl_vector_calloc(2);
-gsl_vector_set(H,0,3);gsl_vector_set(H,0,0);
-stepsH=qnewton(Himmelblau,H,0.0001);
-vector_print("Vi prøver nu for Himmelblau's funktion. Her findes minimum ved er:",H);
-printf("Dette passer godt med et af de forventede(Der burde være fire). Det var med et start gæt på (x,y)=(3,0) og blev gjort på %i skridt\n\n",stepsH);
+gsl_vector* H1=gsl_vector_calloc(2);
+gsl_vector_set(H1,0,3.5);gsl_vector_set(H1,1,1.5);
+int stepsH1=qnewton(Himmelblau,H1,0.0001);
+
+gsl_vector* H2=gsl_vector_calloc(2);
+gsl_vector_set(H2,0,-3);gsl_vector_set(H2,1,3);
+int stepsH2=qnewton(Himmelblau,H2,0.0001);
+
+gsl_vector* H3=gsl_vector_calloc(2);
+gsl_vector_set(H3,0,-4);gsl_vector_set(H3,1,-3);
+int stepsH3=qnewton(Himmelblau,H3,0.0001);
+
+gsl_vector* H4=gsl_vector_calloc(2);
+gsl_vector_set(H4,0,4);gsl_vector_set(H4,1,-2);
+int stepsH4=qnewton(Himmelblau,H4,0.0001);
+
+vector_print("Vi prøver nu for Himmelblau's funktion. Her finder vi et minimum med start gæt(3.5,1.5) ved:",H1);
+vector_print("Og et med start gæt (-3,3) ved",H2);
+vector_print("Og et med start gæt (-4,-3) ved",H3);
+vector_print("Og et med start gæt (4,-2) ved",H4);
+printf("Dette passer godt med de forventede fire punkter som kan slås op på wikipedia. Hvert minimum blev fundet på henholdsvis %i %i %i og %i skridt\n\n",stepsH1,stepsH2,stepsH3,stepsH4);
 
 //Opgave B//
 printf("OPGAVE B Berit-Wigner\n\n");

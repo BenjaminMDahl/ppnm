@@ -9,7 +9,7 @@ default: out.txt cos.png epidemic.png line.png Threebody.png
 out.txt: main
 	./$< > $@
 
-main: main.c DriverAndStepper.c TestFunctions.c
+main: main.o DriverAndStepper.o TestFunctions.o
 
 line.png: line.txt
 	echo '\

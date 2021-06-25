@@ -5,7 +5,7 @@ Vi starter med at teste vores rountine ved at finde minimum for f(x,y)=x^2-x+y^2
        0.5 
        0.5 
 
-Dette passer meget godt med det forventede. Det blev fundet på 3 skridt = 3
+Det passer godt med det forventede. Det blev fundet på 3 skridt = 3
 
 Vi prøver med noget lidt svære. Vi undersøger Rosenbrock's valley funktionen.
  Til denne finder vi minimum ved:
@@ -15,11 +15,23 @@ Vi prøver med noget lidt svære. Vi undersøger Rosenbrock's valley funktionen.
 Dette er tæt på (1,1), hvilket er det forventede for denne udgave af RosenBbrock's valley funktion(a=1 og b=100).
  Det blev gjort med startgæt (x,y)=(1,0) og på 2000 skridt
 
-Vi prøver nu for Himmelblau's funktion. Her findes minimum ved er:
+Vi prøver nu for Himmelblau's funktion. Her finder vi et minimum med start gæt(3.5,1.5) ved:
          3 
          2 
 
-Dette passer godt med et af de forventede(Der burde være fire). Det var med et start gæt på (x,y)=(3,0) og blev gjort på 49 skridt
+Og et med start gæt (-3,3) ved
+  -2.80512 
+    3.1313 
+
+Og et med start gæt (-4,-3) ved
+  -3.77931 
+  -3.28319 
+
+Og et med start gæt (4,-2) ved
+   3.58443 
+  -1.84813 
+
+Dette passer godt med de forventede fire punkter som kan slås op på wikipedia. Hvert minimum blev fundet på henholdsvis 2000 2000 23 og 40 skridt
 
 OPGAVE B Berit-Wigner
 

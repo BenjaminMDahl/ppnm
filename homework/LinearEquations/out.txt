@@ -140,20 +140,20 @@ Vi konkluderer altså, at vores invers routine med Gram_Schmidt virker og at B=A
 OPGAVE C Sammenligning med GSL)
 
 tiden det tog for at decompose en n=100 sqaure matrix=
-  0.006038
+  0.006528
 
 tiden det tog for at decompose en n=500 sqaure matrix=
-  0.773397
+  0.765341
 
 Tidsforskellen for tid(n=500)/tid(n=100)=
-   128.088
+    117.24
 
 Det ses at når n bliver 5 gange større er tiden blevet ca 5^3=125 gange større som forventet.
 
 Tiden det tog for at decompose en n=500 sqaure matrix med GSL=
-  0.100201
+  0.101193
 
 Tidsforskellen for minkode/GSL
-   7.71846
+   7.56318
 
 Det ses at GSL's metode er noget hurtigere end min

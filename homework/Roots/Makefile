@@ -12,7 +12,7 @@ out.txt: main
 exact.txt: exact
 	./$< > $@
 
-main: main.c linsolve.c newton.c testfunctions.c ODE.c
+main: main.o linsolve.o newton.o testfunctions.o ODE.o
 
 
 
